@@ -106,7 +106,8 @@
   </xacro:if>
 
  <!-- Teraranger Tower -->
-    <xacro:include filename="$(find teraranger_description)/urdf/teraranger_tower.urdf.xacro"/>
+<xacro:include filename="$(find teraranger_description)/urdf/base_hub.urdf.xacro"/>
+<xacro:include filename="$(find teraranger_description)/urdf/teraranger_one.urdf.xacro"/>
 
   <!-- Mount an ADIS16448 IMU. -->
   <xacro:imu_plugin_macro

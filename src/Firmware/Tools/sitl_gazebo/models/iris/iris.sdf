@@ -572,11 +572,34 @@
 
 
 
-
+  <!--sf10a lidar downwards - prints to /mavros/altitude, bottom_clearance-->
+    <include>
+      <uri>model://sf10a</uri>
+      <pose>0 0 -0.05 0 0 0</pose>
+    </include>
+    <joint name="sf10a_joint" type="fixed">
+      <parent>iris::base_link</parent>
+      <child>sf10a::link</child>
+    </joint>
    
 
 
-
+<!--teraranger_tower-->
+  <include>
+    <uri>model://teraranger_tower</uri>
+    <pose>0 0 0 0 0.4 0</pose>
+  </include>
+  <joint name="teraranger_tower_joint" type="fixed">
+    <child>teraranger_tower::link</child>
+    <parent>iris::base_link</parent>
+    <axis>
+      <xyz>0 0 1</xyz>
+      <limit>
+        <upper>0</upper>
+        <lower>0</lower>
+      </limit>
+    </axis>
+  </joint>
 
   </model>
 </sdf>
