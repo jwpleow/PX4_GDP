@@ -583,14 +583,13 @@
     </joint>
    
 
-
-<!--teraranger_tower-->
+   <!--fpv_cam-->
   <include>
-    <uri>model://teraranger_tower</uri>
-    <pose>0 0 0 0 0.4 0</pose>
+    <uri>model://fpv_cam</uri>
+    <pose>0 0 0 0 1.57 0</pose>
   </include>
-  <joint name="teraranger_tower_joint" type="fixed">
-    <child>teraranger_tower::link</child>
+  <joint name="fpv_cam_joint" type="fixed">
+    <child>fpv_cam::link</child>
     <parent>iris::base_link</parent>
     <axis>
       <xyz>0 0 1</xyz>
@@ -600,6 +599,26 @@
       </limit>
     </axis>
   </joint>
+
+
+
+  <!--depth camera-->
+  <include>
+    <uri>model://depth_camera</uri>
+    <pose>0.1 0 0.05 0 0 0</pose>
+  </include>
+    <joint name="depth_camera_joint" type="fixed">
+    <child>depth_camera::link</child>
+    <parent>iris::base_link</parent>
+    <axis>
+      <xyz>0 0 1</xyz>
+      <limit>
+        <upper>0</upper>
+        <lower>0</lower>
+      </limit>
+    </axis>
+  </joint>
+
 
   </model>
 </sdf>

@@ -148,6 +148,10 @@ bool offboardVelocityCtrlBody(Drone& aero)
 
 void stepUp(Drone& aero)
 {
+
+  ROS_INFO("NED: Move North");
+  aero.setOffboardVelocityNED(0.0f, 2.0f, 0.0f, 0.0f, 40);
+
   ROS_INFO("NED: Turn to face South");
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 40);
 

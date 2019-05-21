@@ -34,11 +34,11 @@
       <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
     </physics>
     <scene>
-  <sky>
-    <clouds>
-      <speed>8</speed>
-    </clouds>
-  </sky>
-</scene>
+      <sky>
+        <clouds>
+          <speed>8</speed>
+        </clouds>
+      </sky>
+    </scene>
   </world>
 </sdf>

@@ -1,5 +1,6 @@
 # How to launch gazebo with a px4 quad publishing to mavros
 
+
 In terminal: (after building catkin_ws in the root directory from <https://dev.px4.io/en/ros/mavros_installation.html> and cloning [github/PX4/Firmware](https://github.com/PX4/Firmware) into catkin_ws/src/)
 
 ```
@@ -30,7 +31,7 @@ FPV camera data can be viewed using
 source ~/catkin_ws/devel/setup.bash
 rosrun rviz rviz
 ```
-and clicking Add -> Image -> Topic: iris....
+and clicking Add -> Image -> Topic: iris/usb_cam/...
 
 
 

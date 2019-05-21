@@ -146,4 +146,17 @@
     <xacro:insert_block name="rotor_inertia" />
   </xacro:vertical_rotor>
 
+
+  <link name="teratower">
+   <visual>
+    <geometry>
+      <mesh filename="package://pkg/m.dae"/>
+    </geometry>
+  </visual>
+  </link>
+
+
+
+
+
 </robot>
