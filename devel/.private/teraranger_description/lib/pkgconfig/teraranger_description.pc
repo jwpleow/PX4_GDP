@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/teraranger_description
+
+Name: teraranger_description
+Description: Description of teraranger_description
+Version: 1.1.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/teraranger_description/lib 
+Requires: 

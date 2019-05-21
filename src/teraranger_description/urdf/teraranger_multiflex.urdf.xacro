@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<robot name="teraranger_multiflex" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="teraranger_multiflex" params="multi_hub hub_id id x y z roll pitch yaw gaussian_noise">
+
+        <xacro:if value="${multi_hub}">
+            <link name="hub_${hub_id}_base_range_${id}">
+                <visual>
+                    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+                    <geometry>
+                        <mesh filename="package://teraranger_description/meshes/teraranger_multiflex.stl"/>
+                    </geometry>
+                    <material name="Yellow">
+                        <color rgba="1.0 1.0 0.0 1.0"/>
+                    </material>
+                </visual>
+            </link>
+
+            <joint name="hub_${hub_id}_base_range_joint_${id}" type="fixed">
+                <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
+                <parent link="base_hub_${hub_id}"/>
+                <child link="hub_${hub_id}_base_range_${id}"/>
+            </joint>
+
+
+            <gazebo reference="hub_${hub_id}_base_range_${id}">
+                <material>Gazebo/Black</material>
+                <sensor type="ray" name="hub_id_${hub_id}_sensor_${id}">
+                    <visualize>true</visualize>
+                    <update_rate>10</update_rate>
+                    <ray>
+                        <scan>
+                            <horizontal>
+                                <samples>10</samples>
+                                <resolution>1</resolution>
+                                <min_angle>-10.0</min_angle>
+                                <max_angle>10.0</max_angle>
+                            </horizontal>
+                            <vertical>
+                                <samples>10</samples>
+                                <resolution>1</resolution>
+                                <min_angle>-10.0</min_angle>
+                                <max_angle>10.0</max_angle>
+                            </vertical>
+                        </scan>
+                        <range>
+                            <min>0.05</min>
+                            <max>2.0</max>
+                            <resolution>0.05</resolution>
+                        </range>
+                    </ray>
+                    <plugin name="laser_${id}" filename="libgazebo_ros_range.so">
+                        <topicName>hub_${hub_id}/gazebo/range_${id}</topicName>
+                        <frameName>hub_${hub_id}_base_range_${id}</frameName>
+                        <gaussianNoise>${gaussian_noise}</gaussianNoise>
+                        <updateRate>10</updateRate>
+                        <radiation>ultrasound</radiation>
+                        <fov>0.20</fov>
+                    </plugin>
+                </sensor>
+            </gazebo>
+        </xacro:if>
+        <xacro:unless value="${multi_hub}">
+
+            <link name="base_range_${id}">
+                <visual>
+                    <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+                    <geometry>
+                        <mesh filename="package://teraranger_description/meshes/teraranger_evo.stl"/>
+                    </geometry>
+                    <material name="Yellow"/>
+                </visual>
+            </link>
+
+            <joint name="base_range_joint_${id}" type="fixed">
+                <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
+                <parent link="base_hub"/>
+                <child link="base_range_${id}"/>
+            </joint>
+
+
+            <gazebo reference="base_range_${id}">
+                <material>Gazebo/Yellow</material>
+                <sensor type="ray" name="sensor_${id}">
+                    <visualize>true</visualize>
+                    <update_rate>10</update_rate>
+                    <ray>
+                        <scan>
+                            <horizontal>
+                                <samples>10</samples>
+                                <resolution>1</resolution>
+                                <min_angle>-10.0</min_angle>
+                                <max_angle>10.0</max_angle>
+                            </horizontal>
+                            <vertical>
+                                <samples>10</samples>
+                                <resolution>1</resolution>
+                                <min_angle>-10.0</min_angle>
+                                <max_angle>010.0</max_angle>
+                            </vertical>
+                        </scan>
+                        <range>
+                            <min>0.05</min>
+                            <max>2.0</max>
+                            <resolution>0.05</resolution>
+                        </range>
+                    </ray>
+                    <plugin name="laser_${id}" filename="libgazebo_ros_range.so">
+                        <topicName>gazebo/range_${id}</topicName>
+                        <frameName>base_range_${id}</frameName>
+                        <gaussianNoise>${gaussian_noise}</gaussianNoise>
+                        <updateRate>10</updateRate>
+                        <radiation>ultrasound</radiation>
+                        <fov>0.20</fov>
+                    </plugin>
+                </sensor>
+            </gazebo>
+        </xacro:unless>
+    </xacro:macro>
+
+</robot>

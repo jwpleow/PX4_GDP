@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/px4
+
+Name: px4
+Description: Description of px4
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/px4/lib 
+Requires: 

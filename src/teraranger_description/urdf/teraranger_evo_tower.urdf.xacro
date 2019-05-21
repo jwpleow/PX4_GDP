@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="teraranger_evo_tower" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find teraranger_description)/urdf/base_hub.urdf.xacro"/>
+    <xacro:include filename="$(find teraranger_description)/urdf/teraranger_evo.urdf.xacro"/>
+    <xacro:macro name="teraranger_evo_tower" params="multi_hub hub_id parent x y z roll pitch yaw">
+
+      <!-- EVO TOWER CONFIG-->
+      <base_hub multi_hub="${multi_hub}" hub_id='${hub_id}' parent="${parent}" x="${x}" y="${y}" z="${z}" roll="${roll}" pitch="${pitch}" yaw="${yaw}" />
+      <!--<base_hub multi_hub="0" hub_id='0' parent="base_link" x="0" y="0" z="0.26" roll="0" pitch="0" yaw="0"/>-->
+      <teraranger_evo multi_hub="0" hub_id='0' id="0" x="0.046" y="0.000" z="0" roll="0" pitch="0" yaw="0.000" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="1" x="0.032" y="-0.032" z="0" roll="0" pitch="0" yaw="-0.785" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="2" x="0.000" y="-0.046" z="0" roll="0" pitch="0" yaw="-1.571" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="3" x="-0.032" y="-0.032" z="0" roll="0" pitch="0" yaw="-2.356" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="4" x="-0.046" y="0.000" z="0" roll="0" pitch="0" yaw="3.142" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="5" x="-0.032" y="0.032" z="0" roll="0" pitch="0" yaw="2.356" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="6" x="0.000" y="0.046" z="0" roll="0" pitch="0" yaw="1.571" gaussian_noise="0"/>
+      <teraranger_evo multi_hub="0" hub_id='0' id="7" x="0.032" y="0.032" z="0" roll="0" pitch="0" yaw="0.785" gaussian_noise="0"/>
+
+   </xacro:macro>
+
+</robot>

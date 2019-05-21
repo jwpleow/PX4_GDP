@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="teraranger_evo_tower.urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="teraranger_evo_tower.urdf.xacro"/>
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 0 "/>
+            <geometry>
+                  <mesh filename="$(find teraranger_description)/meshes/Evo_Tower.stl"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0 "/>
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+        <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+
+    <teraranger_evo_tower multi_hub="false" hub_id='0' parent="base_link" x="0" y="0" z="0.5" roll="0" pitch="0" yaw="0" />
+</robot>

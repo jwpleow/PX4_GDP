@@ -1,0 +1,1 @@
+/home/khorjiawei/catkin_ws/devel/.private/mypkg/share/mypkg/cmake/mypkgConfig-version.cmake

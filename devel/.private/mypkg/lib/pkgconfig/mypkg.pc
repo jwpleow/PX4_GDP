@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/mypkg
+
+Name: mypkg
+Description: Description of mypkg
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/mypkg/lib 
+Requires: 

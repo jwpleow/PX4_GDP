@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader
+
+Name: imu_data_reader
+Description: Description of imu_data_reader
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/lib 
+Requires: 
