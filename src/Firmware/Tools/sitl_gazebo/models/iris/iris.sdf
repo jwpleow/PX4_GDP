@@ -600,7 +600,7 @@
     </axis>
   </joint>
 
-   <!--fpv_cam - publishes to /iris/usb_cam/, using libgazebo camera plugin-->
+   <!--downward facing fpv_cam - publishes to /iris/usb_cam/, using libgazebo camera plugin-->
   <include>
     <uri>model://fpv_cam</uri>
     <pose>0 0 0 0 1.57 0</pose>
