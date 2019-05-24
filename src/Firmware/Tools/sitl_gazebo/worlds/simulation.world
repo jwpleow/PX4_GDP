@@ -16,6 +16,33 @@
     </include>
  -->
 
+
+<!-- launch ambulance model with the mover plugin -->
+  <model name="ambulance">
+      <pose>3 0 0.5 0 0 1.57</pose>
+      <link name="link">
+        <collision name="collision">
+        <geometry>
+          <mesh>
+            <scale>0.0254 0.0254 0.0254</scale>
+            <uri>model://ambulance/meshes/ambulance.obj</uri>
+          </mesh>
+        </geometry>
+      </collision>
+        <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.0254 0.0254 0.0254</scale>
+            <uri>model://ambulance/meshes/ambulance.obj</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      </link>
+      <plugin name="model_mover" filename="libmodel_mover.so"/>
+    </model>  
+
+
+<!-- define physics -->
     <physics name='default_physics' default='0' type='ode'>
       <gravity>0 0 -9.8066</gravity>
       <ode>

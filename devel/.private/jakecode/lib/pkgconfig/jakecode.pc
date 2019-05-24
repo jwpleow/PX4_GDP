@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/jakecode
+
+Name: jakecode
+Description: Description of jakecode
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/jakecode/lib 
+Requires: mavros_msgs roscpp std_msgs geometry_msgs

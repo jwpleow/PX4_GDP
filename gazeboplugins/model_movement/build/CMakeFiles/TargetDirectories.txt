@@ -1,0 +1,3 @@
+/home/khorjiawei/catkin_ws/gazeboplugins/model_movement/build/CMakeFiles/rebuild_cache.dir
+/home/khorjiawei/catkin_ws/gazeboplugins/model_movement/build/CMakeFiles/model_mover.dir
+/home/khorjiawei/catkin_ws/gazeboplugins/model_movement/build/CMakeFiles/edit_cache.dir

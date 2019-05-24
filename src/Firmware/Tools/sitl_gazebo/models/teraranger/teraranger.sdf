@@ -48,6 +48,14 @@
             <min_angle>-0.0785398</min_angle>
             <max_angle>0.0785398</max_angle>
           </horizontal>
+          <!--
+          <vertical>
+            <samples>3</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.026</min_angle>
+            <max_angle>0.026</max_angle>
+          </vertical>
+        -->
         </scan>
         <range>
           <min>0.10</min>

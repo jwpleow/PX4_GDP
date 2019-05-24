@@ -618,7 +618,9 @@
   </joint>
 
   
-      <!--teraranger_tower-->
+
+
+    <!--teraranger_tower-->
   <include>
     <uri>model://teraranger</uri>
     <pose>0.1 0 0 0 0 0</pose>

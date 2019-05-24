@@ -27,7 +27,7 @@ rosrun offb_velocity node
 
 Sensors added to the iris drone [look at the bottom of iris.sdf to see the additions]:
 1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude, bottom_clearance)
-2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/ and camera_ir/depth/, using the kinect plugin)
+2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/image (in sensor_msgs/PointCloud2), using the kinect OpenNI plugin)
 3. Downward facing FPV camera (fpv_cam) (publishing to /iris/usb_cam/, using libgazebo_camera plugin)
 4. Forward facing 3* lidars (teraranger) (publishing to /laser/scan, using libgazebo_ros_gpu_laser plugin)
 
@@ -44,9 +44,6 @@ and clicking Add -> Image -> Topic: iris/usb_cam/...
 
 
 
-XML macros/xacros can be added in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/rotors_description/urdf/iris_base.xacro)
-
-
-
+XML macros/xacros can be added in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/rotors_description/urdf/iris_base.xacro
 
 

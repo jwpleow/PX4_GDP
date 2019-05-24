@@ -16,7 +16,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://teraranger_tower/meshes/terarangerv4.dae</uri>
+            <uri>model://teraranger_tower/meshes/terarangerv4float.dae</uri>
           </mesh>
         </geometry>
       </visual>
