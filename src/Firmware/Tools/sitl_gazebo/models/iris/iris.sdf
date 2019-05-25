@@ -419,7 +419,7 @@
     </plugin>
     <plugin name='gps_plugin' filename='libgazebo_gps_plugin.so'>
       <robotNamespace/>
-      <gpsNoise>1</gpsNoise>
+      <gpsNoise>0</gpsNoise>
     </plugin>
     <plugin name='magnetometer_plugin' filename='libgazebo_magnetometer_plugin.so'>
       <robotNamespace/>
@@ -620,7 +620,7 @@
   
 
 
-    <!--teraranger_tower-->
+    <!--teraranger - 3 LiDAR sensors-->
   <include>
     <uri>model://teraranger</uri>
     <pose>0.1 0 0 0 0 0</pose>
@@ -636,6 +636,7 @@
       </limit>
     </axis>
     </joint>
+
 
   
 
