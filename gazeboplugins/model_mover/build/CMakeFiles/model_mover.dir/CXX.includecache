@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/khorjiawei/catkin_ws/gazeboplugins/model_movement/model_mover.cc
+/home/khorjiawei/catkin_ws/gazeboplugins/model_mover/model_mover.cc
 functional
 -
 gazebo/gazebo.hh

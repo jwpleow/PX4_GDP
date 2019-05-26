@@ -1,8 +1,13 @@
 # How to launch gazebo with a px4 iris model (quadcopter) publishing to mavros
 
+Make sure gazebo9 and ros-melodic are installed!
 
-In terminal: (after building catkin_ws in the root directory from <https://dev.px4.io/en/ros/mavros_installation.html> and cloning [github/PX4/Firmware](https://github.com/PX4/Firmware) into catkin_ws/src/)
-
+Clone this into the root directory
+```
+cd 
+git clone https://github.com/gdp-drone/catkin_ws.git
+```
+The gazebo simulation environment with the drone can then be launched using:
 ```
 cd ~/catkin_ws/src/Firmware   
 export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/         
@@ -26,10 +31,10 @@ rosrun offb_velocity node
 ```
 
 Sensors added to the iris drone [look at the bottom of iris.sdf to see the additions]:
-1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude, bottom_clearance)
-2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/image (in sensor_msgs/PointCloud2), using the kinect OpenNI plugin)
-3. Downward facing FPV camera (fpv_cam) (publishing to /iris/usb_cam/, using libgazebo_camera plugin)
-4. Forward facing 3* lidars (teraranger) (publishing to /laser/scan, using libgazebo_ros_gpu_laser plugin)
+1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude, type: mavros_msgs/Altitude, bottom_clearance)
+2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/image, type: sensor_msgs/PointCloud2, using the kinect OpenNI plugin)
+3. Downward facing FPV camera (fpv_cam) (publishing to /iris/usb_cam/, type: sensor_msgs/Image, using libgazebo_camera plugin)
+4. Forward facing 3* lidars (teraranger) (publishing to /laser/scan, type: sensor_msgs/LaserScan, using libgazebo_ros_gpu_laser plugin)
 
 FPV camera data can be viewed using
 ```

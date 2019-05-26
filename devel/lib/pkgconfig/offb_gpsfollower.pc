@@ -1,0 +1,1 @@
+/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/lib/pkgconfig/offb_gpsfollower.pc
