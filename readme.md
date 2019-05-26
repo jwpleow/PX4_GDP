@@ -21,7 +21,7 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
 roslaunch px4 mavros_posix_sitl.launch
 ```
 
-This builds the iris model (found in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/iris) - look inside Firmware/launch/mavros_posix_sitl.launch for more details
+This builds the iris model (found in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/iris) with a px4 controller - look inside Firmware/launch/mavros_posix_sitl.launch for more details
 
 
 A simple node to control the drone can be found in catkin_ws/src/offb_velocity - this can be ran in a new terminal:
@@ -31,7 +31,7 @@ rosrun offb_velocity node
 ```
 
 Sensors added to the iris drone [look at the bottom of iris.sdf to see the additions]:
-1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude, type: mavros_msgs/Altitude, bottom_clearance)
+1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude  ->bottom_clearance, type: mavros_msgs/Altitude)
 2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/image, type: sensor_msgs/PointCloud2, using the kinect OpenNI plugin)
 3. Downward facing FPV camera (fpv_cam) (publishing to /iris/usb_cam/image_raw, type: sensor_msgs/Image, using libgazebo_camera plugin)
 4. Forward facing 3* lidars (teraranger) (publishing to /laser/scan, type: sensor_msgs/LaserScan, using libgazebo_ros_gpu_laser plugin)

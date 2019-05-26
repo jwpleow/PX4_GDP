@@ -172,10 +172,9 @@ void stepUp(Drone& aero)
 
 void stepDown(Drone& aero)
 {
-  ROS_INFO("NED: Turn North");
-  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 360.0f, 40);
+  
 
-  ROS_INFO("NED: Move towards North");
+  ROS_INFO("NED: Move towards west");
   aero.setOffboardVelocityNED(0.0f, 2.0f, 0.0f, 360.0f, 60);
 
   // Wait for a bit
@@ -186,7 +185,7 @@ void stepDown(Drone& aero)
   // Wait for a bit
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 4);
 
-  ROS_INFO("NED: Move towards North");
+  ROS_INFO("NED: Move towards west");
   aero.setOffboardVelocityNED(0.0f, 2.0f, 0.0f, 360.0f, 60);
 
   // Wait for a bit
@@ -196,9 +195,6 @@ void stepDown(Drone& aero)
 
   // Wait for a bit
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 4);
-
-  ROS_INFO("NED: Move towards North");
-  aero.setOffboardVelocityNED(0.0f, 2.0f, 0.0f, 360.0f, 60);
 
   // Wait for a bit
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 4);
