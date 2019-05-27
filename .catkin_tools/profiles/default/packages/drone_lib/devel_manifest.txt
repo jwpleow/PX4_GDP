@@ -1,0 +1,6 @@
+drone_lib
+/home/khorjiawei/catkin_ws/devel/.private/drone_lib/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
+/home/khorjiawei/catkin_ws/devel/.private/drone_lib/share/drone_lib/cmake/drone_libConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/drone_lib/cmake/drone_libConfig-version.cmake
+/home/khorjiawei/catkin_ws/devel/.private/drone_lib/share/drone_lib/cmake/drone_libConfig.cmake /home/khorjiawei/catkin_ws/devel/share/drone_lib/cmake/drone_libConfig.cmake
+/home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/pkgconfig/drone_lib.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/drone_lib.pc
+/home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/drone_lib/drone_node /home/khorjiawei/catkin_ws/devel/lib/drone_lib/drone_node

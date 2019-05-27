@@ -19,7 +19,7 @@ public:
   // Offboard Velocity Control
   void setOffboardVelocityNED(float vx, float vy, float vz, float yaw, std::size_t count = 1);
   void setOffboardVelocityBody(float vx, float vy, float vz, float yaw_rate, std::size_t count = 1);
-
+  void setOffboardPositionBody(float x, float y, float z, float yaw, std::size_t count = 1);
 private:
   void getHomeGeoPoint();
   void getAltitude();

@@ -11,7 +11,7 @@ Drone::Drone()
   getAltitude();
   set_vel_pub_ = nh_.advertise<mavros_msgs::PositionTarget>("mavros/setpoint_raw/local", 10);
   set_global_pub_ = nh_.advertise<mavros_msgs::GlobalPositionTarget>("mavros/setpoint_position/global", 10);
-  read_gps_sub_ = nh_.subscribe<sensor_msgs::NavSatFix>("/fix",10, boost::bind(&Drone::getTargetGPS_CB, this, _1));
+  read_gps_sub_ = nh_.subscribe<sensor_msgs::NavSatFix>("/android/fix",10, boost::bind(&Drone::getTargetGPS_CB, this, _1));
   takeoff_client_ = nh_.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
   set_mode_client_ = nh_.serviceClient<mavros_msgs::SetMode>("mavros/set_mode");
   land_client_ = nh_.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/land");
@@ -141,7 +141,7 @@ void Drone::FlyToGlobalPosTarget(){
 
 mavros_msgs::GlobalPositionTarget pos{};
 pos.header.stamp=ros::Time::now();
-pos.coordinate_frame = mavros_msgs::GlobalPositionTarget::FRAME_GLOBAL_REL_ALT;
+pos.coordinate_frame = mavros_msgs::GlobalPositionTarget::FRAME_GLOBAL_INT;
 pos.type_mask = mavros_msgs::GlobalPositionTarget::IGNORE_VX | mavros_msgs::GlobalPositionTarget::IGNORE_VY |
                   mavros_msgs::GlobalPositionTarget::IGNORE_VZ | mavros_msgs::GlobalPositionTarget::IGNORE_AFX |
                   mavros_msgs::GlobalPositionTarget::IGNORE_AFY | mavros_msgs::GlobalPositionTarget::IGNORE_AFZ |

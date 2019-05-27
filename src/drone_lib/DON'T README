@@ -1,0 +1,58 @@
+TO DO:
+1. Add GPS home position
+2. Can you stop sending command once target is reached?
+3. Send commands by time or by target reached?
+4. Add ways to switch frames (could be a property of Commands)
+5. Make sample missions
+6. Make two takeoffs and two landings with and without GPS
+
+------------------------------------------------------------------------------------------------------
+~cmd/set_home (mavros_msgs/CommandHome)
+Change HOME location.
+~cmd/takeoff (mavros_msgs/CommandTOL)
+Send takeoff command.
+~cmd/land (mavros_msgs/CommandTOL)
+Send land command.
+-------------------------------------------------------------------------------------------------------
+https://discuss.px4.io/t/thrust-to-throttle-in-mavros-setpoint-raw-attitude/9029
+throttle = throttle + (a_cmd - a_curr) *k
+Here, a_curr is the value from IMU (mavros/imu/data), a_cmd is the required acceleration/thrust.
+The gain, k should be adjusted. I am using k = 0.00125
+
+
+TO TEST:
+1. fcu_url (string, default: /dev/ttyACM0:57600) FCU connection URL. Using new cable
+
+LOGS:
+/////////////// 26 - 05 -2019 ///////////////
+Fixed:
+1. mavros/setpoint_velocity/cmd_vel_unstamped had an extra space, causing failure.
+2. removed function StartDataStream(); set_mode now sends points until enabled, much faster and reliable.
+3. set_position now uses target position, much simpler to use.
+
+Commands:
+- Position Local (using target)
+- Velocity Local (using target)
+- Acceleration Local (using target)
+- Position Global (using target)
+- Velocity Global (using target)
+- Acceleration Global (using target)
+
+/////////////// 24 - 05 -2019 ///////////////
+Commands:
+- Position
+- Velocity
+
+Data:
+- GPS
+- Imu
+- Pose
+- Velocity
+
+Functions:
+- Make velocity vectors
+- Make acceleration vectors (edited) 
+
+
+/////////////// 23 - 05 -2019 ///////////////
+- First version

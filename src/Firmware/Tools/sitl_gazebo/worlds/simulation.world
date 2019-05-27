@@ -81,7 +81,7 @@
     <plugin name="ambulance_gps" filename="libhector_gazebo_ros_gps.so">
       <alwayson>true</alwayson>
       <bodyName>link</bodyName>
-      <topicname>/fix</topicname>
+      <topicname>/android/fix</topicname>
       <velocitytopicname>/fix_velocity</velocitytopicname>
     </plugin>
 </actor>

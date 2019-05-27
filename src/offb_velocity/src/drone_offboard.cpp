@@ -166,3 +166,24 @@ void Drone::setOffboardVelocityNED(float vx, float vy, float vz, float yaw, std:
     rate_.sleep();
   }
 }
+
+void Drone::setOffboardPositionBody(float x, float y, float z, float yaw, std::size_t count)
+{
+  mavros_msgs::PositionTarget pos{};
+
+  pos.coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_OFFSET_NED;
+  pos.type_mask = mavros_msgs::PositionTarget::IGNORE_VX | mavros_msgs::PositionTarget::IGNORE_VY |
+                  mavros_msgs::PositionTarget::IGNORE_VZ | mavros_msgs::PositionTarget::IGNORE_AFX |
+                  mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
+                  mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
+  pos.position.x = x;
+  pos.position.y = y;
+  pos.position.z = z;
+  pos.yaw = toRadFromDeg(yaw);
+
+  for (; count > 0; count--)
+  {
+    set_vel_pub_.publish(pos);
+    rate_.sleep();
+  }
+}
