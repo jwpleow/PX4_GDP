@@ -78,11 +78,11 @@
             <Cy>240.5</Cy>
             <hackBaseline>0</hackBaseline>
             <focalLength>277.191356</focalLength>
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
+            <distortionK1>-0.0786096</distortionK1>
+            <distortionK2>-2.49758</distortionK2>
+            <distortionK3>0.0726262</distortionK3>
+            <distortionT1>0.0467344</distortionT1>
+            <distortionT2>3.8375</distortionT2>
           </plugin>
         </sensor>
         <self_collide>0</self_collide>

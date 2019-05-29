@@ -83,6 +83,7 @@
       <bodyName>link</bodyName>
       <topicname>/android/fix</topicname>
       <velocitytopicname>/fix_velocity</velocitytopicname>
+      <updateRate>1.0</updateRate>
     </plugin>
 </actor>
 
