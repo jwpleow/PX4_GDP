@@ -13,7 +13,7 @@ data::data(float _rate)
     compass_sub = nh.subscribe<std_msgs::Float64>("/mavros/global_position/compass_hdg", 10, &data::heading_cb, this);
 
     // Subscribe to GPS Data
-    gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/mavros/global_position/raw/fix", 10, &data::gps_cb, this);
+    gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/mavros/global_position/global", 10, &data::gps_cb, this);
 
     // Subscribe to LiDar Data
     lidar_sub = nh.subscribe<sensor_msgs::LaserScan>("/laser/scan", 10, &data::lidar_cb, this);
@@ -38,11 +38,11 @@ data::data(float _rate)
 }
 
 ///< Yaw angle calculator (in degrees) based off target position relative to drone
-// returns 0 - 360 deg
-double data::CalculateYawAngle() {
-    double yaw = atan2(target_position_relative.point.y , target_position_relative.point.x) * 180.0 / pi;
-    if (yaw < 0) return (360.0 + yaw);
-    else return yaw;
+// - code causes a quarternion break!!?
+float data::CalculateYawAngle() {
+    yaw_angle_buffer.push_back(atan2(target_position_relative.point.y , target_position_relative.point.x) * 180.0 / pi);
+
+    return (yaw_angle_buffer[0] + yaw_angle_buffer[1] + yaw_angle_buffer[2]) / 3.0f; ///<try using buffer
 }
 
 ///< Target position subscriber

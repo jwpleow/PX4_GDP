@@ -42,39 +42,39 @@
           <trajectory id="0" type="square">
              <waypoint>
                 <time>0.0</time>
-                <pose>20 0 0 0 0 -3.14</pose>
+                <pose>200 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
-                <time>20.0</time>
-                <pose>14.14 14.14 0 0 0 -2.355</pose>
+                <time>200.0</time>
+                <pose>141.4 141.4 0 0 0 -2.355</pose>
              </waypoint>
              <waypoint>
-                <time>40.0</time>
-                <pose>0 20 0 0 0 -1.57</pose>
+                <time>400.0</time>
+                <pose>0 200 0 0 0 -1.57</pose>
              </waypoint>
              <waypoint>
-                <time>60.0</time>
-                <pose>-14.14 14.14 0 0 0 -0.785</pose>
+                <time>600.0</time>
+                <pose>-141.4 141.4 0 0 0 -0.785</pose>
              </waypoint>
              <waypoint>
-                <time>80.0</time>
-                <pose>-20 0 0 0 0 0</pose>
+                <time>800.0</time>
+                <pose>-200 0 0 0 0 0</pose>
              </waypoint>
              <waypoint>
-                <time>100.0</time>
-                <pose>-14.14 -14.14 0 0 0 0.785</pose>
+                <time>1000.0</time>
+                <pose>-141.4 -141.4 0 0 0 0.785</pose>
              </waypoint>
              <waypoint>
-                <time>120.0</time>
-                <pose>0 -20 0 0 0 1.57</pose>
+                <time>1200.0</time>
+                <pose>0 -200 0 0 0 1.57</pose>
              </waypoint>
              <waypoint>
-                <time>140.0</time>
-                <pose>14.14 -14.14 0 0 0 2.355</pose>
+                <time>1400.0</time>
+                <pose>141.4 -141.4 0 0 0 2.355</pose>
              </waypoint>
              <waypoint>
-                <time>160.0</time>
-                <pose>20 0 0 0 0 3.14</pose>
+                <time>1600.0</time>
+                <pose>200 0 0 0 0 3.14</pose>
              </waypoint>
           </trajectory>
         </script>

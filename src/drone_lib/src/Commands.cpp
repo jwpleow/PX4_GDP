@@ -164,7 +164,7 @@ void commands::move_Acceleration_Local(float _x, float _y, float _z, std::string
     target_pub_local.publish(pos);
 }
 
-void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, int rate)
+void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate)
 {
     mavros_msgs::PositionTarget pos;
     commands::set_frame(&pos, _frame, true);
@@ -199,7 +199,7 @@ void commands::move_Position_Global(float _latitude, float _longitude, float _al
     pos.type_mask = mavros_msgs::GlobalPositionTarget::IGNORE_VX | mavros_msgs::GlobalPositionTarget::IGNORE_VY |
                     mavros_msgs::GlobalPositionTarget::IGNORE_VZ | mavros_msgs::GlobalPositionTarget::IGNORE_AFX |
                     mavros_msgs::GlobalPositionTarget::IGNORE_AFY | mavros_msgs::GlobalPositionTarget::IGNORE_AFZ |
-                    mavros_msgs::GlobalPositionTarget::FORCE | mavros_msgs::GlobalPositionTarget::IGNORE_YAW;
+                    mavros_msgs::GlobalPositionTarget::FORCE | mavros_msgs::GlobalPositionTarget::IGNORE_YAW_RATE;
 
     pos.latitude = _latitude;
     pos.longitude = _longitude;
@@ -395,7 +395,7 @@ void commands::pose_cb(const geometry_msgs::PoseStamped::ConstPtr &msg)
 }
 
 ///< Overloaded for Silwood test 1 mission
-void commands::move_Velocity_Local_geraldtest(float _fixed_speed, float _yaw_angle_deg, std::string _frame)
+void commands::move_Velocity_Local(float _fixed_speed, float _yaw_angle_deg, std::string _frame)
 {
     mavros_msgs::PositionTarget pos;
     commands::set_frame(&pos, _frame, true);

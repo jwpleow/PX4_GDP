@@ -25,10 +25,10 @@ public:
     geometry_msgs::TwistStamped local_velocity;
     geometry_msgs::PointStamped target_position; ///< target position relative to drone origin
     geometry_msgs::PointStamped target_position_relative; ///< target position relative to drone
-    boost::circular_buffer<int> cb = boost::circular_buffer<int>(3);   ///< Circular buffer for yaw angle to target
+
     sensor_msgs::NavSatFix target_gps; ///< target gps
 
-    double CalculateYawAngle(); ///< calculates yaw angle for drone to face the target
+    float CalculateYawAngle(); ///< calculates yaw angle for drone to face the target
 
     ros::Rate GetRate(){ return rate; } ///< added to get the rate
 
@@ -53,7 +53,7 @@ private:
     ros::Subscriber target_position_sub; ///< target position relative to drone origin
     ros::Subscriber target_gps_sub; ///< target gps 
 
-    void target_gps_cb(const sensor_msgs::NavSatFix::ConstPtr& msg);
+    void target_gps_cb(const sensor_msgs::NavSatFix::ConstPtr& msg); ///< C
     void target_position_relative_cb(const geometry_msgs::PointStamped::ConstPtr& msg); ///< Callback for target-drone relative xyz
     void target_position_cb(const geometry_msgs::PointStamped::ConstPtr& msg); ///< Callback for target xyz from drone origin
     void altitude_cb(const mavros_msgs::Altitude::ConstPtr& msg);
@@ -63,6 +63,8 @@ private:
     void pose_cb(const geometry_msgs::PoseStamped::ConstPtr &msg);
     void velocity_cb(const geometry_msgs::TwistStamped::ConstPtr &msg);
     void lidar_cb(const sensor_msgs::LaserScan::ConstPtr &msg);
+
+    boost::circular_buffer<float> yaw_angle_buffer = boost::circular_buffer<float>(3);   ///< Circular buffer for yaw angle to target
 };
 
 #endif /* DATA_H */

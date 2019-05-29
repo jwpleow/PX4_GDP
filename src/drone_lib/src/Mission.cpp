@@ -19,10 +19,11 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     // Request takeoff at 1m altitude. At 25Hz = 10 seconds
-    float altitude = 2;
-    int time_takeoff = 125;
+    float altitude = 3;
+    int time_takeoff = 300;
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
+    /*
     // Go one meter up and stay there. Total time 10 seconds
     ROS_INFO("Goto Command");
     for (int count = 1; count < 125; count++)
@@ -31,6 +32,7 @@ int main(int argc, char **argv)
         ros::spinOnce();
         rate.sleep();
     }
+
 
     ROS_INFO("First Command");
     for (int count = 1; count < 125; count++)
@@ -66,12 +68,13 @@ int main(int argc, char **argv)
     }
 
     ROS_INFO("Fifth Command");
-    for (int count = 1; count < 125; count++)
+    for (int count = 1; cyount < 125; count++)
     {
         drone.Commands.move_Velocity_Local(0, 2, altitude, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
+    */
 
     // Land and disarm
     drone.Commands.request_LandingAuto();
