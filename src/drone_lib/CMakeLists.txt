@@ -116,8 +116,18 @@ catkin_package(
 include_directories(include  ${catkin_INCLUDE_DIRS})
 
 add_executable(drone_node src/Mission.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+add_executable(robert_node src/Mission_Robert.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+add_executable(joel_node src/Mission_Joel.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(drone_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(robert_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(joel_node
   ${catkin_LIBRARIES}
 )

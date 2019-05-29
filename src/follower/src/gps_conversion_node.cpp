@@ -41,10 +41,39 @@ void gps_callback(const sensor_msgs::NavSatFixConstPtr& msg) {
     g_gps_position_pub.publish(position_msg);
 }
 
+
+
+///< get reference LLA from drone
+double latitude, longitude, altitude;
+bool connection = false;
+sensor_msgs::NavSatFix droneGPS_{};
+
+void drone_ref_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
+{
+  droneGPS_ = *msg;
+  connection = true;
+  longitude = droneGPS_.longitude;
+  latitude = droneGPS_.latitude;
+  altitude = droneGPS_.altitude;
+}
+
+
 int main(int argc, char **argv) {
   ros::init(argc, argv, "gps_conversion_node");
   ros::NodeHandle nh;
   ros::NodeHandle pnh("~");
+    ros::Rate rate(10);
+
+      // Subscribe to Drone GPS Data for reference LLA
+  ros::Subscriber read_gps_sub_ = nh.subscribe<sensor_msgs::NavSatFix>("/mavros/global_position/global",10, &drone_ref_callback);
+
+    if (!connection) ROS_INFO("Waiting for GPS reference parameters...");
+  while(!connection){
+    ros::spinOnce();
+    rate.sleep();
+  }
+
+    ROS_INFO("GPS reference parameters retrieved.");
 
   // Specify whether covariances should be set manually or from GPS
   ros::param::param("~trust_gps", g_trust_gps, false);
@@ -53,20 +82,10 @@ int main(int argc, char **argv) {
   ros::param::param<std::string>("~frame_id",
                                  g_frame_id, "world");
 
-  // Wait until GPS reference parameters are initialized.
-  double latitude, longitude, altitude;
-  do {
-    ROS_INFO("Waiting for GPS reference parameters...");
-    if (nh.getParam("/gps_ref_latitude", latitude) &&
-        nh.getParam("/gps_ref_longitude", longitude) &&
-        nh.getParam("/gps_ref_altitude", altitude)) {
-      g_geodetic_converter.initialiseReference(latitude, longitude, altitude);
-    } else {
-      ROS_INFO(
-          "GPS reference not ready yet, use set_gps_reference_node to set it");
-      ros::Duration(0.5).sleep(); // sleep for half a second
-    }
-  } while (!g_geodetic_converter.isInitialised());
+
+while (!g_geodetic_converter.isInitialised()){g_geodetic_converter.initialiseReference(latitude, longitude, altitude);}
+     
+ 
 
   // Show reference point
   double initial_latitude, initial_longitude, initial_altitude;

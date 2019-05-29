@@ -13,9 +13,20 @@ commands::commands(float _rate)
     velocity_y = 0;
     velocity_z = 0;
 
+    // Reset frame rotation vector
+    corrected_vector = {0, 0, 0, 0};
+
+    // Reset Commands
+    com_x = 0;
+    com_y = 0;
+    com_z = 0;
+    com_yaw = 0;
+
     // Subscribers
     state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, boost::bind(&commands::state_cb, this, _1));
     state_sub_ext = nh.subscribe<mavros_msgs::ExtendedState>("mavros/extended_state", 10, &commands::ext_state_cb, this);
+    pose_sub = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 10, &commands::pose_cb, this);
+    compass_sub = nh.subscribe<std_msgs::Float64>("/mavros/global_position/compass_hdg", 10, &commands::heading_cb, this);
 
     // Publishers
     position_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
@@ -82,7 +93,7 @@ void commands::request_Takeoff(float _altitude, float _counter)
     ROS_INFO("GDPdrone: Takeoff Requested");
     for (int i = _counter; i > 0; i--)
     {
-        move_Position_Local(0, 0, _altitude, 0, "LOCAL");
+        move_Position_Local(0, 0, _altitude, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
@@ -93,23 +104,32 @@ void commands::request_Takeoff(float _altitude, float _counter)
 void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angle_deg, std::string _frame)
 {
     mavros_msgs::PositionTarget pos;
-    commands::make_frame_local(&pos, _frame);
+
+    // Set reference Frame
+    commands::set_frame(&pos, _frame, false);
+
+    // If this is the first time this command is sent, rotate the frame
+    if (check_Inputs(_x, _y, _z, _yaw_angle_deg))
+    {
+        std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
+        corrected_vector = commands::transform_frame(input_vector, _frame);
+    }
 
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_VX | mavros_msgs::PositionTarget::IGNORE_VY |
                     mavros_msgs::PositionTarget::IGNORE_VZ | mavros_msgs::PositionTarget::IGNORE_AFX |
                     mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
                     mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
-    pos.position.x = _x;
-    pos.position.y = _y;
-    pos.position.z = _z;
-    pos.yaw = functions::DegToRad(_yaw_angle_deg);
+    pos.position.x = corrected_vector[0];
+    pos.position.y = corrected_vector[1];
+    pos.position.z = corrected_vector[2];
+    pos.yaw = functions::DegToRad(corrected_vector[3]);
     target_pub_local.publish(pos);
 }
 
 void commands::move_Velocity_Local(float _x, float _y, float _z, float _yaw_rate_deg_s, std::string _frame)
 {
     mavros_msgs::PositionTarget pos;
-    commands::make_frame_local(&pos, _frame);
+    commands::set_frame(&pos, _frame, true);
 
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
                     mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
@@ -131,6 +151,7 @@ void commands::move_Acceleration_Local(float _x, float _y, float _z, std::string
     }
 
     mavros_msgs::PositionTarget pos;
+    commands::set_frame(&pos, _frame, true);
 
     pos.coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_NED;
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
@@ -146,7 +167,7 @@ void commands::move_Acceleration_Local(float _x, float _y, float _z, std::string
 void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, int rate)
 {
     mavros_msgs::PositionTarget pos;
-    commands::make_frame_local(&pos, _frame);
+    commands::set_frame(&pos, _frame, true);
 
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
                     mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
@@ -168,16 +189,9 @@ void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::
     target_pub_local.publish(pos);
 }
 
-void commands::move_Acceleration_Local(float _x, float _y, float _z)
-{
-    geometry_msgs::Vector3Stamped acceleration = functions::make_acceleration(_x, _y, _z);
-    acceleration_pub.publish(acceleration);
-}
-
 void commands::move_Position_Global(float _latitude, float _longitude, float _altitude, float _yaw_angle_deg, std::string _frame)
 {
     // This function uses GPS to reach a target GPS location
-
     mavros_msgs::GlobalPositionTarget pos;
     pos.header.stamp = ros::Time::now();
 
@@ -249,6 +263,112 @@ void commands::set_Arm_Disarm(bool _arm)
     }
 }
 
+void commands::set_frame(mavros_msgs::PositionTarget *_pos, std::string _frame, bool is_velocity_or_acc)
+{
+    std::vector<float> corrected_vector(3);
+
+    // C++ does not support switching with strings, ugly "if" cascade instead
+    if (_frame == "BODY")
+    {
+        _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_NED;
+    }
+    else if (_frame == "LOCAL")
+    {
+        _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_LOCAL_NED;
+    }
+    else if (_frame == "BODY_OFFSET")
+    {
+        if (is_velocity_or_acc)
+        {
+            _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_NED;
+        }
+        else
+        {
+            _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_OFFSET_NED;
+        }
+    }
+    else if (_frame == "LOCAL_OFFSET")
+    {
+        if (is_velocity_or_acc)
+        {
+            _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_LOCAL_NED;
+        }
+        else
+        {
+            _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_LOCAL_OFFSET_NED;
+        }
+    }
+    else
+    {
+        ROS_INFO("Frame of reference should either be BODY or LOCAL"); //TODO: Give a harder exception?
+        return;
+    }
+}
+
+std::vector<float> commands::transform_frame(std::vector<float> _vector, std::string _frame)
+{
+    std::vector<float> corrected_vector(4);
+
+    // C++ does not support switching with strings, ugly "if" cascade instead
+    if (_frame == "BODY")
+    {
+        // Rotate by heading angle, Z Axis does not need rotation on NED
+        corrected_vector[0] = -_vector[0] * sin(-compass_heading.data + 90) + _vector[1] * cos(-compass_heading.data + 90);
+        corrected_vector[1] = (_vector[0] * cos(-compass_heading.data + 90) + _vector[1] * sin(-compass_heading.data + 90))*-1;
+        corrected_vector[2] = _vector[2];
+        corrected_vector[3] = _vector[3] + 90 - compass_heading.data;
+    }
+    else if (_frame == "LOCAL")
+    {
+        // This is the default frame, so no transformation is needed
+        return _vector;
+    }
+    else if (_frame == "BODY_OFFSET")
+    {
+        // Rotate by heading angle, Z Axis does not need rotation on NED
+        corrected_vector[0] = -_vector[0] * sin(-compass_heading.data + 90) + _vector[1] * cos(-compass_heading.data + 90);
+        corrected_vector[1] = (_vector[0] * cos(-compass_heading.data + 90) + _vector[1] * sin(-compass_heading.data + 90))*-1;
+        corrected_vector[2] = _vector[2];
+        corrected_vector[3] = _vector[3] + 90 - compass_heading.data;
+
+        // Offset by current position
+        corrected_vector[0] += local_pose.pose.position.x;
+        corrected_vector[1] += local_pose.pose.position.y;
+        corrected_vector[2] += local_pose.pose.position.z;
+    }
+    else if (_frame == "LOCAL_OFFSET")
+    {
+        // Offset by current position
+        corrected_vector[0] += local_pose.pose.position.x;
+        corrected_vector[1] += local_pose.pose.position.y;
+        corrected_vector[2] += local_pose.pose.position.z;
+        corrected_vector[3] = _vector[3];
+    }
+    else
+    {
+        ROS_INFO("Frame of reference should either be BODY or LOCAL"); //TODO: Give a harder exception?
+        return corrected_vector;
+    }
+    return corrected_vector;
+}
+
+// Check if inputs are the same as previous loop
+bool commands::check_Inputs(float _x, float _y, float _z, float _yaw)
+{
+    if ((_x == com_x) && (_y == com_y) && (_z == com_z) && (_yaw == com_yaw))
+    {
+        return false;
+    }
+    else
+    {
+        com_x = _x;
+        com_y = _y;
+        com_z = _z;
+        com_yaw = _yaw;
+        return true;
+    }
+}
+
 //-----   CALLBACKS -----//
 // State subscriber callback function
 void commands::ext_state_cb(const mavros_msgs::ExtendedState::ConstPtr &msg)
@@ -262,28 +382,32 @@ void commands::state_cb(const mavros_msgs::State::ConstPtr &msg)
     current_state = *msg;
 }
 
-void commands::make_frame_local(mavros_msgs::PositionTarget *_pos, std::string _frame)
+// Heading subscriber callback function
+void commands::heading_cb(const std_msgs::Float64::ConstPtr &msg)
 {
-    // C++ does not support switching with strings, ugly "if" cascade intead
-    if (_frame == "BODY")
-    {
-        _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_NED;
-    }
-    else if (_frame == "LOCAL")
-    {
-        _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_LOCAL_NED;
-    }
-    else if (_frame == "BODY_OFFSET")
-    {
-        _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_OFFSET_NED;
-    }
-    else if (_frame == "LOCAL_OFFSET")
-    {
-        _pos->coordinate_frame = mavros_msgs::PositionTarget::FRAME_LOCAL_OFFSET_NED;
-    }
-    else
-    {
-        ROS_INFO("Frame of reference should either be BODY or LOCAL");
-        return;
-    }
+    compass_heading = *msg;
+}
+
+// Pose subscriber callback function
+void commands::pose_cb(const geometry_msgs::PoseStamped::ConstPtr &msg)
+{
+    local_pose = *msg;
+}
+
+///< Overloaded for Silwood test 1 mission
+void commands::move_Velocity_Local_geraldtest(float _fixed_speed, float _yaw_angle_deg, std::string _frame)
+{
+    mavros_msgs::PositionTarget pos;
+    commands::set_frame(&pos, _frame, true);
+
+    pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
+                    mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
+                    mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
+                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
+    // constant speed of 1.50 m/s
+    pos.yaw = functions::DegToRad(_yaw_angle_deg);
+    pos.velocity.x = cos(pos.yaw) * _fixed_speed;
+    pos.velocity.y = sin(pos.yaw) * _fixed_speed;
+    pos.velocity.z = 0;
+    target_pub_local.publish(pos);
 }

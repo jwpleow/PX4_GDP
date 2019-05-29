@@ -19,17 +19,56 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     // Request takeoff at 1m altitude. At 25Hz = 10 seconds
-    float altitude = 5;
+    float altitude = 2;
     int time_takeoff = 125;
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
-
-
-
-    ROS_INFO("Track Ambulance");
-    for (int count = 1; count < 10000; count++)
+    // Go one meter up and stay there. Total time 10 seconds
+    ROS_INFO("Goto Command");
+    for (int count = 1; count < 125; count++)
     {
-        drone.Commands.move_Position_Global(drone.Data.gps_raw.latitude, drone.Data.gps_raw.longitude, drone.Data.gps_raw.altitude + 5.0f, drone.Data.CalculateYawAngle(), "BODY");
+        drone.Commands.move_Position_Local(-5, 5, 2, 0, "LOCAL");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    ROS_INFO("First Command");
+    for (int count = 1; count < 125; count++)
+    {
+        drone.Commands.move_Position_Local(2, 0, 0, 0, "BODY_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    ROS_INFO("Second Command");
+    for (int count = 1; count < 125; count++)
+    {
+        drone.Commands.move_Position_Local(0, 2, 0, 0, "BODY_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    
+    ROS_INFO("Third Command");
+    for (int count = 1; count < 125; count++)
+    {
+        drone.Commands.move_Position_Local(-2, 0, 0, 0, "BODY_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    ROS_INFO("Fourth Command");
+    for (int count = 1; count < 125; count++)
+    {
+        drone.Commands.move_Position_Local(0, -2, 0, 0, "BODY_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    ROS_INFO("Fifth Command");
+    for (int count = 1; count < 125; count++)
+    {
+        drone.Commands.move_Velocity_Local(0, 2, altitude, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
