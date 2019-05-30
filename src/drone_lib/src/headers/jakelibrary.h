@@ -33,6 +33,9 @@
     void relVelCalc(float droneVel[3], float targVel[3], float (&relVel)[3]);
     void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]);
 
+    ///< testfix
+    double velocityholder[3];
+
 
 
 //< ------------------------------------ Function Definitions ------------------------------------------>
@@ -115,9 +118,15 @@ float norm(float vector[3]) {
 
 void velFromGPS(float relPos[3], float relPosOld[3], float loop_rate, float (&vel)[3]) {
 
+if (relPos != relPosOld){  ///< if not the same position, update velocity
     for (int i = 0; i < 3; ++i) {
-        vel[i] = ( relPos[i] - relPosOld[i] ) / loop_rate;
+        velocityholder[i] = ( relPos[i] - relPosOld[i] ) / (1.0 / loop_rate);
     }
+}
+vel[0] = velocityholder[0];
+vel[1] = velocityholder[1];
+vel[2] = velocityholder[2];
+
 
 }
 

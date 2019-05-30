@@ -164,6 +164,16 @@ void commands::move_Acceleration_Local(float _x, float _y, float _z, std::string
     target_pub_local.publish(pos);
 }
 
+
+///< Velocity initialiser for Jake's algorithm
+void commands::Initialise_Velocity_for_AccelCommands(float vx, float vy, float vz) 
+{
+velocity_x = vx;
+velocity_y = vy;
+velocity_z = vz;
+}
+
+
 void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate)
 {
     mavros_msgs::PositionTarget pos;

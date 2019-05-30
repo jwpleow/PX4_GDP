@@ -42,6 +42,9 @@ public:
     ///< Overloaded for Silwood test 1 mission
     void move_Velocity_Local(float _fixed_speed, float _yaw_angle_deg, std::string _frame);
 
+    ///< Velocity initialiser for Jake's algorithm
+    void Initialise_Velocity_for_AccelCommands(float vx, float vy, float vz);
+
 private:
     //-----   PRIVATE PROPERTIES -----//
     ros::NodeHandle nh;

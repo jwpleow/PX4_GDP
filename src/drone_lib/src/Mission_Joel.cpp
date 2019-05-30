@@ -27,22 +27,38 @@ int main(int argc, char **argv)
 // bool landingpaddetected = false;
 // while(!landingpaddetected){
 
-    ROS_INFO("Track Ambulance");
-    for (int count = 1; count < 20000; count++)
-    {   
-    //     // // Use the command below to move to setpoint at max speed:
-        // drone.Commands.move_Position_Global(drone.Data.target_gps.latitude, drone.Data.target_gps.longitude, drone.Data.target_gps.altitude + 5.0f, drone.Data.CalculateYawAngle(), "LOCAL");
-    //     ROS_INFO("Angle: %f", drone.Data.CalculateYawAngle());
-        drone.Commands.move_Velocity_Local(2.0, drone.Data.CalculateYawAngle(), "LOCAL_OFFSET");
-        ros::spinOnce();
-        rate.sleep();
-    }
+    // ROS_INFO("Track Ambulance");
+    // for (int count = 1; count < 20000; count++)
+    // {   
+    // //     // // Use the command below to move to setpoint at max speed:
+    //     // drone.Commands.move_Position_Global(drone.Data.target_gps.latitude, drone.Data.target_gps.longitude, drone.Data.target_gps.altitude + 5.0f, drone.Data.CalculateYawAngle(), "LOCAL");
+    // //     ROS_INFO("Angle: %f", drone.Data.CalculateYawAngle());
+
+
+    //     drone.Commands.move_Velocity_Local(2.0, drone.Data.CalculateYawAngle(), "LOCAL_OFFSET");
+    //     ros::spinOnce();
+    //     rate.sleep();
+    // }
 
 // ros::spinOnce();
 // drone.Data.rate.sleep();
 // } ///< landing pad detected
 
 
+
+    ROS_INFO("Test velocity handover to accel - velocity for 10s");
+    drone.Commands.Initialise_Velocity_for_AccelCommands(2.0f, 0.0f, 0.0f);
+    for (int count = 1; count < 200; count++){
+        drone.Commands.move_Velocity_Local(2.0f, 0.0f, 0.0f, 0.0f, "LOCAL_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
+    ROS_INFO("Switch to accel");
+    for (int count = 1; count < 200; count++){
+        drone.Commands.move_Acceleration_Local_Trick(0.2f, 0.0f, 0.0f, "LOCAL_OFFSET", loop_rate);
+        ros::spinOnce();
+        rate.sleep();
+    }
 
 
 
