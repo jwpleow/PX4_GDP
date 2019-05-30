@@ -12,7 +12,13 @@ struct Avoidance
     float orientation;
 };
 
+struct gazeboposition
+{
+    float x, y, z; 
+};
+
 Avoidance avoidance;
+gazeboposition gazeboPosition;
 
 int main(int argc, char **argv)
 {
@@ -23,7 +29,7 @@ int main(int argc, char **argv)
     GDPdrone drone;
 
     // Set the rate. Default working frequency is 25 Hz
-    float loop_rate = 25.0;
+    float loop_rate = 10.0;
     ros::Rate rate = ros::Rate(loop_rate);
 
     // Initialise and Arm
@@ -34,42 +40,99 @@ int main(int argc, char **argv)
     // MISSION STARTS HERE:
     // Request takeoff at 1m altitude. At 25Hz = 10 seconds
     float altitude = 0.50;
-    int time_takeoff = 250;
+    int time_takeoff = 100;
+
+    // Initialize position 
+    gazeboPosition.x = 0; 
+    gazeboPosition.z = altitude; 
+
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
-    if (detectObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max) == 1)
+    ros::Duration(5.0).sleep(); // sleep for 5 seconds
+
+    while (drone.Data.local_pose.pose.position.x < 20){
+
+    // if (detectObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], 11.0))
+    // {
+    //     //avoidance.horizontal = distanceToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min);
+    //     //avoidance.orientation = orientationToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min);
+    //     ROS_INFO("THERE IS AN OBSTACLE @ [%f]: ", distanceToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min));
+            
+    //         // fly up till obstacle not detected
+    //         while(detectObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], 11.0))
+    //         {
+    //             drone.Commands.move_Position_Local(0.0, 0.0, 0.3, 0, "BODY_OFFSET");
+    //             ROS_INFO("Moving up.");
+    //             ros::spinOnce();
+    //             rate.sleep();
+    //         }
+    //         // move an extra metre up afterwards
+            
+    //         drone.Commands.move_Position_Local(0.0, 0.0, 1, 0, "BODY_OFFSET");
+    //         ros::spinOnce();
+    //         ros::Duration(1.5).sleep();
+    // }
+    // else
+    // {
+    //     drone.Commands.move_Position_Local(0.4, 0, 0, 0, "BODY_OFFSET");
+    //     ros::spinOnce();
+    //     rate.sleep();
+    // }
+
+
+    if (detectObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], 11.0))
     {
-        avoidance.horizontal = distanceToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min);
-        avoidance.orientation = orientationToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min);
+        //avoidance.horizontal = distanceToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min);
+        //avoidance.orientation = orientationToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min);
         ROS_INFO("THERE IS AN OBSTACLE @ [%f]: ", distanceToObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], drone.Data.lidar.range_max, drone.Data.lidar.angle_max, drone.Data.lidar.angle_min));
+            
+            // fly up till obstacle not detected
+            while(detectObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], 11.0))
+            {
+                drone.Commands.move_Velocity_Local(0.0, 0.0, 0.5, 0, "BODY_OFFSET");
+                ROS_INFO("Moving up.");
+                ros::spinOnce();
+                rate.sleep();
+            }
+            
+            // move an extra bit up afterwards
+            for (int i = 0; i < 20; i++){
+                drone.Commands.move_Velocity_Local(0.0, 0.0, 0.5, 0, "BODY_OFFSET");
+                ros::spinOnce();
+                rate.sleep();
+            }
     }
-
-    float z = altitude;
-    // Reach a height where the sensors do not detect any obstacle
-    while (drone.Data.lidar.ranges[0] < drone.Data.lidar.range_max && drone.Data.lidar.ranges[1] < drone.Data.lidar.range_max && drone.Data.lidar.ranges[2] < drone.Data.lidar.range_max){ 
-        drone.Commands.move_Position_Local(0, 0, z, 0, "BODY");
-        z = z + 0.05; 
+    else
+    {
+        ROS_INFO("Moving Forward");
+        drone.Commands.move_Velocity_Local(0.0, 0.5, 0, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
 
-    float y = 0;
-    ROS_INFO("da [%f]", avoidance.horizontal);
-    // Go in the direction of the obstacle and hover over it, but store the current height 
-    while(y < avoidance.horizontal * 1.25){
-        ROS_INFO("why");
-        y += avoidance.horizontal * 1.25;
-        drone.Commands.move_Position_Local(y, 0, z, 0, "BODY"); 
-        ros::spinOnce();
-        rate.sleep();
-    }
+    
 
-    // Hover over the obstacle
-    int Counter = 0;
-    while (Counter < 150){
-        drone.Commands.move_Position_Local(y, 0, z, 0, "BODY");
-        Counter++;
-    }
+
+    // ROS_INFO("da [%f]", avoidance.horizontal);
+    // // Go in the direction of the obstacle and hover over it, but store the current height 
+    // while(drone.Data.local_pose.pose.position.x < avoidance.horizontal + 0.075){
+    //     drone.Commands.move_Position_Local(0.5, 0, 0, 0, "BODY_OFFSET");  
+    //     ROS_INFO("Moving x1");
+    //     ros::spinOnce();
+    //     rate.sleep();
+    // }
+
+    // while(0.8 * drone.Data.local_pose.pose.position.z > drone.Data.infrared_altitude.bottom_clearance){
+    //     drone.Commands.move_Position_Local(0.5, 0, 0, 0, "BODY_OFFSET");
+    //     ROS_INFO("Moving x2");
+    //     ros::spinOnce();
+    //     rate.sleep();
+    // }
+
+}
+
+    // Land and disarm
+    drone.Commands.request_LandingAuto();
 
     return 0;
 }
@@ -103,6 +166,7 @@ float distanceToObstacle(float right, float centre, float left, float range, flo
         distance = left;
     else if (isfinite(right) == 0 && isfinite(centre) == 0 && isfinite(left) == 0)
         distance = range * 2;
+    else ROS_INFO("Distance to obstacle calculation error");
     return distance;
 }
 

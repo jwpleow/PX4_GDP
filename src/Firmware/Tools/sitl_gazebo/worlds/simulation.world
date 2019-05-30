@@ -48,6 +48,7 @@
     </model>
 
 
+
 <!-- Ambulance model - gps published to /fix -->
 <actor name="ambulance">
         <link name="link">

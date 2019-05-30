@@ -93,7 +93,7 @@ void commands::request_Takeoff(float _altitude, float _counter)
     ROS_INFO("GDPdrone: Takeoff Requested");
     for (int i = _counter; i > 0; i--)
     {
-        move_Position_Local(0, 0, _altitude, 0, "BODY_OFFSET");
+        move_Position_Local(0, 0, _altitude, 0, "LOCAL");
         ros::spinOnce();
         rate.sleep();
     }
@@ -101,6 +101,9 @@ void commands::request_Takeoff(float _altitude, float _counter)
 }
 
 //-----   MOVEMENT COMMANDS -----//
+
+
+///< BODY_OFFSET (x,y,z) = (forward, left, up)
 void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angle_deg, std::string _frame)
 {
     mavros_msgs::PositionTarget pos;
@@ -108,12 +111,19 @@ void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angl
     // Set reference Frame
     commands::set_frame(&pos, _frame, false);
 
-    // If this is the first time this command is sent, rotate the frame
-    if (check_Inputs(_x, _y, _z, _yaw_angle_deg))
-    {
-        std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
-        corrected_vector = commands::transform_frame(input_vector, _frame);
-    }
+///< this doesn't work properly if the input is repeated for BODY_OFFSET as you need to calculate the new corrected position through transform_frame
+    // // If this is the first time this command is sent, rotate the frame
+    // if (check_Inputs(_x, _y, _z, _yaw_angle_deg))
+    // {
+    //     std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
+    //     corrected_vector = commands::transform_frame(input_vector, _frame);
+    // }
+
+
+//temp fix
+    std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
+    corrected_vector = commands::transform_frame(input_vector, _frame);
+
 
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_VX | mavros_msgs::PositionTarget::IGNORE_VY |
                     mavros_msgs::PositionTarget::IGNORE_VZ | mavros_msgs::PositionTarget::IGNORE_AFX |
@@ -126,6 +136,9 @@ void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angl
     target_pub_local.publish(pos);
 }
 
+
+///< BODY_OFFSET (x,y,z,yaw_rate) = (right, forward, up, anti-clockwise)
+///< LOCAL_OFFSET (x,y,z) = (east, north, up)
 void commands::move_Velocity_Local(float _x, float _y, float _z, float _yaw_rate_deg_s, std::string _frame)
 {
     mavros_msgs::PositionTarget pos;

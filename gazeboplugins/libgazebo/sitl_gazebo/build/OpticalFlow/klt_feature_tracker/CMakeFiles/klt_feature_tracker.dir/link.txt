@@ -1,0 +1,2 @@
+/usr/bin/ar qc libklt_feature_tracker.a  CMakeFiles/klt_feature_tracker.dir/src/trackFeatures.cpp.o
+/usr/bin/ranlib libklt_feature_tracker.a

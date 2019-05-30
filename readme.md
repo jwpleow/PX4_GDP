@@ -7,12 +7,6 @@ Clone this into the root directory
 cd 
 git clone https://github.com/gdp-drone/catkin_ws.git
 ```
-Build the catkin workspace using:
-```
-cd ~/catkin_ws
-catkin build
-```
-(if you get an error on build, some sourcefiles in src/Firmware are looking for the git files from PX4/Firmware - clone PX4/Firmware and copy the git files over)
 
 The gazebo simulation environment with the drone can then be launched using:
 ```
