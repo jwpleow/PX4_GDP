@@ -48,19 +48,19 @@ geo_mag_declination.h
 
 ../include/geo_mag_declination.h
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_magnetometer_plugin.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_magnetometer_plugin.cpp
 gazebo_magnetometer_plugin.h
 -
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/geo_mag_declination.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/geo_mag_declination.cpp
 cstdint
 -
 cmath
 -
 common.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/common.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/common.h
 geo_mag_declination.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/geo_mag_declination.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/geo_mag_declination.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

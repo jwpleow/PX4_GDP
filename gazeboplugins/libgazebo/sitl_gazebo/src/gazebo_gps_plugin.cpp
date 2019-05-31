@@ -92,8 +92,8 @@ void GpsPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
 
   gravity_W_ = world_->Gravity();
 
-  gps_pub_ = node_handle_->Advertise<sensor_msgs::msgs::SITLGps>("/gps", 10);
-  gt_pub_ = node_handle_->Advertise<sensor_msgs::msgs::Groundtruth>("/groundtruth", 10);
+  gps_pub_ = node_handle_->Advertise<sensor_msgs::msgs::SITLGps>("~/" + model_->GetName() + "/gps", 10);
+  gt_pub_ = node_handle_->Advertise<sensor_msgs::msgs::Groundtruth>("~/" + model_->GetName() + "/groundtruth", 10);
 }
 
 void GpsPlugin::OnUpdate(const common::UpdateInfo&){
@@ -137,15 +137,15 @@ void GpsPlugin::OnUpdate(const common::UpdateInfo&){
     random_walk_gps.Z() = gps_z_random_walk * sqrt(dt) * randn_(rand_);
   }
   else {
-    noise_gps_pos.X() = 0.0;
-    noise_gps_pos.Y() = 0.0;
-    noise_gps_pos.Z() = 0.0;
-    noise_gps_vel.X() = 0.0;
-    noise_gps_vel.Y() = 0.0;
-    noise_gps_vel.Z() = 0.0;
-    random_walk_gps.X() = 0.0;
-    random_walk_gps.Y() = 0.0;
-    random_walk_gps.Z() = 0.0;
+    noise_gps_pos.X() = 0.01;
+   noise_gps_pos.Y() = 0.01;
+   noise_gps_pos.Z() = 0.01;
+   noise_gps_vel.X() = 0.0;
+   noise_gps_vel.Y() = 0.0;
+   noise_gps_vel.Z() = 0.0;
+   random_walk_gps.X() = 0.8;
+   random_walk_gps.Y() = 0.8;
+   random_walk_gps.Z() = 0.8;
   }
 
   // gps bias integration

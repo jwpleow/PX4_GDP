@@ -3,7 +3,7 @@
 
 CMakeFiles/gazebo_gimbal_controller_plugin.dir/src/gazebo_gimbal_controller_plugin.cpp.o
  ../include/gazebo_gimbal_controller_plugin.hh
- /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_gimbal_controller_plugin.cpp
+ /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_gimbal_controller_plugin.cpp
  /usr/include/gazebo-9/gazebo/common/Animation.hh
  /usr/include/gazebo-9/gazebo/common/Assert.hh
  /usr/include/gazebo-9/gazebo/common/Color.hh

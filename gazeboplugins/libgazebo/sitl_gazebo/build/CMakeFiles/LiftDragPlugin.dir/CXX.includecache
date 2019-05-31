@@ -30,25 +30,25 @@ gazebo/transport/TransportTypes.hh
 ignition/math.hh
 -
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp
 algorithm
 -
 string
 -
 common.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/common.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/common.h
 gazebo/common/Assert.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/common/Assert.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/common/Assert.hh
 gazebo/physics/physics.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/physics/physics.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/physics/physics.hh
 gazebo/sensors/SensorManager.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/sensors/SensorManager.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/sensors/SensorManager.hh
 gazebo/transport/transport.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/transport/transport.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/transport/transport.hh
 gazebo/msgs/msgs.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/msgs/msgs.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/gazebo/msgs/msgs.hh
 liftdrag_plugin/liftdrag_plugin.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin/liftdrag_plugin.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin/liftdrag_plugin.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

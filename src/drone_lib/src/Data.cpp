@@ -21,11 +21,11 @@ data::data(float _rate)
     // Subscribe to IMU Data
     imu_sub = nh.subscribe<sensor_msgs::Imu>("/mavros/imu/data", 10, &data::imu_cb, this);
 
-    // Subscribe to Position Data
+    // Subscribe to Position Data             ///< position.x = east, position.y = north, position.z = up (from origin)
     pose_sub = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 10, &data::pose_cb, this);
 
-    // Subscribe to Velocity Data
-    velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("/mavros/local_position/velocity", 10, &data::velocity_cb, this);
+    // Subscribe to Velocity Data ///< in local coordinates 
+    velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("/mavros/local_position/velocity_local", 10, &data::velocity_cb, this);
 
     ///< Subscribe to target xyz relative to drone
     target_position_relative_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_wrtdrone_position" , 10, &data::target_position_relative_cb, this);

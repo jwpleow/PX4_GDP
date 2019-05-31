@@ -4,7 +4,7 @@
 CMakeFiles/gazebo_wind_plugin.dir/src/gazebo_wind_plugin.cpp.o
  ../include/common.h
  ../include/gazebo_wind_plugin.h
- /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_wind_plugin.cpp
+ /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_wind_plugin.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

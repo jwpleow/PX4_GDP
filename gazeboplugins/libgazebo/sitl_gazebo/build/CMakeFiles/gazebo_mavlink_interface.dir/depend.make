@@ -4,9 +4,9 @@
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: ../include/common.h
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: ../include/gazebo_mavlink_interface.h
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: ../include/msgbuffer.h
+CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /home/khorjiawei/catkin_ws/devel/include/mavlink/v2.0/common/mavlink.h
+CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /home/khorjiawei/catkin_ws/devel/include/mavlink/v2.0/common/version.h
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: ../src/gazebo_mavlink_interface.cpp
-CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /opt/ros/melodic/include/mavlink/v2.0/common/mavlink.h
-CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /opt/ros/melodic/include/mavlink/v2.0/common/version.h
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /usr/include/eigen3/Eigen/Cholesky
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /usr/include/eigen3/Eigen/Core
 CMakeFiles/gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o: /usr/include/eigen3/Eigen/Dense

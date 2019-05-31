@@ -32,11 +32,11 @@ gazebo/physics/physics.hh
 Wind.pb.h
 ../include/Wind.pb.h
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_wind_plugin.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_wind_plugin.cpp
 gazebo_wind_plugin.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_wind_plugin.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_wind_plugin.h
 common.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/common.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/common.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

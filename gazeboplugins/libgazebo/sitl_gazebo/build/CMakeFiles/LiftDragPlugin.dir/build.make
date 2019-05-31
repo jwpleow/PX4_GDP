@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/LiftDragPlugin.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/LiftDragPlugin.dir/flags.make
 
 CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o: CMakeFiles/LiftDragPlugin.dir/flags.make
 CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o: ../src/liftdrag_plugin/liftdrag_plugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp
 
 CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp > CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp > CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.i
 
 CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp -o CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp -o CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.s
 
 CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o.requires:
 
@@ -125,7 +125,6 @@ libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -172,7 +171,6 @@ libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -207,7 +205,6 @@ libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 libLiftDragPlugin.so: /usr/lib/x86_64-linux-gnu/libignition-transport4.so.4.0.0
@@ -246,7 +243,7 @@ libLiftDragPlugin.so: /usr/local/lib/libopencv_imgproc.so.3.1.0
 libLiftDragPlugin.so: /usr/local/lib/libopencv_flann.so.3.1.0
 libLiftDragPlugin.so: /usr/local/lib/libopencv_core.so.3.1.0
 libLiftDragPlugin.so: CMakeFiles/LiftDragPlugin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libLiftDragPlugin.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libLiftDragPlugin.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LiftDragPlugin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -263,6 +260,6 @@ CMakeFiles/LiftDragPlugin.dir/clean:
 .PHONY : CMakeFiles/LiftDragPlugin.dir/clean
 
 CMakeFiles/LiftDragPlugin.dir/depend:
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/LiftDragPlugin.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/LiftDragPlugin.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/LiftDragPlugin.dir/depend
 

@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc
 CommandMotorSpeed.pb.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.h
 algorithm
 -
 google/protobuf/stubs/common.h
@@ -30,7 +30,7 @@ google/protobuf/reflection_ops.h
 google/protobuf/wire_format.h
 -
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.h
 string
 -
 google/protobuf/stubs/common.h
@@ -52,9 +52,9 @@ google/protobuf/extension_set.h
 google/protobuf/unknown_field_set.h
 -
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc
 MotorSpeed.pb.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MotorSpeed.pb.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MotorSpeed.pb.h
 algorithm
 -
 google/protobuf/stubs/common.h
@@ -76,7 +76,7 @@ google/protobuf/reflection_ops.h
 google/protobuf/wire_format.h
 -
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MotorSpeed.pb.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MotorSpeed.pb.h
 string
 -
 google/protobuf/stubs/common.h

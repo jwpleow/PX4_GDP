@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Utility rule file for models_gen.
 
@@ -64,36 +64,36 @@ CMakeFiles/models_gen: ../models/sf10a/sf10a-gen.sdf
 
 
 ../models/3DR_gps_mag/3DR_gps_mag-gen.sdf: ../models/3DR_gps_mag/3DR_gps_mag.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../models/3DR_gps_mag/3DR_gps_mag-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/3DR_gps_mag/3DR_gps_mag.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../models/3DR_gps_mag/3DR_gps_mag-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/3DR_gps_mag/3DR_gps_mag.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/c920/c920-gen.sdf: ../models/c920/c920.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating ../models/c920/c920-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/c920/c920.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating ../models/c920/c920-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/c920/c920.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/matrice_100/matrice_100-gen.sdf: ../models/matrice_100/matrice_100.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating ../models/matrice_100/matrice_100-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/matrice_100/matrice_100.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating ../models/matrice_100/matrice_100-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/matrice_100/matrice_100.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/mb1240-xl-ez4/mb1240-xl-ez4-gen.sdf: ../models/mb1240-xl-ez4/mb1240-xl-ez4.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating ../models/mb1240-xl-ez4/mb1240-xl-ez4-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/mb1240-xl-ez4/mb1240-xl-ez4.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating ../models/mb1240-xl-ez4/mb1240-xl-ez4-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/mb1240-xl-ez4/mb1240-xl-ez4.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/pixhawk/pixhawk-gen.sdf: ../models/pixhawk/pixhawk.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ../models/pixhawk/pixhawk-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/pixhawk/pixhawk.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ../models/pixhawk/pixhawk-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/pixhawk/pixhawk.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/px4flow/px4flow-gen.sdf: ../models/px4flow/px4flow.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating ../models/px4flow/px4flow-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/px4flow/px4flow.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating ../models/px4flow/px4flow-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/px4flow/px4flow.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/r200/r200-gen.sdf: ../models/r200/r200.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating ../models/r200/r200-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/r200/r200.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating ../models/r200/r200-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/r200/r200.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 ../models/sf10a/sf10a-gen.sdf: ../models/sf10a/sf10a.sdf.jinja
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating ../models/sf10a/sf10a-gen.sdf"
-	/usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/sf10a/sf10a.sdf.jinja /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating ../models/sf10a/sf10a-gen.sdf"
+	/usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/jinja_gen.py /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/sf10a/sf10a.sdf.jinja /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 models_gen: CMakeFiles/models_gen
 models_gen: ../models/3DR_gps_mag/3DR_gps_mag-gen.sdf
@@ -118,6 +118,6 @@ CMakeFiles/models_gen.dir/clean:
 .PHONY : CMakeFiles/models_gen.dir/clean
 
 CMakeFiles/models_gen.dir/depend:
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/models_gen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/models_gen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/models_gen.dir/depend
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/nav_msgs.dir/depend.make
@@ -59,24 +59,24 @@ include CMakeFiles/nav_msgs.dir/flags.make
 
 Odometry.pb.cc: ../msgs/Odometry.proto
 Odometry.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running C++ protocol buffer compiler on msgs/Odometry.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/Odometry.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running C++ protocol buffer compiler on msgs/Odometry.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/Odometry.proto
 
 Odometry.pb.h: Odometry.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate Odometry.pb.h
 
 CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o: CMakeFiles/nav_msgs.dir/flags.make
 CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o: Odometry.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Odometry.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Odometry.pb.cc
 
 CMakeFiles/nav_msgs.dir/Odometry.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nav_msgs.dir/Odometry.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Odometry.pb.cc > CMakeFiles/nav_msgs.dir/Odometry.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Odometry.pb.cc > CMakeFiles/nav_msgs.dir/Odometry.pb.cc.i
 
 CMakeFiles/nav_msgs.dir/Odometry.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nav_msgs.dir/Odometry.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Odometry.pb.cc -o CMakeFiles/nav_msgs.dir/Odometry.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Odometry.pb.cc -o CMakeFiles/nav_msgs.dir/Odometry.pb.cc.s
 
 CMakeFiles/nav_msgs.dir/Odometry.pb.cc.o.requires:
 
@@ -133,7 +133,6 @@ libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -186,7 +185,6 @@ libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 libnav_msgs.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
@@ -213,7 +211,7 @@ libnav_msgs.so: /usr/local/lib/libopencv_video.so.3.1.0
 libnav_msgs.so: /usr/local/lib/libopencv_imgproc.so.3.1.0
 libnav_msgs.so: /usr/local/lib/libopencv_core.so.3.1.0
 libnav_msgs.so: CMakeFiles/nav_msgs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libnav_msgs.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libnav_msgs.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/nav_msgs.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -231,6 +229,6 @@ CMakeFiles/nav_msgs.dir/clean:
 
 CMakeFiles/nav_msgs.dir/depend: Odometry.pb.cc
 CMakeFiles/nav_msgs.dir/depend: Odometry.pb.h
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/nav_msgs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/nav_msgs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/nav_msgs.dir/depend
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sensor_msgs.dir/depend.make
@@ -59,88 +59,88 @@ include CMakeFiles/sensor_msgs.dir/flags.make
 
 Imu.pb.cc: ../msgs/Imu.proto
 Imu.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running C++ protocol buffer compiler on msgs/Imu.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/Imu.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running C++ protocol buffer compiler on msgs/Imu.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/Imu.proto
 
 Imu.pb.h: Imu.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate Imu.pb.h
 
 IRLock.pb.cc: ../msgs/IRLock.proto
 IRLock.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Running C++ protocol buffer compiler on msgs/IRLock.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/IRLock.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Running C++ protocol buffer compiler on msgs/IRLock.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/IRLock.proto
 
 IRLock.pb.h: IRLock.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate IRLock.pb.h
 
 Float.pb.cc: ../msgs/Float.proto
 Float.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running C++ protocol buffer compiler on msgs/Float.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/Float.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running C++ protocol buffer compiler on msgs/Float.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/Float.proto
 
 Float.pb.h: Float.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate Float.pb.h
 
 Groundtruth.pb.cc: ../msgs/Groundtruth.proto
 Groundtruth.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Running C++ protocol buffer compiler on msgs/Groundtruth.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/Groundtruth.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Running C++ protocol buffer compiler on msgs/Groundtruth.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/Groundtruth.proto
 
 Groundtruth.pb.h: Groundtruth.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate Groundtruth.pb.h
 
 Range.pb.cc: ../msgs/Range.proto
 Range.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Running C++ protocol buffer compiler on msgs/Range.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/Range.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Running C++ protocol buffer compiler on msgs/Range.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/Range.proto
 
 Range.pb.h: Range.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate Range.pb.h
 
 SITLGps.pb.cc: ../msgs/SITLGps.proto
 SITLGps.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Running C++ protocol buffer compiler on msgs/SITLGps.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/SITLGps.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Running C++ protocol buffer compiler on msgs/SITLGps.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/SITLGps.proto
 
 SITLGps.pb.h: SITLGps.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate SITLGps.pb.h
 
 OpticalFlow.pb.cc: ../msgs/OpticalFlow.proto
 OpticalFlow.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Running C++ protocol buffer compiler on msgs/OpticalFlow.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/OpticalFlow.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Running C++ protocol buffer compiler on msgs/OpticalFlow.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/OpticalFlow.proto
 
 OpticalFlow.pb.h: OpticalFlow.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate OpticalFlow.pb.h
 
 MagneticField.pb.cc: ../msgs/MagneticField.proto
 MagneticField.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Running C++ protocol buffer compiler on msgs/MagneticField.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/MagneticField.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Running C++ protocol buffer compiler on msgs/MagneticField.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/MagneticField.proto
 
 MagneticField.pb.h: MagneticField.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate MagneticField.pb.h
 
 Pressure.pb.cc: ../msgs/Pressure.proto
 Pressure.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Running C++ protocol buffer compiler on msgs/Pressure.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/Pressure.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Running C++ protocol buffer compiler on msgs/Pressure.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/Pressure.proto
 
 Pressure.pb.h: Pressure.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate Pressure.pb.h
 
 CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o: Imu.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Imu.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Imu.pb.cc
 
 CMakeFiles/sensor_msgs.dir/Imu.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/Imu.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Imu.pb.cc > CMakeFiles/sensor_msgs.dir/Imu.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Imu.pb.cc > CMakeFiles/sensor_msgs.dir/Imu.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/Imu.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/Imu.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Imu.pb.cc -o CMakeFiles/sensor_msgs.dir/Imu.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Imu.pb.cc -o CMakeFiles/sensor_msgs.dir/Imu.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/sensor_msgs.dir/Imu.pb.cc.o.provides.build: CMakeFiles/sensor_msgs.di
 
 CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o: IRLock.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/IRLock.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/IRLock.pb.cc
 
 CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/IRLock.pb.cc > CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/IRLock.pb.cc > CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/IRLock.pb.cc -o CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/IRLock.pb.cc -o CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/sensor_msgs.dir/IRLock.pb.cc.o.provides.build: CMakeFiles/sensor_msgs
 
 CMakeFiles/sensor_msgs.dir/Float.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/Float.pb.cc.o: Float.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sensor_msgs.dir/Float.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Float.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Float.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sensor_msgs.dir/Float.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Float.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Float.pb.cc
 
 CMakeFiles/sensor_msgs.dir/Float.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/Float.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Float.pb.cc > CMakeFiles/sensor_msgs.dir/Float.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Float.pb.cc > CMakeFiles/sensor_msgs.dir/Float.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/Float.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/Float.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Float.pb.cc -o CMakeFiles/sensor_msgs.dir/Float.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Float.pb.cc -o CMakeFiles/sensor_msgs.dir/Float.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/Float.pb.cc.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/sensor_msgs.dir/Float.pb.cc.o.provides.build: CMakeFiles/sensor_msgs.
 
 CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o: Groundtruth.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Groundtruth.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Groundtruth.pb.cc
 
 CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Groundtruth.pb.cc > CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Groundtruth.pb.cc > CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Groundtruth.pb.cc -o CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Groundtruth.pb.cc -o CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/sensor_msgs.dir/Groundtruth.pb.cc.o.provides.build: CMakeFiles/sensor
 
 CMakeFiles/sensor_msgs.dir/Range.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/Range.pb.cc.o: Range.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sensor_msgs.dir/Range.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Range.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Range.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sensor_msgs.dir/Range.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Range.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Range.pb.cc
 
 CMakeFiles/sensor_msgs.dir/Range.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/Range.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Range.pb.cc > CMakeFiles/sensor_msgs.dir/Range.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Range.pb.cc > CMakeFiles/sensor_msgs.dir/Range.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/Range.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/Range.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Range.pb.cc -o CMakeFiles/sensor_msgs.dir/Range.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Range.pb.cc -o CMakeFiles/sensor_msgs.dir/Range.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/Range.pb.cc.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/sensor_msgs.dir/Range.pb.cc.o.provides.build: CMakeFiles/sensor_msgs.
 
 CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o: SITLGps.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/SITLGps.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/SITLGps.pb.cc
 
 CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/SITLGps.pb.cc > CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/SITLGps.pb.cc > CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/SITLGps.pb.cc -o CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/SITLGps.pb.cc -o CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o.requires:
 
@@ -275,16 +275,16 @@ CMakeFiles/sensor_msgs.dir/SITLGps.pb.cc.o.provides.build: CMakeFiles/sensor_msg
 
 CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o: OpticalFlow.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/OpticalFlow.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/OpticalFlow.pb.cc
 
 CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/OpticalFlow.pb.cc > CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/OpticalFlow.pb.cc > CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/OpticalFlow.pb.cc -o CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/OpticalFlow.pb.cc -o CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o.requires:
 
@@ -299,16 +299,16 @@ CMakeFiles/sensor_msgs.dir/OpticalFlow.pb.cc.o.provides.build: CMakeFiles/sensor
 
 CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o: MagneticField.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MagneticField.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MagneticField.pb.cc
 
 CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MagneticField.pb.cc > CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MagneticField.pb.cc > CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MagneticField.pb.cc -o CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MagneticField.pb.cc -o CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o.requires:
 
@@ -323,16 +323,16 @@ CMakeFiles/sensor_msgs.dir/MagneticField.pb.cc.o.provides.build: CMakeFiles/sens
 
 CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o: CMakeFiles/sensor_msgs.dir/flags.make
 CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o: Pressure.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Pressure.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Pressure.pb.cc
 
 CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Pressure.pb.cc > CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Pressure.pb.cc > CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.i
 
 CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/Pressure.pb.cc -o CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/Pressure.pb.cc -o CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.s
 
 CMakeFiles/sensor_msgs.dir/Pressure.pb.cc.o.requires:
 
@@ -405,7 +405,6 @@ libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -458,7 +457,6 @@ libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 libsensor_msgs.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
@@ -485,7 +483,7 @@ libsensor_msgs.so: /usr/local/lib/libopencv_video.so.3.1.0
 libsensor_msgs.so: /usr/local/lib/libopencv_imgproc.so.3.1.0
 libsensor_msgs.so: /usr/local/lib/libopencv_core.so.3.1.0
 libsensor_msgs.so: CMakeFiles/sensor_msgs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX shared library libsensor_msgs.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX shared library libsensor_msgs.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sensor_msgs.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -527,6 +525,6 @@ CMakeFiles/sensor_msgs.dir/depend: MagneticField.pb.cc
 CMakeFiles/sensor_msgs.dir/depend: MagneticField.pb.h
 CMakeFiles/sensor_msgs.dir/depend: Pressure.pb.cc
 CMakeFiles/sensor_msgs.dir/depend: Pressure.pb.h
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/sensor_msgs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/sensor_msgs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sensor_msgs.dir/depend
 

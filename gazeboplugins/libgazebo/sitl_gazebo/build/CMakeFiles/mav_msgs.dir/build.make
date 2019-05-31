@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/mav_msgs.dir/depend.make
@@ -59,32 +59,32 @@ include CMakeFiles/mav_msgs.dir/flags.make
 
 CommandMotorSpeed.pb.cc: ../msgs/CommandMotorSpeed.proto
 CommandMotorSpeed.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running C++ protocol buffer compiler on msgs/CommandMotorSpeed.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/CommandMotorSpeed.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running C++ protocol buffer compiler on msgs/CommandMotorSpeed.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/CommandMotorSpeed.proto
 
 CommandMotorSpeed.pb.h: CommandMotorSpeed.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate CommandMotorSpeed.pb.h
 
 MotorSpeed.pb.cc: ../msgs/MotorSpeed.proto
 MotorSpeed.pb.cc: /usr/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Running C++ protocol buffer compiler on msgs/MotorSpeed.proto"
-	/usr/bin/protoc --cpp_out=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build -I /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/msgs/MotorSpeed.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Running C++ protocol buffer compiler on msgs/MotorSpeed.proto"
+	/usr/bin/protoc --cpp_out=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build -I /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs -I /usr/include/gazebo-9/gazebo/msgs/proto /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/msgs/MotorSpeed.proto
 
 MotorSpeed.pb.h: MotorSpeed.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate MotorSpeed.pb.h
 
 CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o: CMakeFiles/mav_msgs.dir/flags.make
 CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o: CommandMotorSpeed.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc
 
 CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc > CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc > CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.i
 
 CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc -o CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CommandMotorSpeed.pb.cc -o CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.s
 
 CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o.requires:
 
@@ -99,16 +99,16 @@ CMakeFiles/mav_msgs.dir/CommandMotorSpeed.pb.cc.o.provides.build: CMakeFiles/mav
 
 CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o: CMakeFiles/mav_msgs.dir/flags.make
 CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o: MotorSpeed.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc
 
 CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc > CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc > CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.i
 
 CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc -o CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/MotorSpeed.pb.cc -o CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.s
 
 CMakeFiles/mav_msgs.dir/MotorSpeed.pb.cc.o.requires:
 
@@ -167,7 +167,6 @@ libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -220,7 +219,6 @@ libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 libmav_msgs.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
@@ -247,7 +245,7 @@ libmav_msgs.so: /usr/local/lib/libopencv_video.so.3.1.0
 libmav_msgs.so: /usr/local/lib/libopencv_imgproc.so.3.1.0
 libmav_msgs.so: /usr/local/lib/libopencv_core.so.3.1.0
 libmav_msgs.so: CMakeFiles/mav_msgs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libmav_msgs.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libmav_msgs.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mav_msgs.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -268,6 +266,6 @@ CMakeFiles/mav_msgs.dir/depend: CommandMotorSpeed.pb.cc
 CMakeFiles/mav_msgs.dir/depend: CommandMotorSpeed.pb.h
 CMakeFiles/mav_msgs.dir/depend: MotorSpeed.pb.cc
 CMakeFiles/mav_msgs.dir/depend: MotorSpeed.pb.h
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/mav_msgs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/mav_msgs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/mav_msgs.dir/depend
 

@@ -250,6 +250,7 @@ CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /u
 CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/physics/WorldState.hh
 CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/physics/physics.hh
 CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/rendering/Camera.hh
+CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/rendering/Conversions.hh
 CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/rendering/RenderTypes.hh
 CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/rendering/ogre_gazebo.h
 CMakeFiles/gazebo_opticalflow_plugin.dir/src/gazebo_opticalflow_plugin.cpp.o: /usr/include/gazebo-9/gazebo/sensors/CameraSensor.hh

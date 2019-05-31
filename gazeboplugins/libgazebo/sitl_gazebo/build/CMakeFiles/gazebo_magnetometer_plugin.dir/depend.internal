@@ -5,7 +5,7 @@ CMakeFiles/gazebo_magnetometer_plugin.dir/src/gazebo_magnetometer_plugin.cpp.o
  ../include/common.h
  ../include/gazebo_magnetometer_plugin.h
  ../include/geo_mag_declination.h
- /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_magnetometer_plugin.cpp
+ /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_magnetometer_plugin.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -757,7 +757,7 @@ CMakeFiles/gazebo_magnetometer_plugin.dir/src/gazebo_magnetometer_plugin.cpp.o
 CMakeFiles/gazebo_magnetometer_plugin.dir/src/geo_mag_declination.cpp.o
  ../include/common.h
  ../include/geo_mag_declination.h
- /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/geo_mag_declination.cpp
+ /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/geo_mag_declination.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

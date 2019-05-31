@@ -1,4 +1,4 @@
-# Install script for directory: /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/external/OpticalFlow/external/klt_feature_tracker
+# Install script for directory: /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/external/OpticalFlow/external/klt_feature_tracker
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

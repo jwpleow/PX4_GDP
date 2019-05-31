@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Utility rule file for sdf.
 
@@ -59,11 +59,11 @@ CMakeFiles/sdf: ../models/iris/iris.sdf
 ../models/iris/iris.sdf: ../models/rotors_description/urdf/iris.xacro
 ../models/iris/iris.sdf: ../models/rotors_description/urdf/iris_base.xacro
 ../models/iris/iris.sdf: ../models/rotors_description/urdf/component_snippets.xacro
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../models/iris/iris.sdf"
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo && rm -f /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/iris/iris.sdf
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo && /usr/bin/python /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/scripts/xacro.py -o /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.urdf /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.xacro enable_mavlink_interface:=true enable_ground_truth:=false enable_wind:=false enable_logging:=false rotors_description_dir:=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/rotors_description send_vision_estimation:=false send_odometry:=false
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo && gz sdf -p /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.urdf >> /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/iris/iris.sdf
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo && rm -f /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.urdf
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../models/iris/iris.sdf"
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo && rm -f /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/iris/iris.sdf
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo && /usr/bin/python /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/scripts/xacro.py -o /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.urdf /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.xacro enable_mavlink_interface:=true enable_ground_truth:=false enable_wind:=false enable_logging:=false rotors_description_dir:=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/rotors_description send_vision_estimation:=false send_odometry:=false
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo && gz sdf -p /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.urdf >> /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/iris/iris.sdf
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo && rm -f /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/models/rotors_description/urdf/iris_base.urdf
 
 sdf: CMakeFiles/sdf
 sdf: ../models/iris/iris.sdf
@@ -81,6 +81,6 @@ CMakeFiles/sdf.dir/clean:
 .PHONY : CMakeFiles/sdf.dir/clean
 
 CMakeFiles/sdf.dir/depend:
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/sdf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/sdf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sdf.dir/depend
 

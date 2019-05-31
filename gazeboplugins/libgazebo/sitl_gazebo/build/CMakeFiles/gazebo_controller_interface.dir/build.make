@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo
+CMAKE_SOURCE_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build
+CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/gazebo_controller_interface.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/gazebo_controller_interface.dir/flags.make
 
 CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o: CMakeFiles/gazebo_controller_interface.dir/flags.make
 CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o: ../src/gazebo_controller_interface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o -c /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_controller_interface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o -c /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_controller_interface.cpp
 
 CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_controller_interface.cpp > CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_controller_interface.cpp > CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.i
 
 CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_controller_interface.cpp -o CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_controller_interface.cpp -o CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.s
 
 CMakeFiles/gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o.requires:
 
@@ -125,7 +125,6 @@ libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -179,7 +178,6 @@ libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -225,7 +223,6 @@ libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
-libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 libgazebo_controller_interface.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
@@ -260,7 +257,7 @@ libgazebo_controller_interface.so: /usr/local/lib/libopencv_imgproc.so.3.1.0
 libgazebo_controller_interface.so: /usr/local/lib/libopencv_flann.so.3.1.0
 libgazebo_controller_interface.so: /usr/local/lib/libopencv_core.so.3.1.0
 libgazebo_controller_interface.so: CMakeFiles/gazebo_controller_interface.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libgazebo_controller_interface.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libgazebo_controller_interface.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gazebo_controller_interface.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -277,6 +274,6 @@ CMakeFiles/gazebo_controller_interface.dir/clean:
 .PHONY : CMakeFiles/gazebo_controller_interface.dir/clean
 
 CMakeFiles/gazebo_controller_interface.dir/depend:
-	cd /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/build/CMakeFiles/gazebo_controller_interface.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles/gazebo_controller_interface.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gazebo_controller_interface.dir/depend
 

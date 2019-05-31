@@ -40,9 +40,9 @@ gazebo/msgs/msgs.hh
 common.h
 ../include/common.h
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_imu_plugin.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_imu_plugin.cpp
 gazebo_imu_plugin.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_imu_plugin.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_imu_plugin.h
 chrono
 -
 cmath

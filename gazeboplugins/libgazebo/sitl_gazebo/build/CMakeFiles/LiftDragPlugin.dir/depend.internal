@@ -4,7 +4,7 @@
 CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o
  ../include/common.h
  ../include/liftdrag_plugin/liftdrag_plugin.h
- /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp
+ /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/liftdrag_plugin/liftdrag_plugin.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

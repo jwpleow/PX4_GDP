@@ -18,11 +18,11 @@ gazebo/util/system.hh
 Range.pb.h
 ../include/Range.pb.h
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_sonar_plugin.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_sonar_plugin.cpp
 gazebo/physics/physics.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo/physics/physics.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo/physics/physics.hh
 gazebo_sonar_plugin.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_sonar_plugin.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_sonar_plugin.h
 gazebo/common/common.hh
 -
 gazebo/common/Plugin.hh
@@ -32,9 +32,9 @@ gazebo/gazebo.hh
 gazebo/physics/physics.hh
 -
 gazebo/transport/transport.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo/transport/transport.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo/transport/transport.hh
 gazebo/msgs/msgs.hh
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo/msgs/msgs.hh
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo/msgs/msgs.hh
 chrono
 -
 cmath

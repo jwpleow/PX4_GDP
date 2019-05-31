@@ -49,7 +49,7 @@
 
 
 
-<!-- Ambulance model - gps published to /fix -->
+ <!-- Ambulance actor - oscillating, gps published to /fix -->
 <actor name="ambulance">
         <link name="link">
           <collision name="collision">
@@ -79,37 +79,21 @@
                 <pose>200 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
-                <time>200.0</time>
-                <pose>141.4 141.4 0 0 0 -2.355</pose>
+                <time>40.0</time>
+                <pose>190.4 190.4 0 0 0 -2.355</pose>
              </waypoint>
              <waypoint>
-                <time>400.0</time>
-                <pose>0 200 0 0 0 -1.57</pose>
+                <time>80.0</time>
+                <pose>200 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
-                <time>600.0</time>
-                <pose>-141.4 141.4 0 0 0 -0.785</pose>
+                <time>120.0</time>
+                <pose>190.4 190.4 0 0 0 -0.785</pose>
              </waypoint>
              <waypoint>
-                <time>800.0</time>
-                <pose>-200 0 0 0 0 0</pose>
-             </waypoint>
-             <waypoint>
-                <time>1000.0</time>
-                <pose>-141.4 -141.4 0 0 0 0.785</pose>
-             </waypoint>
-             <waypoint>
-                <time>1200.0</time>
-                <pose>0 -200 0 0 0 1.57</pose>
-             </waypoint>
-             <waypoint>
-                <time>1400.0</time>
-                <pose>141.4 -141.4 0 0 0 2.355</pose>
-             </waypoint>
-             <waypoint>
-                <time>1600.0</time>
-                <pose>200 0 0 0 0 3.14</pose>
-             </waypoint>
+                <time>160.0</time>
+                <pose>200 0 0 0 0 0</pose>
+             </waypoint>        
           </trajectory>
         </script>
     <plugin name="ambulance_gps" filename="libhector_gazebo_ros_gps.so">
@@ -119,10 +103,23 @@
       <velocitytopicname>/fix_velocity</velocitytopicname>
       <updateRate>1.0</updateRate>
     </plugin>
+     <include>
+       <uri>model://ARtag</uri>
+       <pose>0.0 1 2.88 0 0 0</pose>
+      </include>
+      <joint name='ARtag_joint' type='fixed'>
+      <parent>ambulance::link</parent>
+      <child>ARtag::link</child>
+          <axis>
+           <xyz>0 0 1</xyz>
+         <limit>
+           <upper>0</upper>
+           <lower>0</lower>
+        </limit>
+        </axis>
+      </joint>
+
 </actor>
-
-
-
 
 <!-- define physics -->
     <physics name='default_physics' default='0' type='ode'>

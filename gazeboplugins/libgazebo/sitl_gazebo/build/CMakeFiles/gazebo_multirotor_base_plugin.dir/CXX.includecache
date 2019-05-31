@@ -36,9 +36,9 @@ gazebo/msgs/msgs.hh
 MotorSpeed.pb.h
 ../include/MotorSpeed.pb.h
 
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_multirotor_base_plugin.cpp
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_multirotor_base_plugin.cpp
 gazebo_multirotor_base_plugin.h
-/home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_multirotor_base_plugin.h
+/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_multirotor_base_plugin.h
 ctime
 -
 

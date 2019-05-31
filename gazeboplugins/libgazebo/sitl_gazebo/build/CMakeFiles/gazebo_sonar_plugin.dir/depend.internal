@@ -3,7 +3,7 @@
 
 CMakeFiles/gazebo_sonar_plugin.dir/src/gazebo_sonar_plugin.cpp.o
  ../include/gazebo_sonar_plugin.h
- /home/khorjiawei/Downloads/hector_gazebo/libgazebo/sitl_gazebo/src/gazebo_sonar_plugin.cpp
+ /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/src/gazebo_sonar_plugin.cpp
  /usr/include/gazebo-9/gazebo/Master.hh
  /usr/include/gazebo-9/gazebo/Server.hh
  /usr/include/gazebo-9/gazebo/common/Animation.hh
