@@ -113,16 +113,16 @@ float norm(float vector[3]) {
 /// drone_v is the local drone velocity with respect to the origin, Pos and PosOld is the positions of the target with respect to the origin
 void velFromGPS(float Pos[3], float PosOld[3], float drone_vx, float drone_vy, float drone_vz, float loop_rate, float (&vel)[3]) {
 
-if (Pos != PosOld){  ///< if not the same position, update velocity of target
+if (Pos[0] != PosOld[0] || Pos[1] != PosOld[1] ){  ///< if not the same position, update velocity of target
     for (int i = 0; i < 3; ++i) {
-        velocityholder[i] = ( Pos[i] - PosOld[i] ) / (1.0 / loop_rate);
+        velocityholder[i] = ( Pos[i] - PosOld[i] ) / (1.0);
     }
 }
 
 
-vel[0] = velocityholder[0] - drone_vx;
-vel[1] = velocityholder[1] - drone_vy;
-vel[2] = velocityholder[2] - drone_vz;
+vel[0] = - velocityholder[0] - drone_vy;
+vel[1] = - velocityholder[1] - drone_vx;
+vel[2] = velocityholder[2] + drone_vz;
 
 
 }
