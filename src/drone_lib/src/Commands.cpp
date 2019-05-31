@@ -93,7 +93,7 @@ void commands::request_Takeoff(float _altitude, float _counter)
     ROS_INFO("GDPdrone: Takeoff Requested");
     for (int i = _counter; i > 0; i--)
     {
-        move_Position_Local(0, 0, _altitude, 0, "LOCAL");
+        move_Position_Local(0, 0, _altitude, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
@@ -101,7 +101,6 @@ void commands::request_Takeoff(float _altitude, float _counter)
 }
 
 //-----   MOVEMENT COMMANDS -----//
-
 
 ///< BODY_OFFSET (x,y,z) = (forward, left, up)
 void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angle_deg, std::string _frame)
@@ -111,19 +110,17 @@ void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angl
     // Set reference Frame
     commands::set_frame(&pos, _frame, false);
 
-///< this doesn't work properly if the input is repeated for BODY_OFFSET as you need to calculate the new corrected position through transform_frame
-    // // If this is the first time this command is sent, rotate the frame
-    // if (check_Inputs(_x, _y, _z, _yaw_angle_deg))
-    // {
-    //     std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
-    //     corrected_vector = commands::transform_frame(input_vector, _frame);
-    // }
+    ///< this doesn't work properly if the input is repeated for BODY_OFFSET as you need to calculate the new corrected position through transform_frame
+    // If this is the first time this command is sent, rotate the frame
+    if (check_Inputs(_x, _y, _z, _yaw_angle_deg))
+    {
+        std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
+        corrected_vector = commands::transform_frame(input_vector, _frame);
+    }
 
-
-//temp fix
-    std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
-    corrected_vector = commands::transform_frame(input_vector, _frame);
-
+    //temp fix
+    // std::vector<float> input_vector = {_x, _y, _z, _yaw_angle_deg};
+    // corrected_vector = commands::transform_frame(input_vector, _frame);
 
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_VX | mavros_msgs::PositionTarget::IGNORE_VY |
                     mavros_msgs::PositionTarget::IGNORE_VZ | mavros_msgs::PositionTarget::IGNORE_AFX |
@@ -135,7 +132,6 @@ void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angl
     pos.yaw = functions::DegToRad(corrected_vector[3]);
     target_pub_local.publish(pos);
 }
-
 
 ///< BODY_OFFSET (x,y,z,yaw_rate) = (right, forward, up, anti-clockwise)
 ///< LOCAL_OFFSET (x,y,z) = (east, north, up)
@@ -177,15 +173,13 @@ void commands::move_Acceleration_Local(float _x, float _y, float _z, std::string
     target_pub_local.publish(pos);
 }
 
-
 ///< Velocity initialiser for Jake's algorithm
-void commands::Initialise_Velocity_for_AccelCommands(float vx, float vy, float vz) 
+void commands::Initialise_Velocity_for_AccelCommands(float vx, float vy, float vz)
 {
-velocity_x = vx;
-velocity_y = vy;
-velocity_z = vz;
+    velocity_x = vx;
+    velocity_y = vy;
+    velocity_z = vz;
 }
-
 
 void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate)
 {
@@ -337,7 +331,7 @@ std::vector<float> commands::transform_frame(std::vector<float> _vector, std::st
     {
         // Rotate by heading angle, Z Axis does not need rotation on NED
         corrected_vector[0] = -_vector[0] * sin(-compass_heading.data + 90) + _vector[1] * cos(-compass_heading.data + 90);
-        corrected_vector[1] = (_vector[0] * cos(-compass_heading.data + 90) + _vector[1] * sin(-compass_heading.data + 90))*-1;
+        corrected_vector[1] = (_vector[0] * cos(-compass_heading.data + 90) + _vector[1] * sin(-compass_heading.data + 90)) * -1;
         corrected_vector[2] = _vector[2];
         corrected_vector[3] = _vector[3] + 90 - compass_heading.data;
     }
@@ -350,7 +344,7 @@ std::vector<float> commands::transform_frame(std::vector<float> _vector, std::st
     {
         // Rotate by heading angle, Z Axis does not need rotation on NED
         corrected_vector[0] = -_vector[0] * sin(-compass_heading.data + 90) + _vector[1] * cos(-compass_heading.data + 90);
-        corrected_vector[1] = (_vector[0] * cos(-compass_heading.data + 90) + _vector[1] * sin(-compass_heading.data + 90))*-1;
+        corrected_vector[1] = (_vector[0] * cos(-compass_heading.data + 90) + _vector[1] * sin(-compass_heading.data + 90)) * -1;
         corrected_vector[2] = _vector[2];
         corrected_vector[3] = _vector[3] + 90 - compass_heading.data;
 
