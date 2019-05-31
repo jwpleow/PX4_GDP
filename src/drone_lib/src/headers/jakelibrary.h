@@ -13,8 +13,9 @@
     float relVel[3] = {0};
     float droneAcc[3] = {0};
     float relPos[3] = {0};
-    float relPosOld[3] = {0};
     float relPosHoriz[3] = {0};
+    float Pos[3] = {0}; ///< Holds local position of target relative to origin
+    float PosOld[3] = {0};
 
     // declare functions
     void droneInitVel(float relPos[3], float (&droneVel)[3]); 
@@ -108,16 +109,20 @@ float norm(float vector[3]) {
 }
 
 
-void velFromGPS(float relPos[3], float relPosOld[3], float loop_rate, float (&vel)[3]) {
 
-if (relPos != relPosOld){  ///< if not the same position, update velocity
+/// drone_v is the local drone velocity with respect to the origin, Pos and PosOld is the positions of the target with respect to the origin
+void velFromGPS(float Pos[3], float PosOld[3], float drone_vx, float drone_vy, float drone_vz, float loop_rate, float (&vel)[3]) {
+
+if (Pos != PosOld){  ///< if not the same position, update velocity of target
     for (int i = 0; i < 3; ++i) {
-        velocityholder[i] = ( relPos[i] - relPosOld[i] ) / (1.0 / loop_rate);
+        velocityholder[i] = ( Pos[i] - PosOld[i] ) / (1.0 / loop_rate);
     }
 }
-vel[0] = velocityholder[0];
-vel[1] = velocityholder[1];
-vel[2] = velocityholder[2];
+
+
+vel[0] = velocityholder[0] - drone_vx;
+vel[1] = velocityholder[1] - drone_vy;
+vel[2] = velocityholder[2] - drone_vz;
 
 
 }
@@ -150,7 +155,7 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
     float  uCrossOmega[3];
     float  aPerp[3];
     float  aParr[3];
-    float  acclim = 2.0;
+    float  acclim = 12.0;
 
     relPos[2] = 0.0;
     // Calculate the magnitude of the relative position and velocity vectors

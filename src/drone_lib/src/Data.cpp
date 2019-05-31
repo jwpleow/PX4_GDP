@@ -24,13 +24,13 @@ data::data(float _rate)
     // Subscribe to Position Data             ///< position.x = east, position.y = north, position.z = up (from origin)
     pose_sub = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 10, &data::pose_cb, this);
 
-    // Subscribe to Velocity Data ///< in local coordinates 
+    // Subscribe to Velocity Data ///< in local coordinates ENU, example: drone.Data.linear.x
     velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("/mavros/local_position/velocity_local", 10, &data::velocity_cb, this);
 
-    ///< Subscribe to target xyz relative to drone
+    ///< Subscribe to target xyz relative to drone ///< NEU - e.g. drone.Data.target_position.point.x
     target_position_relative_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_wrtdrone_position" , 10, &data::target_position_relative_cb, this);
 
-    ///< Subscribe to target position relative to drone origin
+    ///< Subscribe to target position relative to drone origin ///< NEU - e.g. drone.Data.target_position.point.x
     target_position_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_position" , 10, &data::target_position_cb, this);
 
     ///< Subscribe to target GPS data
@@ -45,7 +45,7 @@ float data::CalculateYawAngle() {
     return (yaw_angle_buffer[0] + yaw_angle_buffer[1] + yaw_angle_buffer[2]) / 3.0f; ///<try using buffer
 }
 
-///< Target position subscriber
+///< Target position subscriber 
 void data::target_position_cb(const geometry_msgs::PointStamped::ConstPtr &msg)
 {
     target_position = *msg;

@@ -79,20 +79,20 @@
                 <pose>200 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
-                <time>40.0</time>
+                <time>80.0</time>
                 <pose>190.4 190.4 0 0 0 -2.355</pose>
              </waypoint>
              <waypoint>
-                <time>80.0</time>
+                <time>160.0</time>
                 <pose>200 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
-                <time>120.0</time>
+                <time>240.0</time>
                 <pose>190.4 190.4 0 0 0 -0.785</pose>
              </waypoint>
              <waypoint>
-                <time>160.0</time>
-                <pose>200 0 0 0 0 0</pose>
+                <time>320.0</time>
+                <pose>200 0 0 0 0 -3.14</pose>
              </waypoint>        
           </trajectory>
         </script>

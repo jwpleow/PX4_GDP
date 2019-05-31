@@ -181,6 +181,7 @@ void commands::Initialise_Velocity_for_AccelCommands(float vx, float vy, float v
     velocity_z = vz;
 }
 
+///< LOCAL OFFSET - ENU
 void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate)
 {
     mavros_msgs::PositionTarget pos;
