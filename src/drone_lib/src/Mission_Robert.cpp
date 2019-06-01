@@ -48,8 +48,12 @@ int main(int argc, char **argv)
 
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
+
+ROS_INFO("Testsleep");
     ros::Duration(5.0).sleep(); // sleep for 5 seconds
 
+
+        ROS_INFO("done");
     while (drone.Data.local_pose.pose.position.x < 20){
 
     // if (detectObstacle(drone.Data.lidar.ranges[0], drone.Data.lidar.ranges[1], drone.Data.lidar.ranges[2], 11.0))
