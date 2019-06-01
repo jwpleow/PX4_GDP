@@ -46,7 +46,6 @@ int main(int argc, char **argv)
         drone.Commands.move_Acceleration_Local_Trick(droneAcc[1], droneAcc[0], -droneAcc[2], "LOCAL_OFFSET", loop_rate);
 
 
-        
         for (int i = 0; i < 3; ++i) {
           PosOld[i] = Pos[i];
         }
