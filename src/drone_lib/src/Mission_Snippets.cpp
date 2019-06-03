@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     ROS_INFO("First Command");
     for (int count = 1; count < 250; count++)
     {
-        drone.Commands.move_Position_Local(0, 0, 1, 90, "BODY");
+        drone.Commands.move_Position_Local(0, 0, 1, 90, "BODY", count);
         ros::spinOnce();
         rate.sleep();
     }

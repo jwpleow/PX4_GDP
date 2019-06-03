@@ -24,6 +24,8 @@ int main(int argc, char **argv)
     int time_takeoff = 125;
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
+
+
 // bool landingpaddetected = false;
 // while(!landingpaddetected){
 
@@ -61,27 +63,27 @@ int main(int argc, char **argv)
     // }
 
 
-ROS_INFO("x = 2");
-for (int count = 1; count < 50; count++){
-drone.Commands.move_Acceleration_Local_Trick(0.0f, 1.0f, 0.0f, "LOCAL_OFFSET", loop_rate);
-        ros::spinOnce();
-        rate.sleep();
+// ROS_INFO("x = 2");
+// for (int count = 1; count < 50; count++){
+// drone.Commands.move_Acceleration_Local_Trick(0.0f, 1.0f, 0.0f, "LOCAL_OFFSET", loop_rate);
+//         ros::spinOnce();
+//         rate.sleep();
 
-}
+// }
 
-for (int count = 1; count < 50; count++){
-drone.Commands.move_Position_Local(0.0f, 0.0f, 0.0f, 90.0f, "LOCAL_OFFSET");
-        ros::spinOnce();
-        rate.sleep();
+// for (int count = 1; count < 50; count++){
+// drone.Commands.move_Position_Local(0.0f, 0.0f, 0.0f, 90.0f, "LOCAL_OFFSET");
+//         ros::spinOnce();
+//         rate.sleep();
 
-}
+// }
 
-ROS_INFO("x = 2");
-for (int count = 1; count < 200; count++){
-drone.Commands.move_Acceleration_Local_Trick(1.0f, 0.0f, 0.0f, "LOCAL_OFFSET", loop_rate);
-        ros::spinOnce();
-        rate.sleep();
-}
+// ROS_INFO("x = 2");
+// for (int count = 1; count < 200; count++){
+// drone.Commands.move_Acceleration_Local_Trick(1.0f, 0.0f, 0.0f, "LOCAL_OFFSET", loop_rate);
+//         ros::spinOnce();
+//         rate.sleep();
+// }
 
 // ROS_INFO("x = 1");
 // for (int count = 1; count < 100; count++){

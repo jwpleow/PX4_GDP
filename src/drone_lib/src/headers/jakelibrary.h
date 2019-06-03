@@ -6,6 +6,11 @@
 #include <cmath>
 #include <math.h>
 
+
+
+
+
+
     // Initialising
     const float switchDist = 1.0; // In reality, camera should start working when it is 8m away. However, GPS is on car NOT THE PLATFORM so probably 6.5 m max
     float distance;
@@ -13,9 +18,9 @@
     float relVel[3] = {0};
     float droneAcc[3] = {0};
     float relPos[3] = {0};
-    float relPosHoriz[3] = {0};
-    float Pos[3] = {0}; ///< Holds local position of target relative to origin
-    float PosOld[3] = {0};
+    float relPosOld[3] = {0};
+
+
 
     // declare functions
     void droneInitVel(float relPos[3], float (&droneVel)[3]); 
@@ -24,6 +29,8 @@
     float norm(float vector[3]);
     void velFromGPS(float relPos[3], float relPosOld[3], float loop_rate, float (&relVel)[3]);
     float dot(float vector1[3], float vector2[3]);
+    void relPosCalc(float dronePos[3], float targPos[3], float (&relPos)[3]);
+    void relVelCalc(float droneVel[3], float targVel[3], float (&relVel)[3]);
     void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]);
 
     ///< testfix
@@ -40,12 +47,12 @@ void InitialiseJakeCode(float x, float y, float z){ ///< initialise with argumen
     relPos[0] = y;
     relPos[1] = x;
     relPos[2] = z;
-    relPos[2] = 0.0;
 
-    droneInitVel(relPos, droneVel);
+    droneInitVel(relPos , droneVel);
     relVel[0] = -droneVel[0];
     relVel[1] = -droneVel[1];   
     relVel[2] = -droneVel[2];
+
 
     distance = norm(relPos);
 
@@ -73,7 +80,7 @@ void droneInitVel(float relPos[3], float (&droneVel)[3]) {
     droneVel[1] = initVelMag * sin(heading);
     droneVel[2] = 0;
 
-    // Make sure the velocities are in the right direction
+    // Make sure the velocities in the right direction
     if (relPos[0] < 0) {
         droneVel[0] = - droneVel[0];
         droneVel[1] = - droneVel[1];
@@ -109,20 +116,16 @@ float norm(float vector[3]) {
 }
 
 
+void velFromGPS(float relPos[3], float relPosOld[3], float loop_rate, float (&vel)[3]) {
 
-/// drone_v is the local drone velocity with respect to the origin, Pos and PosOld is the positions of the target with respect to the origin
-void velFromGPS(float Pos[3], float PosOld[3], float drone_vx, float drone_vy, float drone_vz, float loop_rate, float (&vel)[3]) {
-
-if (Pos[0] != PosOld[0] || Pos[1] != PosOld[1] ){  ///< if not the same position, update velocity of target
+if (relPos != relPosOld){  ///< if not the same position, update velocity
     for (int i = 0; i < 3; ++i) {
-        velocityholder[i] = ( Pos[i] - PosOld[i] ) / (1.0);
+        velocityholder[i] = ( relPos[i] - relPosOld[i] ) / (1.0 / loop_rate);
     }
 }
-
-
-vel[0] = - velocityholder[0] - drone_vy;
-vel[1] = - velocityholder[1] - drone_vx;
-vel[2] = velocityholder[2] + drone_vz;
+vel[0] = velocityholder[0];
+vel[1] = velocityholder[1];
+vel[2] = velocityholder[2];
 
 
 }
@@ -140,6 +143,21 @@ float dot(float vector1[3], float vector2[3]) {
     return accum;
 }
 
+void relPosCalc(float dronePos[3], float targPos[3], float (&relPos)[3]) {
+    for (int i = 0; i < 3; ++i) {
+        relPos[i] = targPos[i] - dronePos[i];
+    }
+    // Important to ensure the algorithm works in 2-D, ask Jake if you care
+    relPos[2] = 0.0;
+}
+
+// Calculates the relative velocity between the drone and target
+void relVelCalc(float droneVel[3], float targVel[3], float (&relVel)[3]) {
+    for (int i = 0; i < 3; ++i) {
+        relVel[i] = targVel[i] - droneVel[i];
+    }
+}
+
 // Calculates the acceleration of the drone in i,j,k
 // Passes the output, droneAcc by reference
 void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
@@ -155,9 +173,7 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
     float  uCrossOmega[3];
     float  aPerp[3];
     float  aParr[3];
-    float  acclim = 12.0;
 
-    relPos[2] = 0.0;
     // Calculate the magnitude of the relative position and velocity vectors
     uMag    = norm(relPos);
     uDotMag = norm(relVel);
@@ -185,14 +201,6 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
         aParr[i] = Kp * relPos[i] + Kd * relVel[i];
         droneAcc[i] = aPerp[i] + aParr[i];
     }
-
-    // If the total acceleration is greater than 2, scale each component such that the norm is 2
-    if ( norm(droneAcc) > acclim ) {
-        for (int i = 0; i < 3; ++i) {
-            droneAcc[i] /= (norm(droneAcc) / acclim);
-        }
-    }
-
 }
 
 
