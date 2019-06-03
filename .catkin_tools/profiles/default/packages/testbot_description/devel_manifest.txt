@@ -1,6 +1,0 @@
-testbot_description/Obstacle_Avoidance_ROS
-/home/khorjiawei/catkin_ws/devel/.private/testbot_description/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/testbot_description/share/testbot_description/cmake/testbot_descriptionConfig.cmake /home/khorjiawei/catkin_ws/devel/share/testbot_description/cmake/testbot_descriptionConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/testbot_description/share/testbot_description/cmake/testbot_descriptionConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/testbot_description/cmake/testbot_descriptionConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/testbot_description/lib/testbot_description/parser /home/khorjiawei/catkin_ws/devel/lib/testbot_description/parser
-/home/khorjiawei/catkin_ws/devel/.private/testbot_description/lib/pkgconfig/testbot_description.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/testbot_description.pc

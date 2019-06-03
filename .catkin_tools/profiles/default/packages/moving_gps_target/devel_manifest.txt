@@ -1,6 +1,0 @@
-moving_gps_target
-/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target/share/moving_gps_target/cmake/moving_gps_targetConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/moving_gps_target/cmake/moving_gps_targetConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target/share/moving_gps_target/cmake/moving_gps_targetConfig.cmake /home/khorjiawei/catkin_ws/devel/share/moving_gps_target/cmake/moving_gps_targetConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target/lib/moving_gps_target/moving_gps_target /home/khorjiawei/catkin_ws/devel/lib/moving_gps_target/moving_gps_target
-/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target/lib/pkgconfig/moving_gps_target.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/moving_gps_target.pc

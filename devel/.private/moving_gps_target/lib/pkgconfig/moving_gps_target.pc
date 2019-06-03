@@ -1,8 +1,0 @@
-prefix=/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target
-
-Name: moving_gps_target
-Description: Description of moving_gps_target
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/khorjiawei/catkin_ws/devel/.private/moving_gps_target/lib 
-Requires: 

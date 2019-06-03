@@ -1,1 +1,0 @@
-/home/khorjiawei/catkin_ws/devel/.private/teraranger_description/lib/pkgconfig/teraranger_description.pc

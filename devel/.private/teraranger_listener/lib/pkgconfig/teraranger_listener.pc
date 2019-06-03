@@ -1,8 +1,0 @@
-prefix=/home/khorjiawei/catkin_ws/devel/.private/teraranger_listener
-
-Name: teraranger_listener
-Description: Description of teraranger_listener
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/khorjiawei/catkin_ws/devel/.private/teraranger_listener/lib 
-Requires: 

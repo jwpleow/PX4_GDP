@@ -39,8 +39,8 @@ data::data(float _rate)
     ///< Subscribe to target GPS data
     target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 10, &data::target_gps_cb, this);
 
-    // ///< Subscribe to transformed depthcam data (and transform to PC1 in callback) ///< data
-    // depth_cam_sub= nh.subscribe<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 10, &data::depth_cam_cb, this);
+    ///< Subscribe to transformed depthcam data (and transform to PC1 in callback) ///< data
+    depth_cam_sub= nh.subscribe<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 10, &data::depth_cam_cb, this);
 }
 
 ///< Yaw angle calculator (in degrees) based off target position relative to drone
@@ -52,11 +52,11 @@ float data::CalculateYawAngle()
     return (yaw_angle_buffer[0] + yaw_angle_buffer[1] + yaw_angle_buffer[2]) / 3.0f; ///<try using buffer
 }
 
-// ///< Depth cam callback and transform to Point Cloud 1
-// void data::depth_cam_cb(const sensor_msgs::PointCloud2ConstPtr& pc2){
-//     depth_cam_pc2 = *pc2;
-//     pcl::fromROSMsg(depth_cam_pc2, *depth_cam_cloud); ///< transform pc2 to pc1 and place into depth_cam_cloud
-// }
+///< Depth cam callback and transform to Point Cloud 1
+void data::depth_cam_cb(const sensor_msgs::PointCloud2ConstPtr& pc2){
+    depth_cam_pc2 = *pc2;
+    pcl::fromROSMsg(depth_cam_pc2, *depth_cam_cloud); ///< transform pc2 to pc1 and place into depth_cam_cloud
+}
 
 ///< Target position subscriber
 void data::target_position_cb(const geometry_msgs::PointStamped::ConstPtr &msg)

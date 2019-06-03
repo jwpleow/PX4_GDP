@@ -1,0 +1,8 @@
+<launch>
+
+  <!-- Launch GPS Target conversion nodes -->
+  <node pkg="follower" type="" name="gps_conversion_node"/>
+
+  <node pkg="follower" type="" name="gps_wrtdrone_conversion_node"/>
+
+</launch>

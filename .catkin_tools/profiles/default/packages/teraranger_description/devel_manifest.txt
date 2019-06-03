@@ -1,5 +1,0 @@
-teraranger_description
-/home/khorjiawei/catkin_ws/devel/.private/teraranger_description/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/teraranger_description/share/teraranger_description/cmake/teraranger_descriptionConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/teraranger_description/cmake/teraranger_descriptionConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/teraranger_description/share/teraranger_description/cmake/teraranger_descriptionConfig.cmake /home/khorjiawei/catkin_ws/devel/share/teraranger_description/cmake/teraranger_descriptionConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/teraranger_description/lib/pkgconfig/teraranger_description.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/teraranger_description.pc

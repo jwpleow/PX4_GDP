@@ -30,14 +30,14 @@ const double pi = 3.1415926535897;
 Three_d_cam::Three_d_cam():roll(0),pitch(0),yaw(0){
 
 	//Topic you want to publish
-  pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_voxel_filtered", 1000);
-  pub2_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_passthrough_filtered", 1000);
-  pub3_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_statistical_outlier_filtered", 1000);
-  pub4_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 1000);
+  pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_voxel_filtered", 1);
+  pub2_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_passthrough_filtered", 1);
+  pub3_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_statistical_outlier_filtered", 1);
+  pub4_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 1);
 
   //Topic you want to subscribe
-  sub_ = nh_.subscribe("/camera/depth/points", 1000, &Three_d_cam::callback, this);
-  sub2_= nh_.subscribe("mavros/imu/data", 1000, &Three_d_cam::imuCallback, this);
+  sub_ = nh_.subscribe("/camera/depth/points", 1, &Three_d_cam::callback, this);
+  sub2_= nh_.subscribe("mavros/imu/data", 1, &Three_d_cam::imuCallback, this);
     
 }
 
@@ -114,7 +114,7 @@ void Three_d_cam::transform_frame(const double& roll, const double& pitch, const
   pcl::transformPointCloud (*source_cloud, *transformed_cloud, transform_2);
   pcl::toROSMsg(*transformed_cloud, pc2_tf);
 
-  ROS_INFO("roll, pitch, yaw= %f, %f, %f", roll/3.1415*180, pitch/3.1415*180, yaw/3.1415*180);
+  // ROS_INFO("roll, pitch, yaw= %f, %f, %f", roll/3.1415*180, pitch/3.1415*180, yaw/3.1415*180);
 
 }
 

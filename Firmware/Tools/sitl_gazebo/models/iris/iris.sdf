@@ -618,8 +618,6 @@
   </joint>
 
   
-
-
     <!--teraranger - 3 LiDAR sensors-->
   <include>
     <uri>model://teraranger</uri>
@@ -638,7 +636,7 @@
     </joint>
 
 
-  
+
 
   </model>
 </sdf>
