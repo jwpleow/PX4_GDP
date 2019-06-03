@@ -46,6 +46,9 @@ public:
     ///< Velocity initialiser for Jake's algorithm
     void Initialise_Velocity_for_AccelCommands(float vx, float vy, float vz);
 
+    ///< Jake Landing
+    void move_Landing(float _x, float _y, float _vz, float _yaw_angle_deg, std::string _frame, int _count);
+
 private:
     //-----   PRIVATE PROPERTIES -----//
     ros::NodeHandle nh;

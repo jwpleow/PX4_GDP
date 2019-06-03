@@ -27,39 +27,42 @@ int main(int argc, char **argv)
 
     ROS_INFO("Stabilising over target...");
 
-    float altitude;
+    
     float relVelLanding[3];
     float relPosLanding[3];
     float descentVelocity = -0.2;
     float descentDistance = 0.05;
-    float cutPowerAlt = 0.1;
+    float cutPowerAlt = 0.05;
 
-    do {
-        altitude = drone.Data.target_position_relative.point.z;
+
+    distance = 5.0f;
+    ///< while far away or at too high of an altitude
+    while(distance > descentDistance || cutPowerAlt < altitude) {
+
+        altitude = -drone.Data.target_position_relative.point.z;
         relPosLanding[0] = drone.Data.target_position_relative.point.y;
         relPosLanding[1] = drone.Data.target_position_relative.point.x;
         relPosLanding[2] = 0.0;
 
-        velPosMap(relPosLanding, relVelLanding);
-        
-        // Do I want to yaw to face the front?
-        drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], relVelLanding[2], 0.0, "LOCAL_OFFSET");
-
-        if (distance < descentDistance) {
-            drone.Commands.move_Velocity_Local(0.0, 0.0, descentVelocity, 0.0, "LOCAL_OFFSET");
+        ///< If too far - use algorithm to move towards target
+        if (distance > descentDistance){
+            ROS_INFO("Moving towards target via algorithm");
+            velPosMap(relPosLanding, relVelLanding);
+            // Do I want to yaw to face the front?
+            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], relVelLanding[2], 0.0, "LOCAL_OFFSET");
+            ros::spinOnce();
+            rate.sleep();
         }
-
-        else if (altitude < cutPowerAlt) {
-            break;
+        else { ///< - close enough , use simple waypoint navigation to land
+            ROS_INFO("At descent distance - switching to simple waypoint");
+            drone.Commands.move_Landing(relPosLanding[0], relPosLanding[1], descentVelocity, 0.0, "LOCAL_OFFSET",1);
+            ros::spinOnce();
+            rate.sleep();
         }
-
-        ros::spinOnce();
-        rate.sleep();
-
-    } while (true);
-
-    // Cut power
-
+    } 
+    
+    
+    // Close + 
     drone.Commands.set_Disarmed();
 
     return 0;

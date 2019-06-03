@@ -31,35 +31,36 @@ int main(int argc, char **argv)
    	ROS_INFO("Initialising drone velocity");
     // Change this to a while loop comparing measured drone velocity and commanded drone velocity
    	
-    drone.Commands.Initialise_Velocity_for_AccelCommands(droneVel[1], droneVel[0], -droneVel[2]);
-   	// Actual proportional navigation algorithm
-    ROS_INFO("Starting proportional navigation algorithm");
-    do {
-        droneAccComp(relPos, relVel, droneAcc);
-        ROS_INFO("Accelerations needed: x: %f, y: %f, z: %f", droneAcc[1], droneAcc[0], droneAcc[2]);
-        drone.Commands.move_Acceleration_Local_Trick(droneAcc[1],droneAcc[0],droneAcc[2], "LOCAL_OFFSET", loop_rate);
+    // drone.Commands.Initialise_Velocity_for_AccelCommands(droneVel[1], droneVel[0], -droneVel[2]);
+   	// // Actual proportional navigation algorithm
+    // ROS_INFO("Starting proportional navigation algorithm");
+    // do {
+    //     droneAccComp(relPos, relVel, droneAcc);
+    //     ROS_INFO("Accelerations needed: x: %f, y: %f, z: %f", droneAcc[1], droneAcc[0], droneAcc[2]);
+    //     // Using pablos new overloaded funciton, should hopefully keep altitude constant
+    //     drone.Commands.move_Acceleration_Local_Trick(droneAcc[1],droneAcc[0], "LOCAL_OFFSET", loop_rate);
 
-        for (int i = 0; i < 3; ++i) {
-          relPosOld[i] = relPos[i];
-        }
+    //     for (int i = 0; i < 3; ++i) {
+    //       relPosOld[i] = relPos[i];
+    //     }
 
-        relPos[0] = drone.Data.target_position_relative.point.y;
-        relPos[1] = drone.Data.target_position_relative.point.x;
-        relPos[2] = drone.Data.target_position_relative.point.z;
+    //     relPos[0] = drone.Data.target_position_relative.point.y;
+    //     relPos[1] = drone.Data.target_position_relative.point.x;
+    //     relPos[2] = drone.Data.target_position_relative.point.z;
 
-        distance = norm(relPos);
+    //     distance = norm(relPos);
 
-        ROS_INFO("Distance to target: %f", distance);
+    //     ROS_INFO("Distance to target: %f", distance);
 
-        velFromGPS(relPos, relPosOld, loop_rate, relVel);
+    //     velFromGPS(relPos, relPosOld, loop_rate, relVel);
 
-        ros::spinOnce();
-        rate.sleep();
-    } while(distance > switchDist);
+    //     ros::spinOnce();
+    //     rate.sleep();
+    // } while(distance > switchDist);
 
-    // Land and disarm
-    ROS_INFO("Landing and disarming");
-    drone.Commands.request_LandingAuto();
+    // // Land and disarm
+    // ROS_INFO("Landing and disarming");
+    // drone.Commands.request_LandingAuto();
 
     // Exit
     return 0;
