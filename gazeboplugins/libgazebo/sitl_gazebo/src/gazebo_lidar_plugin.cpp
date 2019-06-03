@@ -105,7 +105,7 @@ void RayPlugin::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
   const string scopedName = _parent->ParentName();
   vector<string> names_splitted;
   boost::split(names_splitted,scopedName,boost::is_any_of("::"));
-  string topicName = "~/" + names_splitted[0] + "/link/lidar";
+  string topicName = "teraranger_one";
 
   lidar_pub_ = node_handle_->Advertise<sensor_msgs::msgs::Range>(topicName, 10);
 }

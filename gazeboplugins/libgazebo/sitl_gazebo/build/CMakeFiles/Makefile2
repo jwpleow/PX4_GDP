@@ -65,9 +65,9 @@ CMAKE_BINARY_DIR = /home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazeb
 # All Build rule for target.
 CMakeFiles/LiftDragPlugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/LiftDragPlugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/LiftDragPlugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/LiftDragPlugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/LiftDragPlugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/LiftDragPlugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/LiftDragPlugin.dir/build.make CMakeFiles/LiftDragPlugin.dir/depend
 	$(MAKE) -f CMakeFiles/LiftDragPlugin.dir/build.make CMakeFiles/LiftDragPlugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=1,2 "Built target LiftDragPlugin"
@@ -106,9 +106,9 @@ clean: CMakeFiles/LiftDragPlugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_barometer_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_barometer_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_barometer_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_barometer_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_barometer_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_barometer_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_barometer_plugin.dir/build.make CMakeFiles/gazebo_barometer_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_barometer_plugin.dir/build.make CMakeFiles/gazebo_barometer_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=8,9 "Built target gazebo_barometer_plugin"
@@ -147,9 +147,9 @@ clean: CMakeFiles/gazebo_barometer_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_magnetometer_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_magnetometer_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_magnetometer_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_magnetometer_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_magnetometer_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_magnetometer_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_magnetometer_plugin.dir/build.make CMakeFiles/gazebo_magnetometer_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_magnetometer_plugin.dir/build.make CMakeFiles/gazebo_magnetometer_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=24,25,26 "Built target gazebo_magnetometer_plugin"
@@ -188,9 +188,9 @@ clean: CMakeFiles/gazebo_magnetometer_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_multirotor_base_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_multirotor_base_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_multirotor_base_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_multirotor_base_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_multirotor_base_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_multirotor_base_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_multirotor_base_plugin.dir/build.make CMakeFiles/gazebo_multirotor_base_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_multirotor_base_plugin.dir/build.make CMakeFiles/gazebo_multirotor_base_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=31,32 "Built target gazebo_multirotor_base_plugin"
@@ -229,9 +229,9 @@ clean: CMakeFiles/gazebo_multirotor_base_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_motor_model.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_motor_model.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_motor_model.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_motor_model.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_motor_model.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_motor_model.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_motor_model.dir/build.make CMakeFiles/gazebo_motor_model.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_motor_model.dir/build.make CMakeFiles/gazebo_motor_model.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=29,30 "Built target gazebo_motor_model"
@@ -270,9 +270,9 @@ clean: CMakeFiles/gazebo_motor_model.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_mavlink_interface.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_mavlink_interface.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_mavlink_interface.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_mavlink_interface.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_mavlink_interface.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_mavlink_interface.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_mavlink_interface.dir/build.make CMakeFiles/gazebo_mavlink_interface.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_mavlink_interface.dir/build.make CMakeFiles/gazebo_mavlink_interface.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=27,28 "Built target gazebo_mavlink_interface"
@@ -311,9 +311,9 @@ clean: CMakeFiles/gazebo_mavlink_interface.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_gimbal_controller_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_gimbal_controller_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_gimbal_controller_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_gimbal_controller_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_gimbal_controller_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_gimbal_controller_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_gimbal_controller_plugin.dir/build.make CMakeFiles/gazebo_gimbal_controller_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_gimbal_controller_plugin.dir/build.make CMakeFiles/gazebo_gimbal_controller_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=14,15 "Built target gazebo_gimbal_controller_plugin"
@@ -426,9 +426,9 @@ clean: CMakeFiles/nav_msgs.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_wind_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_wind_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_wind_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_wind_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_wind_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_wind_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_wind_plugin.dir/build.make CMakeFiles/gazebo_wind_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_wind_plugin.dir/build.make CMakeFiles/gazebo_wind_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=41,42 "Built target gazebo_wind_plugin"
@@ -467,9 +467,9 @@ clean: CMakeFiles/gazebo_wind_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_imu_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_imu_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_imu_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_imu_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_imu_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_imu_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_imu_plugin.dir/build.make CMakeFiles/gazebo_imu_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_imu_plugin.dir/build.make CMakeFiles/gazebo_imu_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=18,19 "Built target gazebo_imu_plugin"
@@ -582,9 +582,9 @@ clean: CMakeFiles/std_msgs.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_opticalflow_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_opticalflow_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_opticalflow_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_opticalflow_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_opticalflow_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_opticalflow_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_opticalflow_plugin.dir/all: OpticalFlow/CMakeFiles/OpticalFlow.dir/all
 CMakeFiles/gazebo_opticalflow_plugin.dir/all: OpticalFlow/klt_feature_tracker/CMakeFiles/klt_feature_tracker.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_opticalflow_plugin.dir/build.make CMakeFiles/gazebo_opticalflow_plugin.dir/depend
@@ -625,9 +625,9 @@ clean: CMakeFiles/gazebo_opticalflow_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_sonar_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_sonar_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_sonar_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_sonar_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_sonar_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_sonar_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_sonar_plugin.dir/build.make CMakeFiles/gazebo_sonar_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_sonar_plugin.dir/build.make CMakeFiles/gazebo_sonar_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=35,36 "Built target gazebo_sonar_plugin"
@@ -703,9 +703,9 @@ clean: CMakeFiles/sensor_msgs.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_gps_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_gps_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_gps_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_gps_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_gps_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_gps_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_gps_plugin.dir/build.make CMakeFiles/gazebo_gps_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_gps_plugin.dir/build.make CMakeFiles/gazebo_gps_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=16,17 "Built target gazebo_gps_plugin"
@@ -781,9 +781,9 @@ clean: CMakeFiles/mav_msgs.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_irlock_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_irlock_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_irlock_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_irlock_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_irlock_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_irlock_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_irlock_plugin.dir/build.make CMakeFiles/gazebo_irlock_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_irlock_plugin.dir/build.make CMakeFiles/gazebo_irlock_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=20,21 "Built target gazebo_irlock_plugin"
@@ -822,9 +822,9 @@ clean: CMakeFiles/gazebo_irlock_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_lidar_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_lidar_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_lidar_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_lidar_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_lidar_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_lidar_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_lidar_plugin.dir/build.make CMakeFiles/gazebo_lidar_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_lidar_plugin.dir/build.make CMakeFiles/gazebo_lidar_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=22,23 "Built target gazebo_lidar_plugin"
@@ -863,9 +863,9 @@ clean: CMakeFiles/gazebo_lidar_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_uuv_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_uuv_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_uuv_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_uuv_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_uuv_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_uuv_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_uuv_plugin.dir/build.make CMakeFiles/gazebo_uuv_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_uuv_plugin.dir/build.make CMakeFiles/gazebo_uuv_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=37,38 "Built target gazebo_uuv_plugin"
@@ -904,9 +904,9 @@ clean: CMakeFiles/gazebo_uuv_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_vision_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_vision_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_vision_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_vision_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_vision_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_vision_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_vision_plugin.dir/build.make CMakeFiles/gazebo_vision_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_vision_plugin.dir/build.make CMakeFiles/gazebo_vision_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=39,40 "Built target gazebo_vision_plugin"
@@ -982,9 +982,9 @@ clean: CMakeFiles/models_gen.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_geotagged_images_plugin.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_geotagged_images_plugin.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_geotagged_images_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_geotagged_images_plugin.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_geotagged_images_plugin.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_geotagged_images_plugin.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_geotagged_images_plugin.dir/build.make CMakeFiles/gazebo_geotagged_images_plugin.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_geotagged_images_plugin.dir/build.make CMakeFiles/gazebo_geotagged_images_plugin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=12,13 "Built target gazebo_geotagged_images_plugin"
@@ -1023,9 +1023,9 @@ clean: CMakeFiles/gazebo_geotagged_images_plugin.dir/clean
 # All Build rule for target.
 CMakeFiles/gazebo_controller_interface.dir/all: CMakeFiles/physics_msgs.dir/all
 CMakeFiles/gazebo_controller_interface.dir/all: CMakeFiles/nav_msgs.dir/all
+CMakeFiles/gazebo_controller_interface.dir/all: CMakeFiles/mav_msgs.dir/all
 CMakeFiles/gazebo_controller_interface.dir/all: CMakeFiles/std_msgs.dir/all
 CMakeFiles/gazebo_controller_interface.dir/all: CMakeFiles/sensor_msgs.dir/all
-CMakeFiles/gazebo_controller_interface.dir/all: CMakeFiles/mav_msgs.dir/all
 	$(MAKE) -f CMakeFiles/gazebo_controller_interface.dir/build.make CMakeFiles/gazebo_controller_interface.dir/depend
 	$(MAKE) -f CMakeFiles/gazebo_controller_interface.dir/build.make CMakeFiles/gazebo_controller_interface.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/khorjiawei/catkin_ws/gazeboplugins/libgazebo/sitl_gazebo/build/CMakeFiles --progress-num=10,11 "Built target gazebo_controller_interface"

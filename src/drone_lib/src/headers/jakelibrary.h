@@ -6,11 +6,6 @@
 #include <cmath>
 #include <math.h>
 
-
-
-
-
-
     // Initialising
     const float switchDist = 1.0; // In reality, camera should start working when it is 8m away. However, GPS is on car NOT THE PLATFORM so probably 6.5 m max
     float distance;
@@ -19,8 +14,7 @@
     float droneAcc[3] = {0};
     float relPos[3] = {0};
     float relPosOld[3] = {0};
-
-
+    float relPosHoriz[3] = {0};
 
     // declare functions
     void droneInitVel(float relPos[3], float (&droneVel)[3]); 
@@ -29,12 +23,13 @@
     float norm(float vector[3]);
     void velFromGPS(float relPos[3], float relPosOld[3], float loop_rate, float (&relVel)[3]);
     float dot(float vector1[3], float vector2[3]);
-    void relPosCalc(float dronePos[3], float targPos[3], float (&relPos)[3]);
-    void relVelCalc(float droneVel[3], float targVel[3], float (&relVel)[3]);
     void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]);
 
     ///< testfix
     double velocityholder[3];
+
+    // Landing
+    void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]);
 
 
 
@@ -47,12 +42,12 @@ void InitialiseJakeCode(float x, float y, float z){ ///< initialise with argumen
     relPos[0] = y;
     relPos[1] = x;
     relPos[2] = z;
+    relPos[2] = 0.0;
 
-    droneInitVel(relPos , droneVel);
+    droneInitVel(relPos, droneVel);
     relVel[0] = -droneVel[0];
     relVel[1] = -droneVel[1];   
     relVel[2] = -droneVel[2];
-
 
     distance = norm(relPos);
 
@@ -80,7 +75,7 @@ void droneInitVel(float relPos[3], float (&droneVel)[3]) {
     droneVel[1] = initVelMag * sin(heading);
     droneVel[2] = 0;
 
-    // Make sure the velocities in the right direction
+    // Make sure the velocities are in the right direction
     if (relPos[0] < 0) {
         droneVel[0] = - droneVel[0];
         droneVel[1] = - droneVel[1];
@@ -143,21 +138,6 @@ float dot(float vector1[3], float vector2[3]) {
     return accum;
 }
 
-void relPosCalc(float dronePos[3], float targPos[3], float (&relPos)[3]) {
-    for (int i = 0; i < 3; ++i) {
-        relPos[i] = targPos[i] - dronePos[i];
-    }
-    // Important to ensure the algorithm works in 2-D, ask Jake if you care
-    relPos[2] = 0.0;
-}
-
-// Calculates the relative velocity between the drone and target
-void relVelCalc(float droneVel[3], float targVel[3], float (&relVel)[3]) {
-    for (int i = 0; i < 3; ++i) {
-        relVel[i] = targVel[i] - droneVel[i];
-    }
-}
-
 // Calculates the acceleration of the drone in i,j,k
 // Passes the output, droneAcc by reference
 void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
@@ -173,7 +153,9 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
     float  uCrossOmega[3];
     float  aPerp[3];
     float  aParr[3];
+    float  acclim = 2.0;
 
+    relPos[2] = 0.0;
     // Calculate the magnitude of the relative position and velocity vectors
     uMag    = norm(relPos);
     uDotMag = norm(relVel);
@@ -200,6 +182,41 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
         aPerp[i] = - lambda * uDotMag / uMag * uCrossOmega[i];
         aParr[i] = Kp * relPos[i] + Kd * relVel[i];
         droneAcc[i] = aPerp[i] + aParr[i];
+    }
+
+    // If the total acceleration is greater than 2, scale each component such that the norm is 2
+    if ( norm(droneAcc) > acclim ) {
+        float normDroneAcc = norm(droneAcc);
+        for (int i = 0; i < 3; ++i) {
+            droneAcc[i] /= (normDroneAcc / acclim);
+        }
+
+// Linear mapping between velocity and position. Basically it takes the relative position, 
+// and gives the drone a relative velocity in the same direction but with two thirds the magnitude.
+// If the position exceeds three metres, the velocity is capped at 2.
+
+void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) {
+    float velMax = 2.0;
+    float posMax = 3.0;
+    float distance;
+    float scaling;
+
+    distance = norm(relPosLanding);
+
+    for (int i = 0; i < 3; ++i) {
+        relVelLanding[i] = relPosLanding[i];
+    }
+
+    if (distance > posMax) {
+        for (int i = 0; i < 3; ++i) {
+            relVelLanding[i] /= ( distance / velMax );
+        }
+    }
+    else {
+        scaling = norm(relPosLanding) * velMax / posMax;
+        for (int i = 0; i < 3; ++i) {
+            relVelLanding[i] /= ( distance / scaling );
+        }
     }
 }
 

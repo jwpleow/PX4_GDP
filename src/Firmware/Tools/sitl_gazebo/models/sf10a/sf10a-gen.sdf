@@ -63,10 +63,10 @@
         </ray>
 
         <plugin name="LaserPlugin"
-          filename="libgazebo_lidar_plugin.so">
+          filename="libgazebo_teraone_plugin.so">
           <robotNamespace></robotNamespace>
-          <min_distance>0.1</min_distance>
-          <max_distance>25.0</max_distance>
+          <min_distance>0.2</min_distance>
+          <max_distance>11.0</max_distance>
         </plugin>
 
       </sensor>

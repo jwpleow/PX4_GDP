@@ -450,3 +450,30 @@ void commands::move_Velocity_Local(float _fixed_speed, float _yaw_angle_deg, std
     pos.velocity.z = 0;
     target_pub_local.publish(pos);
 }
+
+
+///< Jake Landing
+void commands::move_Landing(float _x, float _y, float _vz, float _yaw_angle_deg, std::string _frame, int _count)
+{
+    mavros_msgs::PositionTarget pos;
+
+    // Set reference Frame
+    commands::set_frame(&pos, _frame, false);
+
+    // If this is the first time this command is sent, rotate the frame
+    if (_count == 1)
+    {
+        std::vector<float> input_vector = {_x, _y, 0, _yaw_angle_deg};
+        corrected_vector = commands::transform_frame(input_vector, _frame);
+    }
+
+    pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_VX | 
+                    mavros_msgs::PositionTarget::IGNORE_VY | mavros_msgs::PositionTarget::IGNORE_AFX |
+                    mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
+                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
+    pos.position.x = corrected_vector[0];
+    pos.position.y = corrected_vector[1];
+    pos.velocity.z = _vz;
+    pos.yaw = functions::DegToRad(corrected_vector[3]);
+    target_pub_local.publish(pos);
+}
