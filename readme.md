@@ -10,10 +10,9 @@ git clone https://github.com/gdp-drone/catkin_ws.git
 
 The gazebo simulation environment with the drone can then be launched using:
 ```
-cd ~/catkin_ws/src/Firmware   
+cd ~/catkin_ws/Firmware   
 export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/catkin_ws/build/gazebo_ros_pkgs/gazebo_plugins/         
-make posix_sitl_default
-source ~/catkin_ws/src/Firmware/Tools/setup_gazebo.bash ~/catkin_ws/src/Firmware ~/catkin_ws/src/Firmware/build/px4_sitl_default
+source ~/catkin_ws/Firmware/Tools/setup_gazebo.bash ~/catkin_ws/Firmware ~/catkin_ws/Firmware/build/px4_sitl_default
 source ~/catkin_ws/devel/setup.bash
 source Tools/setup_gazebo.bash $(pwd) $(pwd)/build_posix_sitl_default
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
@@ -22,7 +21,7 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
 roslaunch px4 mavros_posix_sitl.launch
 ```
 
-This builds the iris model (found in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/iris) with a px4 controller - look inside Firmware/launch/mavros_posix_sitl.launch for more details
+This builds the iris model (found in catkin_ws/Firmware/Tools/sitl_gazebo/models/iris) with a px4 controller - look inside Firmware/launch/mavros_posix_sitl.launch for more details
 
 
 A simple node to control the drone can be found in catkin_ws/src/offb_velocity - this can be ran in a new terminal:
