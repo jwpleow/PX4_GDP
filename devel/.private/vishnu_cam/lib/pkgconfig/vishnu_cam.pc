@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/vishnu_cam
+
+Name: vishnu_cam
+Description: Description of vishnu_cam
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/vishnu_cam/lib 
+Requires: 

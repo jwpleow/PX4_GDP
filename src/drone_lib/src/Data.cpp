@@ -9,7 +9,7 @@ data::data(float _rate)
     // Default, don't store data
     save_data = false; 
 
-    // Subscribe to Altitude Data
+    // Subscribe to Altitude Data                                                       ///< e.g. drone.Data.altitude.bottom_clearance
     altitude_sub = nh.subscribe<mavros_msgs::Altitude>("/mavros/altitude", 10, &data::altitude_cb, this);
 
     // Subscribe to Compass Data
@@ -39,6 +39,12 @@ data::data(float _rate)
     ///< Subscribe to target GPS data
     target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 10, &data::target_gps_cb, this);
 
+    ///< Subscribe to vishnu cam data                                                   ///< Get body coordinates of ARtag using e.g. drone.Data.vishnu_cam_data.linear.x
+    vishnu_cam_data_sub = nh.subscribe<geometry_msgs::Twist>("/vishnu_cam_data", 10, &data::vishnu_cam_data_cb, this);
+
+    ///< Subscribe to vishnu cam detection                                              ///< Check if vishnu cam detects ARtag using drone.Data.vishnu_cam_detection.data == 1
+    vishnu_cam_detection_sub = nh.subscribe<std_msgs::Bool>("/vishnu_cam_detection", 10, &data::vishnu_cam_detection_cb, this);
+
     ///< Subscribe to transformed depthcam data (and transform to PC1 in callback)      ///< drone.Data.depth_cam_cloud->points[2400].x for x distance to 2400th pixel
     depth_cam_sub= nh.subscribe<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 10, &data::depth_cam_cb, this);
 }
@@ -58,13 +64,25 @@ void data::depth_cam_cb(const sensor_msgs::PointCloud2ConstPtr& pc2){
     pcl::fromROSMsg(depth_cam_pc2, *depth_cam_cloud); ///< transform pc2 to pc1 and place into depth_cam_cloud
 }
 
-///< Target position subscriber
+///< Vishnu cam data callback function
+void data::vishnu_cam_data_cb(const geometry_msgs::Twist::ConstPtr &msg)
+{
+    vishnu_cam_data = *msg;
+}
+
+///< Vishnu cam detection boolean callback function
+void data::vishnu_cam_detection_cb(const std_msgs::Bool::ConstPtr &msg)
+{
+    vishnu_cam_detection = *msg;
+}
+
+///< Target position callback function
 void data::target_position_cb(const geometry_msgs::PointStamped::ConstPtr &msg)
 {
     target_position = *msg;
 }
 
-///< Target position relative subscriber
+///< Target position relative callback function
 void data::target_position_relative_cb(const geometry_msgs::PointStamped::ConstPtr &msg)
 {
     target_position_relative = *msg;

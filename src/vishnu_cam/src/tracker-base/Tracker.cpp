@@ -71,9 +71,9 @@ void Tracker::loopedTracking(VideoCapture vid) {
            << put_time(&tm, "%d/%m %H:%M:%S") << "\t\t\t\t\t"
            << avgDur(dur) << "\t\t"
            << avgFPS() << "\t\t"
+           << translationVec[0] << "\t\t"
            << translationVec[1] << "\t\t"
            << translationVec[2] << "\t\t"
-           << translationVec[3] << "\t\t"
            << endl;
     }
     imshow("Camera Feed", frame);

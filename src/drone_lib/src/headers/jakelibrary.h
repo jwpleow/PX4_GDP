@@ -7,7 +7,7 @@
 #include <math.h>
 
     // Initialising
-    const float switchDist = 1.0; // In reality, camera should start working when it is 8m away. However, GPS is on car NOT THE PLATFORM so probably 6.5 m max
+    const float switchDist = 7.0; // In reality, camera should start working when it is 8m away. However, GPS is on car NOT THE PLATFORM so probably 6.5 m max
     float distance;
     float droneVel[3] = {0}; // Relative to earth
     float relVel[3] = {0};
@@ -15,6 +15,8 @@
     float relPos[3] = {0};
     float relPosOld[3] = {0};
     float relPosHoriz[3] = {0};
+    float accFix;
+    
 
     // declare functions
     void droneInitVel(float relPos[3], float (&droneVel)[3]); 
@@ -24,13 +26,13 @@
     void velFromGPS(float relPos[3], float relPosOld[3], float loop_rate, float (&relVel)[3]);
     float dot(float vector1[3], float vector2[3]);
     void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]);
-
+    
     ///< testfix
     double velocityholder[3];
 
     // Landing
-    void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]);
-
+    void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]); 
+    float altitudeFix(float realAltitude, float altitude);
 
 
 //< ------------------------------------ Function Definitions ------------------------------------------>
@@ -162,6 +164,7 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
     float  acclim = 2.0;
 
     relPos[2] = 0.0;
+    relVel[2] = 0.0;
     // Calculate the magnitude of the relative position and velocity vectors
     uMag    = norm(relPos);
     uDotMag = norm(relVel);
@@ -191,13 +194,18 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
     }
 
     // If the total acceleration is greater than 2, scale each component such that the norm is 2
+    /*
     if ( norm(droneAcc) > acclim ) {
         float normDroneAcc = norm(droneAcc);
         for (int i = 0; i < 3; ++i) {
             droneAcc[i] /= (normDroneAcc / acclim);
         }
     }
+    */
 }
+
+
+
 
 
 // Linear mapping between velocity and position. Basically it takes the relative position, 
@@ -205,7 +213,8 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
 // If the position exceeds three metres, the velocity is capped at 2.
 // INPUTS:  the relative position between the drone and the target, NED
 // OUTPUTS: the relative velocity between the drone and the target, NED
-void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) {
+void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) 
+{
     float velMax = 2.0;
     float posMax = 3.0;
     float distance;
@@ -228,8 +237,14 @@ void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) {
             relVelLanding[i] /= ( distance / scaling );
         }
     }
-}
+} 
 
+
+float altitudeFix(float realAltitude, float setAltitude) {
+    float k = 0.1;
+    accFix = k * (setAltitude + realAltitude);
+    return accFix;
+}
 
 
 

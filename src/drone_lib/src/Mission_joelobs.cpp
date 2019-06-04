@@ -1,7 +1,7 @@
 #include "headers/gdpdrone.h"
 #include <cmath>
 
-bool detectObstacle(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
+bool detectObstacle(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, int datawidth);
 
 
 struct Avoidance
@@ -47,9 +47,9 @@ int main(int argc, char **argv)
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
 
-    ROS_INFO("Testsleep");
-    ros::Duration(2.0).sleep(); // sleep for 5 seconds
-    ROS_INFO("done");
+    int pointcloudwidth = drone.Data.depth_cam_pc2.width;
+   
+
 
 
     while (drone.Data.local_pose.pose.position.x < 60){
@@ -57,11 +57,11 @@ int main(int argc, char **argv)
         ROS_INFO("midpoint reading x= %f, z= %f", drone.Data.depth_cam_cloud->points[2400].x, drone.Data.depth_cam_cloud-> points[2400].z);
 
 
-    if (detectObstacle(drone.Data.depth_cam_cloud))
+    if (detectObstacle(drone.Data.depth_cam_cloud, pointcloudwidth))
     {
      
             // fly up till obstacle not detected
-            while(detectObstacle(drone.Data.depth_cam_cloud))
+            while(detectObstacle(drone.Data.depth_cam_cloud, pointcloudwidth))
             {
                 drone.Commands.move_Velocity_Local(0.0, 0.0, 0.5, 0, "BODY_OFFSET");
                 ROS_INFO("Moving up.");
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
     else
     {
         ROS_INFO("Moving Forward");
-        drone.Commands.move_Velocity_Local(0.0, 2, 0, 0, "BODY_OFFSET");
+        drone.Commands.move_Velocity_Local(0.0, 1.5, 0, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
@@ -97,12 +97,13 @@ int main(int argc, char **argv)
     return 0;
 }
 
-bool detectObstacle(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
+bool detectObstacle(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, int datawidth)
 {
     bool isObstacle = 0;
     int numObstaclePoints = 0;
+    ROS_INFO("width : %i", datawidth);
 
-    for(int i = 1; i < 600; i++) 
+    for(int i = 1; i < datawidth; i++) 
     {
         if(cloud->points[i].x < 3 && cloud->points[i].z> -0.3 && abs(cloud->points[i].y)< 0.3) 
         {

@@ -21,6 +21,7 @@ int main(int argc, char **argv)
     // MISSION STARTS HERE:
     // Request takeoff at 5.77m altitude. 
     float altitude = 5.77;
+    float setAltitude = 5.77f;
     int time_takeoff = 80; // 5 seconds at 10 Hz
     ROS_INFO("Setting altitude to 5.77 m");
     drone.Commands.request_Takeoff(altitude, time_takeoff);
@@ -31,36 +32,43 @@ int main(int argc, char **argv)
    	ROS_INFO("Initialising drone velocity");
     // Change this to a while loop comparing measured drone velocity and commanded drone velocity
    	
-    // drone.Commands.Initialise_Velocity_for_AccelCommands(droneVel[1], droneVel[0], -droneVel[2]);
-   	// // Actual proportional navigation algorithm
-    // ROS_INFO("Starting proportional navigation algorithm");
-    // do {
-    //     droneAccComp(relPos, relVel, droneAcc);
-    //     ROS_INFO("Accelerations needed: x: %f, y: %f, z: %f", droneAcc[1], droneAcc[0], droneAcc[2]);
-    //     // Using pablos new overloaded funciton, should hopefully keep altitude constant
-    //     drone.Commands.move_Acceleration_Local_Trick(droneAcc[1],droneAcc[0], "LOCAL_OFFSET", loop_rate);
+    drone.Commands.Initialise_Velocity_for_AccelCommands(droneVel[1], droneVel[0], -droneVel[2]);
+   	// Actual proportional navigation algorithm
+    ROS_INFO("Starting proportional navigation algorithm"); 
 
-    //     for (int i = 0; i < 3; ++i) {
-    //       relPosOld[i] = relPos[i];
-    //     }
+    do {
+        droneAccComp(relPos, relVel, droneAcc);
+        accFix = altitudeFix(drone.Data.target_position_relative.point.z, setAltitude);
+        ROS_INFO("Accelerations needed: x: %f, y: %f, z: %f", droneAcc[1], droneAcc[0], droneAcc[2]);
+        ROS_INFO("Relative position: x: %f, y: %f, z: %f", relPos[1], relPos[0], relPos[2]);
+        drone.Commands.move_Acceleration_Local_Trick(droneAcc[1],droneAcc[0], accFix, "LOCAL_OFFSET", loop_rate);
 
-    //     relPos[0] = drone.Data.target_position_relative.point.y;
-    //     relPos[1] = drone.Data.target_position_relative.point.x;
-    //     relPos[2] = drone.Data.target_position_relative.point.z;
+        for (int i = 0; i < 3; ++i) {
+          relPosOld[i] = relPos[i];
+        }
 
-    //     distance = norm(relPos);
+        relPos[0] = drone.Data.target_position_relative.point.y;
+        relPos[1] = drone.Data.target_position_relative.point.x;
+        relPos[2] = drone.Data.target_position_relative.point.z;
 
-    //     ROS_INFO("Distance to target: %f", distance);
+        distance = norm(relPos);
 
-    //     velFromGPS(relPos, relPosOld, loop_rate, relVel);
+        ROS_INFO("Distance to target: %f", distance);
 
-    //     ros::spinOnce();
-    //     rate.sleep();
-    // } while(distance > switchDist);
+        velFromGPS(relPos, relPosOld, loop_rate, relVel);
 
-    // // Land and disarm
-    // ROS_INFO("Landing and disarming");
-    // drone.Commands.request_LandingAuto();
+        ROS_INFO("Z dir [%f]", drone.Data.target_position.point.z);
+
+        ros::spinOnce();
+        rate.sleep();
+
+        if (distance < switchDist) break;
+
+    } while(distance > switchDist);
+
+    // Land and disarm
+    ROS_INFO("Landing and disarming");
+    drone.Commands.request_LandingAuto();
 
     // Exit
     return 0;

@@ -8,7 +8,5 @@
   <!-- Launch 3DCam Transformation node -->
   <node pkg="three_d_cam" type="three_d_cam" name=""/>
 
-  <!-- Launch downward-facing LiDAR bottom_clearance converter to /teraranger_one (ONLY FOR GAZEBO)-->
-  <node pkg="lidar_converter" type="teraranger_one_node" name=""/>
 
 </launch>

@@ -78,23 +78,23 @@
           <trajectory id="0" type="square">
              <waypoint>
                 <time>0.0</time>
-                <pose>20 0 0 0 0 -3.14</pose>
+                <pose>14.14 14.14 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
                 <time>80.0</time>
-                <pose>20 0 0 0 0 -2.355</pose>
+                <pose>14.14 14.14 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
                 <time>160.0</time>
-                <pose>20 0 0 0 0 -3.14</pose>
+                <pose>14.14 14.14 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
                 <time>240.0</time>
-                <pose>20 0 0 0 0 -0.785</pose>
+                <pose>14.14 14.14 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
                 <time>320.0</time>
-                <pose>20 0 0 0 0 -3.14</pose>
+                <pose>14.14 14.14 0 0 0 -3.14</pose>
              </waypoint>        
           </trajectory>
         </script>

@@ -1,0 +1,1 @@
+/home/khorjiawei/catkin_ws/devel/.private/vishnu_cam/share/vishnu_cam/cmake/vishnu_camConfig.cmake
