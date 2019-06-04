@@ -49,7 +49,9 @@
 
 
 
- <!-- Ambulance actor - oscillating, gps published to /fix -->
+ 
+
+ <!-- Ambulance actor - oscillating, gps published to /fix 03/06/19-->
 <actor name="ambulance">
         <link name="link">
           <collision name="collision">
@@ -76,23 +78,23 @@
           <trajectory id="0" type="square">
              <waypoint>
                 <time>0.0</time>
-                <pose>200 0 0 0 0 -3.14</pose>
+                <pose>20 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
                 <time>80.0</time>
-                <pose>190.4 190.4 0 0 0 -2.355</pose>
+                <pose>20 0 0 0 0 -2.355</pose>
              </waypoint>
              <waypoint>
                 <time>160.0</time>
-                <pose>200 0 0 0 0 -3.14</pose>
+                <pose>20 0 0 0 0 -3.14</pose>
              </waypoint>
              <waypoint>
                 <time>240.0</time>
-                <pose>190.4 190.4 0 0 0 -0.785</pose>
+                <pose>20 0 0 0 0 -0.785</pose>
              </waypoint>
              <waypoint>
                 <time>320.0</time>
-                <pose>200 0 0 0 0 -3.14</pose>
+                <pose>20 0 0 0 0 -3.14</pose>
              </waypoint>        
           </trajectory>
         </script>

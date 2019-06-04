@@ -54,6 +54,8 @@ int main(int argc, char **argv)
 
     while (drone.Data.local_pose.pose.position.x < 60){
 
+        ROS_INFO("midpoint reading x= %f, z= %f", drone.Data.depth_cam_cloud->points[2400].x, drone.Data.depth_cam_cloud-> points[2400].z);
+
 
     if (detectObstacle(drone.Data.depth_cam_cloud))
     {
@@ -61,7 +63,6 @@ int main(int argc, char **argv)
             // fly up till obstacle not detected
             while(detectObstacle(drone.Data.depth_cam_cloud))
             {
-                ROS_INFO("midpoint reading x= %f, z= %f", drone.Data.depth_cam_cloud->points[2400].x, drone.Data.depth_cam_cloud-> points[2400].z);
                 drone.Commands.move_Velocity_Local(0.0, 0.0, 0.5, 0, "BODY_OFFSET");
                 ROS_INFO("Moving up.");
                 ros::spinOnce();
@@ -79,7 +80,7 @@ int main(int argc, char **argv)
     else
     {
         ROS_INFO("Moving Forward");
-        drone.Commands.move_Velocity_Local(0.0, 3, 0, 0, "BODY_OFFSET");
+        drone.Commands.move_Velocity_Local(0.0, 2, 0, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }

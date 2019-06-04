@@ -1,0 +1,1 @@
+/home/khorjiawei/catkin_ws/devel/.private/cv_bridge/lib/pkgconfig/cv_bridge.pc

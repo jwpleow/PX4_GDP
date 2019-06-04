@@ -94,7 +94,7 @@ void Three_d_cam::transform_frame(const double &roll, const double &pitch, const
     //transform from camera reference to drone imu body reference
     transform_2.translation() << 0.0, 0.0, 0.0;
 
-    //transform_2.rotate (Eigen::AngleAxisf (yaw, Eigen::Vector3f::UnitZ()));
+    transform_2.rotate (Eigen::AngleAxisf (yaw, Eigen::Vector3f::UnitZ()));
     transform_2.rotate (Eigen::AngleAxisf (pitch, Eigen::Vector3f::UnitY()));
     transform_2.rotate (Eigen::AngleAxisf (roll, Eigen::Vector3f::UnitX()));
     transform_2.rotate (Eigen::AngleAxisf (pi / 2, Eigen::Vector3f::UnitY()));
