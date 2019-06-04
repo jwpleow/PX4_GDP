@@ -24,22 +24,22 @@ data::data(float _rate)
     // Subscribe to IMU Data
     imu_sub = nh.subscribe<sensor_msgs::Imu>("/mavros/imu/data", 10, &data::imu_cb, this);
 
-    // Subscribe to Position Data       ///< in local coordinates ENU, example: drone.Data.local_pose.linear.x
+    // Subscribe to Position Data                                                       ///< in local coordinates ENU, example: drone.Data.local_pose.linear.x
     pose_sub = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 10, &data::pose_cb, this);
 
-    // Subscribe to Velocity Data         ///< in local coordinates ENU, example: drone.Data.local_velocity.linear.x
+    // Subscribe to Velocity Data                                                       ///< in local coordinates ENU, example: drone.Data.local_velocity.linear.x
     velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("/mavros/local_position/velocity", 10, &data::velocity_cb, this);
 
-    ///< Subscribe to target xyz relative to drone       ///< NEU - e.g. drone.Data.target_position_relative.point.x
+    ///< Subscribe to target xyz relative to drone                                      ///< NEU - e.g. drone.Data.target_position_relative.point.x
     target_position_relative_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_wrtdrone_position", 10, &data::target_position_relative_cb, this);
  
-    ///< Subscribe to target position relative to drone origin        ///< NEU - e.g. drone.Data.target_position.point.x
+    ///< Subscribe to target position relative to drone origin                          ///< NEU - e.g. drone.Data.target_position.point.x
     target_position_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_position", 10, &data::target_position_cb, this);
 
     ///< Subscribe to target GPS data
     target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 10, &data::target_gps_cb, this);
 
-    ///< Subscribe to transformed depthcam data (and transform to PC1 in callback) ///< data
+    ///< Subscribe to transformed depthcam data (and transform to PC1 in callback)      ///< drone.Data.depth_cam_cloud->points[2400].x for x distance to 2400th pixel
     depth_cam_sub= nh.subscribe<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 10, &data::depth_cam_cb, this);
 }
 

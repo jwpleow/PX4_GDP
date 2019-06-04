@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 
 
     ROS_INFO("Testsleep");
-    ros::Duration(2.0).sleep(); // sleep for 2 seconds
+    ros::Duration(2.0).sleep(); // sleep for 5 seconds
     ROS_INFO("done");
 
 
@@ -57,9 +57,11 @@ int main(int argc, char **argv)
 
     if (detectObstacle(drone.Data.depth_cam_cloud))
     {
-           // fly up till obstacle not detected
+     
+            // fly up till obstacle not detected
             while(detectObstacle(drone.Data.depth_cam_cloud))
             {
+                ROS_INFO("midpoint reading x= %f, z= %f", drone.Data.depth_cam_cloud->points[2400].x, drone.Data.depth_cam_cloud-> points[2400].z);
                 drone.Commands.move_Velocity_Local(0.0, 0.0, 0.5, 0, "BODY_OFFSET");
                 ROS_INFO("Moving up.");
                 ros::spinOnce();
@@ -67,7 +69,8 @@ int main(int argc, char **argv)
             }
             
             // move an extra bit up afterwards
-            for (int i = 0; i < 30; i++){
+            ROS_INFO("Moving an extra bit upwards");
+            for (int i = 0; i < 50; i++){
                 drone.Commands.move_Velocity_Local(0.0, 0.0, 0.5, 0, "BODY_OFFSET");
                 ros::spinOnce();
                 rate.sleep();
@@ -76,12 +79,13 @@ int main(int argc, char **argv)
     else
     {
         ROS_INFO("Moving Forward");
-        drone.Commands.move_Velocity_Local(0.0, 4, 0, 0, "BODY_OFFSET");
+        drone.Commands.move_Velocity_Local(0.0, 3, 0, 0, "BODY_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
 
-
+    ros::spinOnce();
+    rate.sleep();
 
 
 }
@@ -95,26 +99,23 @@ int main(int argc, char **argv)
 bool detectObstacle(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
     bool isObstacle = 0;
-    int numObstaclePoints=0;
+    int numObstaclePoints = 0;
 
-    for(int i = 0; i < 4800; i++) 
+    for(int i = 1; i < 600; i++) 
     {
-        if(cloud->points[i].x < 3 && cloud->points[i].z>-0.3 && abs(cloud->points[i].y)< 0.3) 
+        if(cloud->points[i].x < 3 && cloud->points[i].z> -0.3 && abs(cloud->points[i].y)< 0.3) 
         {
-            numObstaclePoints+=1;
+            
+            numObstaclePoints += 1;
         }
-
+        
         if (numObstaclePoints > 30){
-
-            ROS_INFO("obstacle detected at distance x= %f, z= %f", cloud->points[i].x, cloud-> points[i].z);
+            ROS_INFO("obstacle distance x= %f, z= %f, index = %i, numobstacle = %i", cloud->points[i].x, cloud->points[i].z, i, numObstaclePoints);
             isObstacle = 1; ///< set isObstacle if anything detected 3.5 away
             break;
         }
     }
     // && cloud->points[i].x!=NAN
 
-
     return isObstacle;
 }
-
-

@@ -1,8 +1,12 @@
 <launch>
 
   <!-- Launch GPS Target conversion nodes -->
-  <node pkg="follower" type="" name="gps_conversion_node"/>
+  <node pkg="follower" type="gps_conversion_node" name=""/>
 
-  <node pkg="follower" type="" name="gps_wrtdrone_conversion_node"/>
+  <node pkg="follower" type="gps_wrtdrone_conversion_node" name=""/>
+
+
+  <!-- Launch 3DCam Transformation node -->
+  <node pkg="three_d_cam" type="three_d_cam" name=""/>
 
 </launch>

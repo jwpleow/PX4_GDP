@@ -31,7 +31,7 @@ int main(int argc, char **argv)
   //Create an object of class Three_d_cam that will take care of everything
   Three_d_cam SAPObject;
   if (ros::ok()) ROS_INFO("Depthcam Transform Initialised.");
-  ros::Rate r(10); // 10 hz
+  ros::Rate r(20); // 10 hz
   while (ros::ok())
   {
   	

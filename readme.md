@@ -30,24 +30,24 @@ source ~/catkin_ws/devel/setup.bash
 rosrun offb_velocity node
 ```
 
+To launch processing nodes (such as target gps conversion and depth camera transformation)
+```
+roslaunch follower gpstarget.launch 
+```
+
 Sensors added to the iris drone [look at the bottom of iris.sdf to see the additions]:
 1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude  ->bottom_clearance, type: mavros_msgs/Altitude)
 2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/points, type: sensor_msgs/PointCloud2, using the kinect OpenNI plugin)
 3. Downward facing FPV camera (fpv_cam) (publishing to /iris/usb_cam/image_raw, type: sensor_msgs/Image, using libgazebo_camera plugin)
 4. Forward facing 3* lidars (teraranger) (publishing to /laser/scan, type: sensor_msgs/LaserScan, using libgazebo_ros_gpu_laser plugin)
 
-FPV camera data can be viewed using
-```
-source ~/catkin_ws/devel/setup.bash
-rosrun rviz rviz
-```
-and clicking Add -> Image -> Topic: iris/usb_cam/...
+
+An rviz configuration file is included in the repository to view the live sensor data (sensors.rviz)
 
 To fix fixed frame error in rviz:
 ```
 rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
 ```
-An rviz configuration file is included in the repository to view the sensor information (sensors.rviz)
 
 
 XML macros/xacros can be added in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/rotors_description/urdf/iris_base.xacro

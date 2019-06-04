@@ -30,14 +30,14 @@ const double pi = 3.1415926535897;
 Three_d_cam::Three_d_cam():roll(0),pitch(0),yaw(0){
 
 	//Topic you want to publish
-  pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_voxel_filtered", 1);
-  pub2_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_passthrough_filtered", 1);
-  pub3_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_statistical_outlier_filtered", 1);
-  pub4_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 1);
+  pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_voxel_filtered", 10);
+  pub2_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_passthrough_filtered", 10);
+  pub3_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_pc2_statistical_outlier_filtered", 10);
+  pub4_= nh_.advertise<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 10);
 
   //Topic you want to subscribe
-  sub_ = nh_.subscribe("/camera/depth/points", 1, &Three_d_cam::callback, this);
-  sub2_= nh_.subscribe("mavros/imu/data", 1, &Three_d_cam::imuCallback, this);
+  sub_ = nh_.subscribe("/camera/depth/points", 10, &Three_d_cam::callback, this);
+  sub2_= nh_.subscribe("mavros/imu/data", 10, &Three_d_cam::imuCallback, this);
     
 }
 
@@ -104,9 +104,9 @@ void Three_d_cam::transform_frame(const double& roll, const double& pitch, const
   transform_2.rotate (Eigen::AngleAxisf (pi/2, Eigen::Vector3f::UnitY()));
   transform_2.rotate (Eigen::AngleAxisf (-pi/2, Eigen::Vector3f::UnitZ())); //now in drone imu body axis
 
-  //Now correct frame to the frame where z is upwards and parallel to gravity, and xy parallel to surface of earth
-  transform_2.rotate (Eigen::AngleAxisf (pitch, Eigen::Vector3f::UnitY()));
-  transform_2.rotate (Eigen::AngleAxisf (roll, Eigen::Vector3f::UnitX())); //now in drone imu body axis
+  //Now correct frame to the frame where z is upwards and parallel to gravity, and xy parallel to surface of earth ///<doesnt work
+  // transform_2.rotate (Eigen::AngleAxisf (pitch, Eigen::Vector3f::UnitY()));
+  //transform_2.rotate (Eigen::AngleAxisf (roll, Eigen::Vector3f::UnitX())); //now in drone imu body axis
  
   // Executing the transformation
   pcl::PointCloud<pcl::PointXYZ>::Ptr transformed_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
