@@ -6,3 +6,6 @@ offb_velocity does takeoff and velocity commands in body coords and ENU coords  
 
 follower is gerald's target GPS package
 
+three_d_cam is jiawei's 3D depth cam transformer
+
+lidar_converter converts the mavros/altitude.bottomclearance lidar data in gazebo from the sf10a model to /teraranger_one topic and sensor_msgs/Range message

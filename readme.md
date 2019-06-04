@@ -32,11 +32,11 @@ rosrun offb_velocity node
 
 To launch processing nodes (such as target gps conversion and depth camera transformation)
 ```
-roslaunch follower gpstarget.launch 
+roslaunch follower gazebonodes.launch 
 ```
 
 Sensors added to the iris drone [look at the bottom of iris.sdf to see the additions]:
-1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude  ->bottom_clearance, type: mavros_msgs/Altitude)
+1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude -> bottom_clearance, type: mavros_msgs/Altitude, but a node converts it to type: sensor_msgs/Range and topic: /teraranger_one)
 2. Forward facing depth camera (depth_camera) (publishing to /camera/depth/points, type: sensor_msgs/PointCloud2, using the kinect OpenNI plugin)
 3. Downward facing FPV camera (fpv_cam) (publishing to /iris/usb_cam/image_raw, type: sensor_msgs/Image, using libgazebo_camera plugin)
 4. Forward facing 3* lidars (teraranger) (publishing to /laser/scan, type: sensor_msgs/LaserScan, using libgazebo_ros_gpu_laser plugin)

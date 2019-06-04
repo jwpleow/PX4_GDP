@@ -1,0 +1,1 @@
+/home/khorjiawei/catkin_ws/devel/.private/lidar_converter/share/lidar_converter/cmake/lidar_converterConfig.cmake

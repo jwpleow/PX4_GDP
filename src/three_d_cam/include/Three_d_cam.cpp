@@ -102,8 +102,10 @@ void Three_d_cam::transform_frame(const double& roll, const double& pitch, const
   //transform from camera reference to drone imu body reference
   transform_2.translation() << 0.0, 0.0, 0.0;
   transform_2.rotate (Eigen::AngleAxisf (pi/2, Eigen::Vector3f::UnitY()));
-  transform_2.rotate (Eigen::AngleAxisf (-pi/2, Eigen::Vector3f::UnitZ())); //now in drone imu body axis
+  transform_2.rotate (Eigen::AngleAxisf (-pi/2, Eigen::Vector3f::UnitX()));
+  //transform_2.rotate (Eigen::AngleAxisf (-pi/2, Eigen::Vector3f::UnitZ())); //now in drone imu body axis
 
+  //transform_2.rotate (Eigen::AngleAxisf (1.57, Eigen::Vector3f::UnitX()));
   //Now correct frame to the frame where z is upwards and parallel to gravity, and xy parallel to surface of earth ///<doesnt work
   // transform_2.rotate (Eigen::AngleAxisf (pitch, Eigen::Vector3f::UnitY()));
   //transform_2.rotate (Eigen::AngleAxisf (roll, Eigen::Vector3f::UnitX())); //now in drone imu body axis
