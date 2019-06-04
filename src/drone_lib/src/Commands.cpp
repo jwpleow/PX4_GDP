@@ -451,21 +451,3 @@ void commands::move_Velocity_Local(float _fixed_speed, float _yaw_angle_deg, std
     target_pub_local.publish(pos);
 }
 
-
-///< BODY_OFFSET (x,y,z,yaw_rate) = (right, forward, up, anti-clockwise)
-///< LOCAL_OFFSET (x,y,z) = (east, north, up)
-void commands::move_Velocity_Local_Yaw(float _x, float _y, float _z, float _yaw_deg_s, std::string _frame)
-{
-    mavros_msgs::PositionTarget pos;
-    commands::set_frame(&pos, _frame, true);
-
-    pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
-                    mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
-                    mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
-                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
-    pos.velocity.x = _x;
-    pos.velocity.y = _y;
-    pos.velocity.z = _z;
-    pos.yaw = functions::DegToRad(_yaw_deg_s);
-    target_pub_local.publish(pos);
-}
