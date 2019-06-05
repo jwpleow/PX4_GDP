@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     // Request takeoff at 1m altitude. At 25Hz = 10 seconds
-    float altitude = 0.50;
+    float altitude = 1.0;
     int time_takeoff = 100;
 
     // Initialize position 
