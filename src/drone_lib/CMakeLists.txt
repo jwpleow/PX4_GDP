@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(drone_lib)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -129,7 +129,7 @@ add_executable(joelobs_node src/Mission_joelobs.cpp src/GDPdrone.cpp src/Command
 add_executable(jake_landing_node src/Mission_Jake_Landing.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 add_executable(takeoff_node src/Mission_Takeoff.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 add_executable(move_node src/Mission_Move.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
-
+add_executable(gerald_node src/Mission_Gerald.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(drone_node
@@ -163,3 +163,8 @@ target_link_libraries(move_node
 target_link_libraries(takeoff_node
   ${catkin_LIBRARIES}
 )
+
+target_link_libraries(gerald_node
+  ${catkin_LIBRARIES}
+)
+

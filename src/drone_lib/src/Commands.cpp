@@ -1,6 +1,7 @@
 #include "headers/commands.h"
 #include "headers/functions.h"
 #include "headers/data.h"
+#include <cmath>
 
 //-----   METHODS -----//
 // Default constructor
@@ -143,6 +144,22 @@ void commands::move_Velocity_Local(float _x, float _y, float _z, float _yaw_rate
     pos.velocity.y = _y;
     pos.velocity.z = _z;
     pos.yaw_rate = functions::DegToRad(_yaw_rate_deg_s);
+    target_pub_local.publish(pos);
+}
+
+void commands::move_Velocity_Local_Gerald(float _fixed_speed, float _yaw_angle_deg, std::string _frame)
+{
+    mavros_msgs::PositionTarget pos;
+    commands::set_frame(&pos, _frame, true);
+    pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
+                    mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
+                    mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
+                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
+    // constant speed of 1.50 m/s
+    pos.yaw = functions::DegToRad(_yaw_angle_deg);
+    pos.velocity.x = cos(pos.yaw) * _fixed_speed;
+    pos.velocity.y = sin(pos.yaw) * _fixed_speed;
+    pos.velocity.z = 0;
     target_pub_local.publish(pos);
 }
 

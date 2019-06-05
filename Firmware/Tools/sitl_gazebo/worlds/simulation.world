@@ -1,11 +1,10 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <sdf version="1.5">
   <world name="default">
     <!-- A global light source -->
     <include>
       <uri>model://sun</uri>
     </include>
-
     <!-- Floor -->
     <model name="ground_plane">
       <static>true</static>
@@ -26,7 +25,6 @@
             </friction>
           </surface>
         </collision>
-
         <visual name="grass">
           <pose>0 0 -0.1 0 0 0</pose>
           <cast_shadows>false</cast_shadows>
@@ -43,87 +41,79 @@
             </script>
           </material>
         </visual>
-
       </link>
     </model>
-
-
-
- 
-
- <!-- Ambulance actor - oscillating, gps published to /fix 03/06/19-->
-<actor name="ambulance">
-        <link name="link">
-          <collision name="collision">
-        <geometry>
-          <mesh>
-            <scale>0.0254 0.0254 0.0254</scale>
-            <uri>model://ambulance/meshes/ambulance.obj</uri>
-          </mesh>
-        </geometry>
-      </collision>
-          <visual name="visual">
-           <geometry>
-          <mesh>
-            <scale>0.0254 0.0254 0.0254</scale>
-            <uri>model://ambulance/meshes/ambulance.obj</uri>
-          </mesh>
-        </geometry>
-          </visual>
-        </link>
-         <script>
-          <loop>true</loop>
-          <delay_start>0.000000</delay_start>
-          <auto_start>true</auto_start>
-          <trajectory id="0" type="square">
-             <waypoint>
-                <time>0.0</time>
-                <pose>14.14 14.14 0 0 0 -3.14</pose>
-             </waypoint>
-             <waypoint>
-                <time>80.0</time>
-                <pose>14.14 14.14 0 0 0 -3.14</pose>
-             </waypoint>
-             <waypoint>
-                <time>160.0</time>
-                <pose>14.14 14.14 0 0 0 -3.14</pose>
-             </waypoint>
-             <waypoint>
-                <time>240.0</time>
-                <pose>14.14 14.14 0 0 0 -3.14</pose>
-             </waypoint>
-             <waypoint>
-                <time>320.0</time>
-                <pose>14.14 14.14 0 0 0 -3.14</pose>
-             </waypoint>        
-          </trajectory>
-        </script>
-    <plugin name="ambulance_gps" filename="libhector_gazebo_ros_gps.so">
-      <alwayson>true</alwayson>
-      <bodyName>link</bodyName>
-      <topicname>/android/fix</topicname>
-      <velocitytopicname>/fix_velocity</velocitytopicname>
-      <updateRate>1.0</updateRate>
-    </plugin>
-     <include>
-       <uri>model://ARtag</uri>
-       <pose>0.0 1 2.88 0 0 0</pose>
+    <!-- Ambulance actor - oscillating, gps published to /fix 03/06/19-->
+    <actor name="ambulance">
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <scale>0.0254 0.0254 0.0254</scale>
+              <uri>model://ambulance/meshes/ambulance.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <scale>0.0254 0.0254 0.0254</scale>
+              <uri>model://ambulance/meshes/ambulance.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.000000</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="square">
+          <waypoint>
+            <time>0.0</time>
+            <pose>14.14 14.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>80.0</time>
+            <pose>14.14 14.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>160.0</time>
+            <pose>14.14 14.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>240.0</time>
+            <pose>14.14 14.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>320.0</time>
+            <pose>14.14 14.14 0 0 0 -3.14</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+      <plugin name="ambulance_gps" filename="libhector_gazebo_ros_gps.so">
+        <alwayson>true</alwayson>
+        <bodyName>link</bodyName>
+        <topicname>/android/fix</topicname>
+        <velocitytopicname>/fix_velocity</velocitytopicname>
+        <updateRate>1.0</updateRate>
+      </plugin>
+      <include>
+        <uri>model://ARtag</uri>
+        <pose>0.0 1 2.88 0 0 0</pose>
       </include>
       <joint name='ARtag_joint' type='fixed'>
-      <parent>ambulance::link</parent>
-      <child>ARtag::link</child>
-          <axis>
-           <xyz>0 0 1</xyz>
-         <limit>
-           <upper>0</upper>
-           <lower>0</lower>
-        </limit>
+        <parent>ambulance::link</parent>
+        <child>ARtag::link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <upper>0</upper>
+            <lower>0</lower>
+          </limit>
         </axis>
       </joint>
-
-</actor>
-
-<!-- define physics -->
+    </actor>
+    <!-- define physics -->
     <physics name='default_physics' default='0' type='ode'>
       <gravity>0 0 -9.8066</gravity>
       <ode>
@@ -152,15 +142,5 @@
         </clouds>
       </sky>
     </scene>
-
-
-
-
-
-
-
-
-
-
   </world>
 </sdf>

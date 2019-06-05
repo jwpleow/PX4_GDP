@@ -9,7 +9,7 @@ class GDPdrone
 {
 public:
     commands Commands = commands(20);
-    data Data = data(20);
+    data Data = {20.0};
     functions Functions;
     GDPdrone();
 };

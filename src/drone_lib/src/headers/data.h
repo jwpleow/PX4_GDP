@@ -56,7 +56,6 @@ public:
     data(){};
     data(float _rate);
     void start_rosbag();
-
 private:
     // Hidden methods
     ros::NodeHandle nh;
@@ -95,7 +94,6 @@ private:
     void velocity_cb(const geometry_msgs::TwistStamped::ConstPtr &msg);
     void lidar_cb(const sensor_msgs::LaserScan::ConstPtr &msg);
     std::string get_log_name();
-
     boost::circular_buffer<float> yaw_angle_buffer = boost::circular_buffer<float>(3);      ///< Circular buffer for yaw angle to target
 };
 
