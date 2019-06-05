@@ -52,9 +52,9 @@ int main(int argc, char **argv)
 
 
 
-    while (drone.Data.local_pose.pose.position.x < 60){
+    while (drone.Data.local_pose.pose.position.x < 10){
 
-        ROS_INFO("midpoint reading x= %f, z= %f", drone.Data.depth_cam_cloud->points[2400].x, drone.Data.depth_cam_cloud-> points[2400].z);
+        pointcloudwidth = drone.Data.depth_cam_pc2.width;
 
 
     if (detectObstacle(drone.Data.depth_cam_cloud, pointcloudwidth))
@@ -85,11 +85,8 @@ int main(int argc, char **argv)
         rate.sleep();
     }
 
-    ros::spinOnce();
-    rate.sleep();
 
-
-}
+    }
 
     // Land and disarm
     drone.Commands.request_LandingAuto();
