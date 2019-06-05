@@ -35,7 +35,7 @@ To launch processing nodes (such as target gps conversion and depth camera trans
 roslaunch follower nodes.launch 
 ```
 
-To be able to build files again in the catkin workspace
+To freshen up the catkin workspace so you can build things
 ```
 catkin clean
 catkin build
