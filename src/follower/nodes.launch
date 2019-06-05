@@ -5,9 +5,6 @@
 
   <node pkg="follower" type="gps_wrtdrone_conversion_node" name=""/>
 
-  <!-- Launch 3DCam Transformation node -->
-  <node pkg="three_d_cam" type="three_d_cam" name=""/>
-
   <!-- Launch Vishnu Cam Data Publisher -->
   <node pkg="vishnu_cam" type="vishnu_cam_node" name=""/>
 

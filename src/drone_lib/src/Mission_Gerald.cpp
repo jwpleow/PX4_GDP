@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     ROS_INFO("Track Ambulance");
     for (int count = 1; count < 200; count++)
     {
-        float yaw_angle = drone.Data.CalculateYawAngle();
+        float yaw_angle = drone.Data.CalculateYawAngleToTarget();
         std::cout << "Yaw angle is: " << yaw_angle << " deg" << std::endl;
         // drone.Commands.move_Position_Global(drone.Data.gps_raw.latitude, drone.Data.gps_raw.longitude, drone.Data.gps_raw.altitude + 5.0f, yaw_angle, "BODY");
         drone.Commands.move_Velocity_Local_Gerald(1.50, yaw_angle, "BODY");
