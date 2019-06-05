@@ -1,8 +1,0 @@
-prefix=/home/khorjiawei/catkin_ws/devel/.private/gazebo_listener
-
-Name: gazebo_listener
-Description: Description of gazebo_listener
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/khorjiawei/catkin_ws/devel/.private/gazebo_listener/lib 
-Requires: 

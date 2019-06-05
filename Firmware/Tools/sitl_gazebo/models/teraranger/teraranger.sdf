@@ -1,10 +1,7 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <sdf version="1.5">
-
   <model name="teraranger">
-
     <link name="link">
-
       <inertial>
         <mass>0.024</mass>
         <inertia>
@@ -13,7 +10,6 @@
           <izz>5.20833333333e-07</izz>
         </inertia>
       </inertial>
-
       <visual name="visual">
         <geometry>
           <box>
@@ -27,7 +23,6 @@
           </script>
         </material>
       </visual>
-
       <collision name="collision">
         <geometry>
           <box>
@@ -35,44 +30,40 @@
           </box>
         </geometry>
       </collision>
-
       <sensor type="gpu_ray" name="head_hokuyo_sensor">
-     <pose>0 0 0 0 0 0</pose>
-     <visualize>true</visualize>
-     <update_rate>40</update_rate>
-     <ray>
-       <scan>
-         <horizontal>
-           <samples>3</samples>
-           <resolution>1</resolution>
-           <min_angle>-0.0785398</min_angle>
-           <max_angle>0.0785398</max_angle>
-         </horizontal>
-       </scan>
-       <range>
-         <min>0.10</min>
-         <max>11.0</max>
-         <resolution>0.01</resolution>
-       </range>
-       <noise>
-         <type>gaussian</type>
-         <!-- Noise parameters based on published spec for Hokuyo laser
+        <pose>0 0 0 0 0.1 0</pose>
+        <visualize>true</visualize>
+        <update_rate>40</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>3</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.0785398</min_angle>
+              <max_angle>0.0785398</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.10</min>
+            <max>11.0</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise parameters based on published spec for Hokuyo laser
               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
               reading. -->
-         <mean>0.0</mean>
-         <stddev>0.01</stddev>
-       </noise>
-     </ray>
-     <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-       <topicName>/laser/scan</topicName>
-       <frameName>hokuyo_link</frameName>
-     </plugin>
-   </sensor>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+          <topicName>/laser/scan</topicName>
+          <frameName>hokuyo_link</frameName>
+        </plugin>
+      </sensor>
     </link>
   </model>
-
 </sdf>
-
-
 <!-- vim: set et ft=xml fenc=utf-8 ff=unix sts=0 sw=2 ts=2 : -->

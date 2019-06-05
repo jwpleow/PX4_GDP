@@ -11,4 +11,5 @@ drone_lib
 /home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/drone_lib/joel_node /home/khorjiawei/catkin_ws/devel/lib/drone_lib/joel_node
 /home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/drone_lib/drone_node /home/khorjiawei/catkin_ws/devel/lib/drone_lib/drone_node
 /home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/drone_lib/gerald_node /home/khorjiawei/catkin_ws/devel/lib/drone_lib/gerald_node
+/home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/drone_lib/lucian_node /home/khorjiawei/catkin_ws/devel/lib/drone_lib/lucian_node
 /home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/drone_lib/move_node /home/khorjiawei/catkin_ws/devel/lib/drone_lib/move_node

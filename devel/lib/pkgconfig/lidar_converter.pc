@@ -1,1 +1,0 @@
-/home/khorjiawei/catkin_ws/devel/.private/lidar_converter/lib/pkgconfig/lidar_converter.pc
