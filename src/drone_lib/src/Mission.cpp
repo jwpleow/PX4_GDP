@@ -13,11 +13,41 @@ int main(int argc, char **argv)
 
     // Set the rate. Default working frequency is 25 Hz
     float loop_rate = 25.0;
+    ros::NodeHandle nh;
     ros::Rate rate = ros::Rate(loop_rate);
 
     // Initialise and Arm
     drone.Commands.await_Connection();
     drone.Commands.set_Offboard();
+
+    // Subscribe to RC
+    ros::Publisher servo_pub = nh.advertise<mavros_msgs::ActuatorControl>("mavros/actuator_control", 10);
+
+    mavros_msgs::ActuatorControl act_msg;
+    ROS_INFO("init done");
+    act_msg.group_mix = 1;
+    act_msg.controls[5] = 0.7;
+
+    ROS_INFO("set value");
+
+    for (int i = 1; i < 400; i++)
+    {
+        servo_pub.publish(act_msg);
+        ROS_INFO("set one");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    for (int i = 1; i < 400; i++)
+    {
+        act_msg.controls[5] = 0.25;
+        servo_pub.publish(act_msg);
+        ROS_INFO("set two");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    /*
     drone.Commands.set_Armed();
 
     // MISSION STARTS HERE:
@@ -118,11 +148,11 @@ int main(int argc, char **argv)
         ros::spinOnce();
         rate.sleep();
     }
-    */
 
     // Land and disarm
     ROS_INFO("Landing Now");
     drone.Commands.request_LandingAuto();
+    */
 
     // Exit
     return 0;

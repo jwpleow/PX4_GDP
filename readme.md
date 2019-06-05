@@ -32,8 +32,15 @@ rosrun offb_velocity node
 
 To launch processing nodes (such as target gps conversion and depth camera transformation)
 ```
-roslaunch follower gazebonodes.launch 
+roslaunch follower nodes.launch 
 ```
+
+To be able to build files again in the catkin workspace
+```
+catkin clean
+catkin build
+```
+
 
 Sensors added to the iris drone [look at the bottom of iris.sdf to see the additions]:
 1. Downward facing LIDAR (sf10a) (publishing to /mavros/altitude -> bottom_clearance, type: mavros_msgs/Altitude, but a node converts it to type: sensor_msgs/Range and topic: /teraranger_one)

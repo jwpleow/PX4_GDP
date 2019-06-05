@@ -201,28 +201,6 @@ void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::
     target_pub_local.publish(pos);
 }
 
-void commands::move_Acceleration_Local_Trick(float _x, float _y, std::string _frame, float rate)
-{
-    mavros_msgs::PositionTarget pos;
-    commands::set_frame(&pos, _frame, true);
-
-    pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
-                    mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
-                    mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
-                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW |
-                    mavros_msgs::PositionTarget::IGNORE_YAW_RATE | mavros_msgs::PositionTarget::IGNORE_VZ;
-
-    // Update accumulated velocites. Acc = DV/Dt -> DV = Acc * Dt -> DV = Acc / Freq
-    velocity_x += _x / rate;
-    velocity_y += _y / rate;
-
-    // Send accumulated velocities
-    pos.velocity.x = velocity_x;
-    pos.velocity.y = velocity_y;
-
-    // Publish command
-    target_pub_local.publish(pos);
-}
 
 void commands::move_Position_Global(float _latitude, float _longitude, float _altitude, float _yaw_angle_deg, std::string _frame)
 {

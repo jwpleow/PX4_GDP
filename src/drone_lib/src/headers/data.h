@@ -48,7 +48,6 @@ public:
     sensor_msgs::PointCloud2 depth_cam_pc2; ///< transformed depth cam data 
     pcl::PointCloud<pcl::PointXYZ>::Ptr depth_cam_cloud{new pcl::PointCloud<pcl::PointXYZ>}; ///< transformed depth cam data in Point Cloud 1
 
-
     float CalculateYawAngle();                              ///< calculates yaw angle for drone to face the target
 
     ros::Rate GetRate() { return rate; }                    ///< added to get the rate
@@ -82,7 +81,6 @@ private:
     ///< Depth cam subscriber and callback
     ros::Subscriber depth_cam_sub; ///< Transformed Depth cam subscriber in PointCloud2
     void depth_cam_cb(const sensor_msgs::PointCloud2ConstPtr& pc2); ///< Callback for transformed depth cam data
-
 
     void vishnu_cam_data_cb(const geometry_msgs::Twist::ConstPtr &msg);                     ///< Callback for vishnu cam data
     void vishnu_cam_detection_cb(const std_msgs::Bool::ConstPtr &msg);                      ///< Callback for vishnu cam detection
