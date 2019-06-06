@@ -46,4 +46,3 @@ add_executable(image_converter src/image_converter.cpp)
 target_link_libraries(image_converter
   ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}
 )
-include_directories(${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})

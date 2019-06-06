@@ -215,9 +215,8 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
 // OUTPUTS: the relative velocity between the drone and the target, NED
 void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) 
 {
-    float velMax = 2.0;
+    float velMax = 3.0;
     float posMax = 3.0;
-    float distance;
     float scaling;
 
     distance = norm(relPosLanding);

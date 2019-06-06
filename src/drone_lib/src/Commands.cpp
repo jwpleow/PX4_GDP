@@ -3,6 +3,8 @@
 #include "headers/data.h"
 #include <cmath>
 
+const double pi = 3.14159265358979;
+
 //-----   METHODS -----//
 // Default constructor
 commands::commands(float _rate)
@@ -191,6 +193,7 @@ void commands::Initialise_Velocity_for_AccelCommands(float vx, float vy, float v
     velocity_x = vx;
     velocity_y = vy;
     velocity_z = vz;
+    yaw_buffer[0] = atan2(velocity_x, velocity_y);
 }
 
 void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate)
@@ -201,13 +204,19 @@ void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::
     pos.type_mask = mavros_msgs::PositionTarget::IGNORE_PX | mavros_msgs::PositionTarget::IGNORE_PY |
                     mavros_msgs::PositionTarget::IGNORE_PZ | mavros_msgs::PositionTarget::IGNORE_AFX |
                     mavros_msgs::PositionTarget::IGNORE_AFY | mavros_msgs::PositionTarget::IGNORE_AFZ |
-                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW |
-                    mavros_msgs::PositionTarget::IGNORE_YAW_RATE;
+                    mavros_msgs::PositionTarget::FORCE | mavros_msgs::PositionTarget::IGNORE_YAW;
 
     // Update accumulated velocites. Acc = DV/Dt -> DV = Acc * Dt -> DV = Acc / Freq
     velocity_x += _x / rate;
     velocity_y += _y / rate;
     velocity_z += _z / rate;
+
+ 
+    ///< use velocities to find the yaw rate required
+    yaw_buffer.push_back(atan2(velocity_x, velocity_y));
+
+    pos.yaw_rate = (yaw_buffer[1] - yaw_buffer[0]) * rate;
+
 
     // Send accumulated velocities
     pos.velocity.x = velocity_x;

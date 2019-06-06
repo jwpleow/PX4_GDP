@@ -23,6 +23,7 @@
         </geometry>
         <surface>
           <contact>
+            <collide_bitmask>0x01</collide_bitmask>
             <ode>
               <min_depth>0.001</min_depth>
               <max_vel>0</max_vel>

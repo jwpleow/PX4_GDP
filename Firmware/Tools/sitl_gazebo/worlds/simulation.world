@@ -43,50 +43,141 @@
         </visual>
       </link>
     </model>
-    <!-- Ambulance actor - oscillating, gps published to /fix 03/06/19-->
+    <!-- Sphere -->
+    <model name='sphere'>
+      <pose>-2 2 0 0 0 0</pose>
+      <link name='link'>
+        <pose>0 0 .5 0 0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <!-- Box pose = E N U R P Y-->
+    <model name='box'>
+      <pose>-2 12 0 0 0 0</pose>
+      <link name='link'>
+        <pose>0 0 2.75 0 0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 1 5.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>2 1 5.5</size>
+            </box>
+          </geometry>
+           <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <!-- Cylinder Space -->
+    <model name='cylinder'>
+      <pose>-2 6 0 0 0 0</pose>
+      <link name='link'>
+        <pose>0 0 1.5 0 0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.0</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+             <cylinder>
+              <radius>1.0</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+           <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+   <!-- Egg AR Tag = E N U R P Y-->
+    <include>
+      <name>Egg AR Tag</name>
+      <uri>model://ARtag</uri>
+      <pose>-2 -2 0.02   0 0 0</pose>
+    </include>
+
+
+    
+    <!-- Ambulance actor - moving in a straight line far away - full test, gps published to /fix 03/06/19-->
     <actor name="ambulance">
-      <link name="link">
+      <plugin name="actor_collisions_plugin" filename="libActorCollisionsPlugin.so">
         <collision name="collision">
           <geometry>
             <mesh>
-              <scale>0.0254 0.0254 0.0254</scale>
+              <scale>0.005 0.005 0.005</scale>
               <uri>model://ambulance/meshes/ambulance.obj</uri>
             </mesh>
           </geometry>
         </collision>
-        <visual name="visual">
+      </plugin>
+      <link name="link">
+        <collision name="collision">
           <geometry>
             <mesh>
-              <scale>0.0254 0.0254 0.0254</scale>
+              <scale>0.005 0.005 0.005</scale>
               <uri>model://ambulance/meshes/ambulance.obj</uri>
             </mesh>
+          </geometry>
+        </collision>
+          <visual name="visual">
+           <geometry>
+          <mesh>
+            <scale>0.005 0.005 0.005</scale>
+            <uri>model://ambulance/meshes/ambulance.obj</uri>
+          </mesh>
           </geometry>
         </visual>
       </link>
       <script>
-        <loop>true</loop>
+        <loop>false</loop>
         <delay_start>0.000000</delay_start>
         <auto_start>true</auto_start>
         <trajectory id="0" type="square">
           <waypoint>
             <time>0.0</time>
-            <pose>14.14 14.14 0 0 0 -3.14</pose>
+            <pose>-50 50 0 0 0 1.57</pose>
           </waypoint>
           <waypoint>
-            <time>80.0</time>
-            <pose>14.14 14.14 0 0 0 -3.14</pose>
-          </waypoint>
-          <waypoint>
-            <time>160.0</time>
-            <pose>14.14 14.14 0 0 0 -3.14</pose>
-          </waypoint>
-          <waypoint>
-            <time>240.0</time>
-            <pose>14.14 14.14 0 0 0 -3.14</pose>
-          </waypoint>
-          <waypoint>
-            <time>320.0</time>
-            <pose>14.14 14.14 0 0 0 -3.14</pose>
+            <time>200.0</time>
+            <pose>50 50 0 0 0 1.57</pose>
           </waypoint>
         </trajectory>
       </script>
@@ -99,7 +190,7 @@
       </plugin>
       <include>
         <uri>model://ARtag</uri>
-        <pose>0.0 1 2.88 0 0 0</pose>
+        <pose>0.0 0.3 0.57 0 0 0</pose>
       </include>
       <joint name='ARtag_joint' type='fixed'>
         <parent>ambulance::link</parent>
@@ -113,6 +204,8 @@
         </axis>
       </joint>
     </actor>
+
+
     <!-- define physics -->
     <physics name='default_physics' default='0' type='ode'>
       <gravity>0 0 -9.8066</gravity>

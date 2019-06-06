@@ -23,7 +23,9 @@ namespace gazebo
     public: void OnUpdate()
     {
       // Apply a small linear velocity to the model.
-      this->model->SetLinearVel(ignition::math::Vector3d(1, 0, 0));
+      this->model->SetLinearVel(ignition::math::Vector3d(0.6, 0, 0));
+      
+      this->model->SetLinearVel(ignition::math::Vector3d(0, 0, 0));
     }
 
     // Pointer to the model
