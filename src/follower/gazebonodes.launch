@@ -1,0 +1,13 @@
+<launch>
+
+  <!-- Launch GPS Target conversion nodes -->
+  <node pkg="follower" type="gps_conversion_node" name=""/>
+
+  <node pkg="follower" type="gps_wrtdrone_conversion_node" name=""/>
+
+  <!-- Launch Vishnu Cam Data Publisher -->
+  <node pkg="rgbcam_gazebo" type="vishnu_cam_node" name=""/>
+
+
+
+</launch>

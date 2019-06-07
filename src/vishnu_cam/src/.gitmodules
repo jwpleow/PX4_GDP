@@ -1,9 +1,0 @@
-[submodule "camera-calibration"]
-	path = camera-calibration
-	url = https://github.com/gdp-drone/camera-calibration.git
-[submodule "tracker-base"]
-	path = tracker-base
-	url = git@github.com:vishthemenon/tracker-base.git
-[submodule "tracker-ar"]
-	path = tracker-ar
-	url = git@github.com:vishthemenon/tracker-ar.git

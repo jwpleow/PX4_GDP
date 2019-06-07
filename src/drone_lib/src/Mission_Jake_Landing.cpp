@@ -30,79 +30,113 @@ int main(int argc, char **argv)
 
     ROS_INFO("Stabilising over target...");
 
-    
+
     float relVelLanding[3];
     float relPosLanding[3];
-    float descentVelocity = -0.15;
-    float descentDistance = 0.15;
+    float descentVelocity = -0.15f;
+    float closeDistance = 5.0f;
+    float descentDistance = 0.2f;
+    float camdistance = 5.0f;
     float LandAlt = 0.1;
     double altitude = drone.Data.altitude.bottom_clearance;
 
-    distance = 5.0f;
-    ///< while not detecting ARtag or at too high of an altitude
-    while(distance > descentDistance || LandAlt < altitude)  //while(!drone.Data.vishnu_cam_detection.data || LandAlt < altitude) 
-    { 
+    gpsdistance = 5.0f;
+    
+    ///< while not detecting ARtag OR at too high of an altitude OR too far according to camera
+    while(camdistance > descentDistance || LandAlt < altitude || !drone.Data.vishnu_cam_detection.data) 
+    {
 
         altitude = drone.Data.altitude.bottom_clearance;
         ROS_INFO("Altitude is: %f", altitude);
-      
-        ///< If vishnu ARtag not detected - use GPS to move towards target
-        if (distance > descentDistance){
-            
+
+        ///< If vishnu ARtag not detected and far - use GPS to move towards target
+        if (gpsdistance > descentDistance && !drone.Data.vishnu_cam_detection.data)
+        {
+
             // Update position using GPS
             relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< north offset
             relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< east offset
             relPosLanding[2] = 0.0;
 
-
-            
             velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
             // Do I want to yaw to face the front?
-            ROS_INFO("Moving towards target via PID to target position, distance: %f, x: %f, y: %f", distance, relPosLanding[0], relPosLanding[1]);
+            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
             drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], relVelLanding[2], 0.0, "LOCAL_OFFSET");
             ros::spinOnce();
             rate.sleep();
         }
-        else { ///< - close enough , use vishnu cam data to land
-            ROS_INFO("At descent distance - switching to vishnu's data");
-
-
-            ///< placeholder while vishnu cam is not here
-
-
-            relPosLanding[0] = drone.Data.target_position_relative.point.x;
-            relPosLanding[1] = drone.Data.target_position_relative.point.y;
-            relPosLanding[2] = 0.0;
-
-            velPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
-
-            // move velocity is (xyz) = (right forward up)
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "LOCAL_OFFSET");
-
-            ros::spinOnce();
-            rate.sleep();
-        
+        else if (camdistance > descentDistance && drone.Data.vishnu_cam_detection.data)   ///< - close enough and target seen, use vishnu cam data to centre over target
+        {
+            ROS_INFO("Switching to vishnu's data to centre");
 
 
 
+            ///< -------------placeholder while vishnu cam is not here --------->
 
-
-
-            // // Update position using Vishnu's cam - vishnu's cam gives body frame (xyz) = (forward right up),  
-            // relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
-            // relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
+            // relPosLanding[0] = drone.Data.target_position_relative.point.x;
+            // relPosLanding[1] = drone.Data.target_position_relative.point.y;
             // relPosLanding[2] = 0.0;
+
             // velPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
 
             // // move velocity is (xyz) = (right forward up)
-            // drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "BODY_OFFSET");
+            // drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "LOCAL_OFFSET");
 
             // ros::spinOnce();
             // rate.sleep();
-        }
-    } 
 
-     // Land and disarm
+            ///<--------------------- vishnu test------------------->
+
+            // // Update position using Vishnu's cam - vishnu's cam gives body frame (xyz) = (forward right up)?,
+
+            relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
+            relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
+            relPosLanding[2] = 0.0;
+            // velPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
+
+            // move velocity is (xyz) = (right forward up)
+            // drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "BODY_OFFSET");
+
+            camdistance = norm(relPosLanding);
+            ROS_INFO("Distance from target according to cam: %f", camdistance);
+            for(int count = 1; count < 21 ; count++)
+            {
+                drone.Commands.move_Position_Local(drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x, 0, 0, "BODY_OFFSET", count);
+                ros::spinOnce();
+                rate.sleep();
+            }
+
+        }
+        else if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data) ///< very close - start descending
+        {
+            relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
+            relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
+            relPosLanding[2] = 0.0;
+            camdistance = norm(relPosLanding);
+            ROS_INFO("Distance from target according to cam: %f", camdistance);
+            for(int count = 1; count < 21 ; count++)
+            {
+                drone.Commands.move_Position_Local(drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x, -0.5, 0, "BODY_OFFSET", count);
+                ros::spinOnce();
+                rate.sleep();
+            }
+
+        }
+        else { ///< else fallback to GPS
+            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< north offset
+            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< east offset
+            relPosLanding[2] = 0.0;
+
+            velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
+            // Do I want to yaw to face the front?
+            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
+            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], relVelLanding[2], 0.0, "LOCAL_OFFSET");
+            ros::spinOnce();
+            rate.sleep();
+        }
+    }
+
+    // Land and disarm
     ROS_INFO("Landing Now");
     drone.Commands.request_LandingAuto();
 

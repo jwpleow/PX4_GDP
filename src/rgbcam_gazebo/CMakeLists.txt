@@ -1,48 +1,38 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rgbcam_gazebo)
 
+## Compile as C++11, supported in ROS Kinetic and newer
+# add_compile_options(-std=c++11)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  cv_bridge
-  image_transport
+  geometry_msgs
+  mavros_msgs
   roscpp
-  sensor_msgs
   std_msgs
-  )
+    cv_bridge
+  image_transport
+)
+
 find_package(OpenCV 4 REQUIRED)
 
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES vishnu_cam
+#  CATKIN_DEPENDS geometry_msgs mavros_msgs roscpp std_msgs
+#  DEPENDS system_lib
+)
 
-###########
-## Build ##
-###########
-
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
-# include_directories(include)
-catkin_package()
 include_directories(
-  ${catkin_INCLUDE_DIRS}
+# include
+  ${catkin_INCLUDE_DIRS} 
   ${OpenCV_INCLUDE_DIRS}
 )
-## Declare a cpp library
-# add_library(ahb_ros_opencv_dynamic_reconfigure_example
-#   src/${PROJECT_NAME}/ahb_ros_opencv_dynamic_reconfigure_example.cpp
-# )
 
-## Declare a cpp executable
-add_executable(image_converter src/image_converter.cpp)
+set(CMAKE_CXX_STANDARD 14)
 
-## Add cmake target dependencies of the executable/library
-## as an example, message headers may need to be generated before nodes
-# add_dependencies(ahb_ros_opencv_dynamic_reconfigure_example_node ahb_ros_opencv_dynamic_reconfigure_example_generate_messages_cpp)
+add_executable(vishnu_cam_node src/main_gazebo.cpp src/tracker-arb/TrackerARB.cpp src/tracker-arb/TrackerARB.h src/tracker-base/Tracker.cpp src/tracker-base/Tracker.h src/camera-calibration/CVCalibration.cpp src/camera-calibration/CVCalibration.h)
+target_link_libraries(vishnu_cam_node ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
-# make sure configure headers are built before any node using them
-#add_dependencies(ahb_ros_opencv_dynamic_reconfigure_example ${PROJECT_NAME}_gencfg)
-
-
-## Specify libraries to link a library or executable target against
-target_link_libraries(image_converter
-  ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}
-)

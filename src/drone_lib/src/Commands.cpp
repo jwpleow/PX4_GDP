@@ -105,7 +105,7 @@ void commands::request_Takeoff(float _altitude, float _counter)
 
 //-----   MOVEMENT COMMANDS -----//
 
-///< BODY_OFFSET (x,y,z) = (forward, left, up)
+///< BODY_OFFSET (x,y,z) = (right, forward, up)
 void commands::move_Position_Local(float _x, float _y, float _z, float _yaw_angle_deg, std::string _frame, int _count)
 {
     mavros_msgs::PositionTarget pos;
@@ -193,7 +193,6 @@ void commands::Initialise_Velocity_for_AccelCommands(float vx, float vy, float v
     velocity_x = vx;
     velocity_y = vy;
     velocity_z = vz;
-    yaw_buffer[0] = atan2(velocity_x, velocity_y);
 }
 
 void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate)
@@ -210,13 +209,6 @@ void commands::move_Acceleration_Local_Trick(float _x, float _y, float _z, std::
     velocity_x += _x / rate;
     velocity_y += _y / rate;
     velocity_z += _z / rate;
-
- 
-    ///< use velocities to find the yaw rate required
-    yaw_buffer.push_back(atan2(velocity_x, velocity_y));
-
-    pos.yaw_rate = (yaw_buffer[1] - yaw_buffer[0]) * rate;
-
 
     // Send accumulated velocities
     pos.velocity.x = velocity_x;

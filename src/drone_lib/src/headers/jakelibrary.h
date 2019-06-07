@@ -16,7 +16,7 @@
     float relPosOld[3] = {0};
     float relPosHoriz[3] = {0};
     float accFix;
-    
+    float gpsdistance;
 
     // declare functions
     void droneInitVel(float relPos[3], float (&droneVel)[3]); 
@@ -215,11 +215,11 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
 // OUTPUTS: the relative velocity between the drone and the target, NED
 void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) 
 {
-    float velMax = 3.0;
+    float velMax = 2.0;
     float posMax = 3.0;
     float scaling;
 
-    distance = norm(relPosLanding);
+    gpsdistance = norm(relPosLanding);
 
     for (int i = 0; i < 3; ++i) {
         relVelLanding[i] = relPosLanding[i];
@@ -227,13 +227,13 @@ void velPosMap(float relPosLanding[3], float (&relVelLanding)[3])
 
     if (distance > posMax) {
         for (int i = 0; i < 3; ++i) {
-            relVelLanding[i] /= ( distance / velMax );
+            relVelLanding[i] /= ( gpsdistance / velMax );
         }
     }
     else {
         scaling = norm(relPosLanding) * velMax / posMax;
         for (int i = 0; i < 3; ++i) {
-            relVelLanding[i] /= ( distance / scaling );
+            relVelLanding[i] /= ( gpsdistance / scaling );
         }
     }
 } 

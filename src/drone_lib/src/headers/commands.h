@@ -16,7 +16,7 @@
 #include <std_msgs/Float64.h>
 #include <mavros_msgs/OverrideRCIn.h>
 #include <mavros_msgs/ActuatorControl.h>
-#include <boost/circular_buffer.hpp>
+// #include <boost/circular_buffer.hpp>
 
 class commands
 {
@@ -62,7 +62,7 @@ private:
     float com_z;
     float com_yaw;
     std::vector<float> corrected_vector;
-    boost::circular_buffer<float> yaw_buffer = boost::circular_buffer<float>(2);      ///< Circular buffer for yaw angle to target
+    // boost::circular_buffer<float> yaw_buffer = boost::circular_buffer<float>(2);      ///< Circular buffer for yaw angle to target
 
 
     //-----   PRIVATE DATA STORES -----//

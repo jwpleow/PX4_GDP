@@ -34,7 +34,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://ARtag/meshes/ARtagA3.dae</uri>
+            <uri>model://ARtag/meshes/ARtagA4.dae</uri>
           </mesh>
 	</geometry>
       </visual>

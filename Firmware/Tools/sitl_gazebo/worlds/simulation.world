@@ -136,7 +136,8 @@
 
 
     
-    <!-- Ambulance actor - moving in a straight line far away - full test, gps published to /fix 03/06/19-->
+ 
+<!-- Ambulance actor - nearby chilling - vishnu test, gps published to /fix 03/06/19-->
     <actor name="ambulance">
       <plugin name="actor_collisions_plugin" filename="libActorCollisionsPlugin.so">
         <collision name="collision">
@@ -167,17 +168,29 @@
         </visual>
       </link>
       <script>
-        <loop>false</loop>
+        <loop>true</loop>
         <delay_start>0.000000</delay_start>
         <auto_start>true</auto_start>
         <trajectory id="0" type="square">
           <waypoint>
             <time>0.0</time>
-            <pose>-50 50 0 0 0 1.57</pose>
+            <pose>18.14 40.14 0 0 0 -3.14</pose>
           </waypoint>
           <waypoint>
-            <time>200.0</time>
-            <pose>50 50 0 0 0 1.57</pose>
+            <time>80.0</time>
+            <pose>18.14 40.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>160.0</time>
+            <pose>18.14 40.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>240.0</time>
+            <pose>18.14 40.14 0 0 0 -3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>320.0</time>
+            <pose>18.14 40.14 0 0 0 -3.14</pose>
           </waypoint>
         </trajectory>
       </script>
@@ -204,7 +217,6 @@
         </axis>
       </joint>
     </actor>
-
 
     <!-- define physics -->
     <physics name='default_physics' default='0' type='ode'>

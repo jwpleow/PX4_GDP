@@ -39,7 +39,7 @@ data::data(float _rate)
     ///< Subscribe to target GPS data
     target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 10, &data::target_gps_cb, this);
 
-    ///< Subscribe to vishnu cam data                                                   ///< Get body coordinates of ARtag using e.g. drone.Data.vishnu_cam_data.linear.x
+    ///< Subscribe to vishnu cam data                                                   ///< Get body coordinates (RIGHT,DOWN,UP) of ARtag using e.g. drone.Data.vishnu_cam_data.linear.x
     vishnu_cam_data_sub = nh.subscribe<geometry_msgs::Twist>("/vishnu_cam_data", 10, &data::vishnu_cam_data_cb, this);
 
     ///< Subscribe to vishnu cam detection                                              ///< Check if vishnu cam detects ARtag using drone.Data.vishnu_cam_detection.data == 1

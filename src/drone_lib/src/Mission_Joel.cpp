@@ -64,7 +64,24 @@ int main(int argc, char **argv)
 
 
 
-ROS_INFO("local x = 1");
+
+ROS_INFO("body x = 1");
+for (int count = 1; count < 50; count++){
+drone.Commands.move_Position_Local(1.0f, 0.0f, 0.0f, 0.0f, "BODY_OFFSET", count);
+        ros::spinOnce();
+        rate.sleep();
+}
+
+
+ROS_INFO("body y = 1");
+for (int count = 1; count < 50; count++){
+drone.Commands.move_Position_Local(0.0f, 1.0f, 0.0f, 0.0f, "BODY_OFFSET", count);
+        ros::spinOnce();
+        rate.sleep();
+}
+
+
+ROS_INFO("local vx = 1");
 for (int count = 1; count < 50; count++){
 drone.Commands.move_Velocity_Local(1.0f, 0.0f, 0.0f, 0.0f, "LOCAL_OFFSET");
         ros::spinOnce();
@@ -72,7 +89,7 @@ drone.Commands.move_Velocity_Local(1.0f, 0.0f, 0.0f, 0.0f, "LOCAL_OFFSET");
 }
 
 
-ROS_INFO("local y = 1");
+ROS_INFO("local vy = 1");
 for (int count = 1; count < 50; count++){
 drone.Commands.move_Velocity_Local(0.0f, 1.0f, 0.0f, 0.0f, "LOCAL_OFFSET");
         ros::spinOnce();
@@ -80,7 +97,7 @@ drone.Commands.move_Velocity_Local(0.0f, 1.0f, 0.0f, 0.0f, "LOCAL_OFFSET");
     }
 
 
-ROS_INFO("body x = 1");
+ROS_INFO("body vx = 1");
 for (int count = 1; count < 50; count++){
 drone.Commands.move_Velocity_Local(1.0f, 0.0f, 0.0f, 0.0f, "BODY_OFFSET");
         ros::spinOnce();
@@ -88,7 +105,7 @@ drone.Commands.move_Velocity_Local(1.0f, 0.0f, 0.0f, 0.0f, "BODY_OFFSET");
 }
 
 
-ROS_INFO("body y = 1");
+ROS_INFO("body vy = 1");
 for (int count = 1; count < 50; count++){
 drone.Commands.move_Velocity_Local(0.0f, 1.0f, 0.0f, 0.0f, "BODY_OFFSET");
         ros::spinOnce();
