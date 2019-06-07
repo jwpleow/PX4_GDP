@@ -50,6 +50,7 @@ public:
 
     float CalculateYawAngleToTarget();              ///< calculates yaw angle for drone to face the target
 
+
     ros::Rate GetRate() { return rate; }                    ///< added to get the rate
 
     // Constructors

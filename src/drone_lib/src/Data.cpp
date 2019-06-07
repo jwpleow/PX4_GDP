@@ -31,19 +31,19 @@ data::data(float _rate)
     velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("/mavros/local_position/velocity", 10, &data::velocity_cb, this);
 
     ///< Subscribe to target xyz relative to drone                                      ///< NEU - e.g. drone.Data.target_position_relative.point.x
-    target_position_relative_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_wrtdrone_position", 10, &data::target_position_relative_cb, this);
+    target_position_relative_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_wrtdrone_position", 1, &data::target_position_relative_cb, this);
  
     ///< Subscribe to target position relative to drone origin                          ///< NEU - e.g. drone.Data.target_position.point.x
-    target_position_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_position", 10, &data::target_position_cb, this);
+    target_position_sub = nh.subscribe<geometry_msgs::PointStamped>("/gps_position", 1, &data::target_position_cb, this);
 
     ///< Subscribe to target GPS data
-    target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 10, &data::target_gps_cb, this);
+    target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 1, &data::target_gps_cb, this);
 
     ///< Subscribe to vishnu cam data                                                   ///< Get body coordinates (RIGHT,DOWN,UP) of ARtag using e.g. drone.Data.vishnu_cam_data.linear.x
-    vishnu_cam_data_sub = nh.subscribe<geometry_msgs::Twist>("/vishnu_cam_data", 10, &data::vishnu_cam_data_cb, this);
+    vishnu_cam_data_sub = nh.subscribe<geometry_msgs::Twist>("/vishnu_cam_data", 1, &data::vishnu_cam_data_cb, this);
 
     ///< Subscribe to vishnu cam detection                                              ///< Check if vishnu cam detects ARtag using drone.Data.vishnu_cam_detection.data == 1
-    vishnu_cam_detection_sub = nh.subscribe<std_msgs::Bool>("/vishnu_cam_detection", 10, &data::vishnu_cam_detection_cb, this);
+    vishnu_cam_detection_sub = nh.subscribe<std_msgs::Bool>("/vishnu_cam_detection", 1, &data::vishnu_cam_detection_cb, this);
 
     // ///< Subscribe to transformed depthcam data (and transform to PC1 in callback)      ///< drone.Data.depth_cam_cloud->points[2400].x for x distance to 2400th pixel
     // depth_cam_sub= nh.subscribe<sensor_msgs::PointCloud2>("/camera/depth/points_transformed", 10, &data::depth_cam_cb, this);

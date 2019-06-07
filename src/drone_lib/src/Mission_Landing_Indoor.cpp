@@ -4,7 +4,7 @@
 int main(int argc, char **argv)
 {
     // Initialise node
-    ros::init(argc, argv, "jake_landing_node");
+    ros::init(argc, argv, "landing_indoor_node");
 
     // Create drone object, this sets everything up
     GDPdrone drone;
@@ -49,25 +49,10 @@ int main(int argc, char **argv)
         altitude = drone.Data.altitude.bottom_clearance;
         ROS_INFO("Altitude is: %f", altitude);
 
-        ///< If vishnu ARtag not detected and far - use GPS to move towards target
-        if (gpsdistance > descentDistance && !drone.Data.vishnu_cam_detection.data)
+        
+       if (camdistance > descentDistance && drone.Data.vishnu_cam_detection.data)   ///< - close enough and target seen, use vishnu cam data to centre over target
         {
-
-            // Update position using GPS
-            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< north offset
-            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< east offset
-            relPosLanding[2] = 0.0;
-
-            velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
-            // Do I want to yaw to face the front?
-            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], relVelLanding[2], 0.0, "LOCAL_OFFSET");
-            ros::spinOnce();
-            rate.sleep();
-        }
-        else if (camdistance > descentDistance && drone.Data.vishnu_cam_detection.data)   ///< - close enough and target seen, use vishnu cam data to centre over target
-        {
-            ROS_INFO("Switching to vishnu's data to centre");
+            ROS_INFO("vishnu's data to centre");
 
             //pause for a sec so that drone has 0 pitch
              for(int count = 1; count < 11 ; count++)

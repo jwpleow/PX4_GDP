@@ -106,9 +106,9 @@ int main(int argc, char **argv)
     ros::Rate rate(10);
 
     // Publish to topic /vishnu_cam_data
-    vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 5);
+    vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 1);
     // Publish whether cam is detecting the ARtag
-    vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 5);
+    vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 1);
 
 
     ros::spin();

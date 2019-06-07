@@ -131,6 +131,7 @@ add_executable(takeoff_node src/Mission_Takeoff.cpp src/GDPdrone.cpp src/Command
 add_executable(move_node src/Mission_Move.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 add_executable(gerald_node src/Mission_Gerald.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 # add_executable(lucian_node src/Mission_Lucian.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/lucian/Dstar.cpp)
+add_executable(landing_indoor_node src/Mission_Landing_Indoor.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 
 add_executable(jake_gps_landing_node src/Mission_Jake_Landing_GPSbackup.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 
@@ -152,6 +153,10 @@ target_link_libraries(jake_node
 )
 
 target_link_libraries(jake_landing_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(landing_indoor_node
   ${catkin_LIBRARIES}
 )
 
