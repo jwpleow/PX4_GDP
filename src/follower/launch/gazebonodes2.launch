@@ -1,0 +1,10 @@
+<launch>
+  <!-- Target GPS Nodes -->
+  <node name="set_gps_reference" pkg="follower" type="set_gps_reference_node" />
+  <node name="gps_wrtdrone_conversion" pkg="follower" type="gps_wrtdrone_conversion_node" />
+  <node name="gps_kf_conversion" pkg="follower" type="gps_kf_conversion_node" />
+  <node name="kf" pkg="follower" type="kf_node" />
+  
+  <!-- Launch Vishnu Cam Data Publisher -->
+  <node pkg="rgbcam_gazebo" type="vishnu_cam_node" name=""/>
+</launch>

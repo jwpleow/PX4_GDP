@@ -164,34 +164,34 @@ bool offboardVelocityCtrlBody(Drone& aero)
 
 void stepUp(Drone& aero)
 {
- ROS_INFO("NED: Move North");
-  aero.setOffboardVelocityNED(0.0f, 2.0f, 0.0f, 90.0f, 200);
+ ROS_INFO("NED: Hold position");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 200);
 
     // Wait for a bit
-  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 90.0f, 40);
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 40);
 
-  ROS_INFO("NED: Move East");
-  aero.setOffboardVelocityNED(2.0f, 0.0f, 0.0f, 0.0f, 200);
+  ROS_INFO("NED: Yaw 90 deg");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 90.0f, 200);
 
 
   // Wait for a bit
-  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 40);
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 90.0f, 40);
 
 
-  ROS_INFO("NED: Move South");
-  aero.setOffboardVelocityNED(0.0f, -2.0f, 0.0f, 270.0f, 200);
+  ROS_INFO("NED: yaw 90");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 200);
+
+    // Wait for a bit
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 40);
+
+  ROS_INFO("NED: Yaw 90");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 200);
 
     // Wait for a bit
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 40);
 
-  ROS_INFO("NED: Move West");
-  aero.setOffboardVelocityNED(-2.0f, 0.0f, 0.0f, 180.0f, 200);
-
-    // Wait for a bit
-  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 40);
-
   // Wait for a bit
-  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 40);
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 40);
 
 
 

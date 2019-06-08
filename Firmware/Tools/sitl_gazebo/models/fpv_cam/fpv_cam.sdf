@@ -41,8 +41,8 @@
       <sensor name='camera' type='camera'>
         <camera name='__default__'>
           <image>
-            <width>1280</width>
-            <height>720</height>
+            <width>640</width>
+            <height>480</height>
           </image>
           <clip>
             <near>0.1</near>
@@ -50,13 +50,21 @@
           </clip>
           <lens>
             <intrinsics>
-              <fx>1057.69</fx>
-              <fy>1056.82</fy>
-              <cx>648.914</cx>
-              <cy>381.905</cy>
+              <fx>698.934</fx>
+              <fy>699.571</fy>
+              <cx>275.679</cx>
+              <cy>249.775</cy>
               <s>0.0</s>
             </intrinsics>
           </lens>
+<!--           <distortion>
+            <k1>-0.442373</k1>
+            <k2>0.347708</k2>
+            <k3>0.000532287</k3>
+            <p1>0.0078344</p1>
+            <p2>-0.263354</p2>
+            <center>0.5 0.5</center>
+          </distortion> -->
         </camera>
         <always_on>1</always_on>
         <update_rate>30</update_rate>
@@ -69,17 +77,17 @@
           <updateRate>30.0</updateRate>
           <cameraName>usb_cam</cameraName>
           <frameName>/robot_camera_link</frameName>
-          <CxPrime>648.914</CxPrime>
-          <Cx>648.914</Cx>
-          <Cy>381.905</Cy>
-          <focalLengthX>1057.69</focalLengthX>
-          <focalLengthY>1056.82</focalLengthY>
+          <CxPrime>275.679</CxPrime>
+          <Cx>275.679</Cx>
+          <Cy>249.775</Cy>
+          <focalLengthX>698.934</focalLengthX>
+          <focalLengthY>699.571</focalLengthY>
           <hackBaseline>0</hackBaseline>
-          <distortionK1>-0.427836</distortionK1>
-          <distortionK2>0.248092</distortionK2>
-          <distortionK3>-0.00034084</distortionK3>
-          <distortionT1>0.00117948</distortionT1>
-          <distortionT2>-0.0909796</distortionT2>
+          <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2>
         </plugin>
       </sensor>
       <self_collide>0</self_collide>

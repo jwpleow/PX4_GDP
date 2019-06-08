@@ -25,8 +25,8 @@ class TrackerARB : public Tracker {
   int markersY = 2;
   bool showRejected = false;
   Vec3d correction = {0,0,0};
-  int inputwidth = 1280;
-  int inputheight = 720;
+  int inputwidth = 640;
+  int inputheight = 480;
   const double pi = atan(1) * 4;
   double fovx, fovy;
   Ptr<aruco::Dictionary> markerDict = aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50);

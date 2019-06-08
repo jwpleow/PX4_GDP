@@ -16,17 +16,6 @@
 #include <boost/circular_buffer.hpp>
 #include <rosbag/bag.h>
 
-// ///< For Depthcam
-// #include <sensor_msgs/PointCloud2.h>
-// #include <sensor_msgs/PointCloud.h>
-// #include <sensor_msgs/point_cloud_conversion.h>
-// #include <pcl_conversions/pcl_conversions.h>
-// #include <pcl/point_types.h>
-// #include <pcl/PCLPointCloud2.h>
-// #include <pcl_ros/point_cloud.h>
-// #include <pcl/conversions.h>
-// #include <pcl_ros/transforms.h>
-
 
 class data
 {
@@ -39,14 +28,12 @@ public:
     sensor_msgs::Imu imu;
     geometry_msgs::PoseStamped local_pose;
     geometry_msgs::TwistStamped local_velocity;
-    geometry_msgs::PointStamped target_position;            ///< target position relative to drone origin
-    geometry_msgs::PointStamped target_position_relative;   ///< target position relative to drone
-    sensor_msgs::NavSatFix target_gps;                      ///< target gps
+    geometry_msgs::TwistStamped target_abs_velocity;        ///< target velocity (ENU)
+    geometry_msgs::PointStamped target_position_relative;   ///< target position relative to drone (ENU)
+    sensor_msgs::NavSatFix target_gps;                      ///< target gps (LLA)
     geometry_msgs::Twist vishnu_cam_data;                   ///< Vishnu's cam data that says the ARtag position in body frame
     std_msgs::Bool vishnu_cam_detection;                    ///< Vishnu's cam boolean which tells if the ARtag is detected
 
-    // sensor_msgs::PointCloud2 depth_cam_pc2; ///< transformed depth cam data 
-    // pcl::PointCloud<pcl::PointXYZ>::Ptr depth_cam_cloud{new pcl::PointCloud<pcl::PointXYZ>}; ///< transformed depth cam data in Point Cloud 1
 
     float CalculateYawAngleToTarget();              ///< calculates yaw angle for drone to face the target
 
@@ -72,21 +59,17 @@ private:
     ros::Subscriber velocity_sub;
     ros::Subscriber lidar_sub;
     ros::Subscriber target_position_relative_sub;       ///< target position relative to drone
-    ros::Subscriber target_position_sub;                ///< target position relative to drone origin
+    ros::Subscriber target_abs_velocity_sub;            ///< target velocity 
     ros::Subscriber target_gps_sub;                     ///< target gps
     ros::Subscriber vishnu_cam_data_sub;                ///< vishnu cam data
     ros::Subscriber vishnu_cam_detection_sub;           ///< vishnu cam detection boolean
 
 
-    // ///< Depth cam subscriber and callback
-    // ros::Subscriber depth_cam_sub; ///< Transformed Depth cam subscriber in PointCloud2
-    // void depth_cam_cb(const sensor_msgs::PointCloud2ConstPtr& pc2); ///< Callback for transformed depth cam data
-
     void vishnu_cam_data_cb(const geometry_msgs::Twist::ConstPtr &msg);                     ///< Callback for vishnu cam data
     void vishnu_cam_detection_cb(const std_msgs::Bool::ConstPtr &msg);                      ///< Callback for vishnu cam detection
     void target_gps_cb(const sensor_msgs::NavSatFix::ConstPtr& msg);                        ///< Callback for target gps
     void target_position_relative_cb(const geometry_msgs::PointStamped::ConstPtr& msg);     ///< Callback for target-drone relative xyz
-    void target_position_cb(const geometry_msgs::PointStamped::ConstPtr& msg);              ///< Callback for target xyz from drone origin
+    void target_abs_velocity_cb(const geometry_msgs::TwistStamped::ConstPtr& msg);          ///< Callback for target xyz from drone origin
     void altitude_cb(const mavros_msgs::Altitude::ConstPtr& msg);
     void heading_cb(const std_msgs::Float64::ConstPtr& msg); 
     void gps_cb(const sensor_msgs::NavSatFix::ConstPtr& msg);

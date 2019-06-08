@@ -23,9 +23,9 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     //Request takeoff at 5.77m altitude.
-    float takeoff_altitude = 5.77f;
+    float takeoff_altitude = 0.5f;
     float time_takeoff = 80;
-    ROS_INFO("Setting altitiude to 5.77 m.");
+    ROS_INFO("Setting altitiude to 0.5 m.");
     drone.Commands.request_Takeoff(takeoff_altitude, time_takeoff);
 
     ROS_INFO("Stabilising over target...");
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     gpsdistance = 5.0f;
 
     ///< while not detecting ARtag OR at too high of an altitude OR too far according to camera
-    while(camdistance > descentDistance || LandAlt < altitude || !drone.Data.vishnu_cam_detection.data) 
+    while(camdistance > descentDistance || LandAlt < altitude) 
     {
 
         altitude = drone.Data.altitude.bottom_clearance;
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
         
        if (camdistance > descentDistance && drone.Data.vishnu_cam_detection.data)   ///< - close enough and target seen, use vishnu cam data to centre over target
         {
-            ROS_INFO("vishnu's data to centre");
+            ROS_INFO("vishnu data to centre");
 
             //pause for a sec so that drone has 0 pitch
              for(int count = 1; count < 11 ; count++)
@@ -63,14 +63,14 @@ int main(int argc, char **argv)
             }
 
             ///<check if still seeing cam after righting
-            if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data){
+            if (drone.Data.vishnu_cam_detection.data){
 
             ///<--------------------- vishnu test------------------->
 
             // // Update position using Vishnu's cam - vishnu's cam gives body frame (xyz) = (right down up),
 
-            relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
-            relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
+            relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y; 
+            relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x; 
             relPosLanding[2] = 0.0;
             // velPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
 
@@ -97,12 +97,14 @@ int main(int argc, char **argv)
                 ros::spinOnce();
                 rate.sleep();
             }
-            if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data){
+            ///<check if still seeing cam after righting
+            if (camdistance < descentDistance){
 
             relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
             relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
             relPosLanding[2] = 0.0;
             camdistance = norm(relPosLanding);
+
             ROS_INFO("Very close, Start Descending. Distance from target according to cam: %f", camdistance);
              for(int count = 1; count < 31 ; count++)
             {
@@ -114,14 +116,8 @@ int main(int argc, char **argv)
 
         }
         else { ///< else fallback to GPS
-            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< north offset
-            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< east offset
-            relPosLanding[2] = 0.0;
-
-            velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
-            // Do I want to yaw to face the front?
-            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], relVelLanding[2], 0.0, "LOCAL_OFFSET");
+             ROS_INFO("No target detected, descending");
+            drone.Commands.move_Velocity_Local(0,0, -0.2, 0.0, "LOCAL_OFFSET");
             ros::spinOnce();
             rate.sleep();
         }

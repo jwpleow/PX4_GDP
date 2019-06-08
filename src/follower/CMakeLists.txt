@@ -118,10 +118,10 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../rosbridgecpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/rosbridgecpp
 )
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../rosbridgecpp rosbridgecpp)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/rosbridgecpp rosbridgecpp)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -201,6 +201,10 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../rosbridgecpp rosbridgecpp)
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+##############
+## Programs ##
+##############
+
 add_executable(follower_node src/follower_node.cpp)
 target_link_libraries(follower_node ${catkin_LIBRARIES})
 add_executable(cloud_follower_node src/cloud_follower_node.cpp)
@@ -226,7 +230,18 @@ target_link_libraries(gps_conversion_node  ${catkin_LIBRARIES})
 
 cs_add_executable(gps_wrtdrone_conversion_node src/gps_wrtdrone_conversion_node.cpp)
 target_link_libraries(gps_wrtdrone_conversion_node  ${catkin_LIBRARIES})
-	
+
+cs_add_executable(gps_kf_conversion_node src/gps_kf_conversion_node.cpp)
+target_link_libraries(gps_kf_conversion_node  ${catkin_LIBRARIES})
 
 cs_install()
 cs_export()
+
+#######################
+## Kalman Filter Lib ##
+#######################
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/sensorfusion)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/sensorfusion sensorfusion)
+add_executable(kf_node src/kf_node.cpp)
+target_link_libraries(kf_node ${catkin_LIBRARIES} sensorfusion)

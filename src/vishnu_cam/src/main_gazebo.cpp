@@ -5,19 +5,10 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "tracker-arb/TrackerARB.h"
-///< ROS headers
-#include <geometry_msgs/TwistStamped.h>
-#include <geometry_msgs/Vector3.h>
-#include <std_msgs/Bool.h>
-
 
 namespace cv
 
 static const std::string OPENCV_WINDOW = "Image window";
-
-    Vec3d tVec, rVec;
-    CVCalibration cvl("CalibParams.txt");
-    TrackerARB tracker(cvl, arucoSquareDimension);
 
 class ImageConverter {
   ros::NodeHandle nh_;
@@ -43,7 +34,7 @@ public:
   void imageCb(const sensor_msgs::ImageConstPtr &msg) {
     cv_bridge::CvImagePtr cv_ptr;
     try {
-      cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);a
+      cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
     }
     catch (cv_bridge::Exception &e) {
       ROS_ERROR("cv_bridge exception: %s", e.what());
@@ -56,47 +47,22 @@ public:
     
     // Get Pose Estimate
     const auto arucoSquareDimension = 3.70f;
-
-
-
+    Vec3d tVec, rVec;
+    CVCalibration cvl("CalibParams.txt");
+    TrackerARB tracker(cvl, arucoSquareDimension);
+    
+    tracker.getPose(cv_ptr->image, tVec, rVec);
+    
+    return 0;
     
     // Output modified video stream
-    image_pub_.publish(cv_ptr->toImageMsg());
-
-     if (tracker.getPose(cv_ptr->image, tVec, rVec)) {
-      
-      data_msg.linear.x = tVec[0];
-      data_msg.linear.y = tVec[1];
-      data_msg.linear.z = tVec[2];
-      data_msg.angular.x = tVec[0];
-      data_msg.angular.y = tVec[1];
-      data_msg.angular.z = tVec[2];
-      
-      bool_msg.data = 1;
-      vishnu_cam_detection_pub.publish(bool_msg);
-      vishnu_cam_data_pub.publish(data_msg);
-    }
-    else{
-      bool_msg.data = 0;
-      vishnu_cam_detection_pub.publish(bool_msg);
-    }
-
-
+    image_pub_.publish(cv_ptr-> ());
   }
 };
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "vishnu_cam_node");
+  ros::init(argc, argv, "image_converter");
   ImageConverter ic;
-  ros::NodeHandle n;
-  ros::Rate rate(10);
-  
-  // Publish to topic /vishnu_cam_data
-  ros::Publisher vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 10);
-  // Publish whether cam is detecting the ARtag
-  ros::Publisher vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 10);
-  
-
   ros::spin();
   return 0;
 }

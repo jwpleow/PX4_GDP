@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/main_gazebo.dir/main.2.cpp.o CMakeFiles/main_gazebo.dir/tracker-arb/TrackerARB.cpp.o CMakeFiles/main_gazebo.dir/tracker-base/Tracker.cpp.o CMakeFiles/main_gazebo.dir/camera-calibration/CVCalibration.cpp.o  -o main_gazebo 

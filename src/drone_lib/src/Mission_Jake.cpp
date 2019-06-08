@@ -71,7 +71,6 @@ int main(int argc, char **argv)
 
         velFromGPS(relPos, relPosOld, loop_rate, relVel);
 
-        ROS_INFO("Z dir [%f]", drone.Data.target_position.point.z);
 
         ros::spinOnce();
         rate.sleep();

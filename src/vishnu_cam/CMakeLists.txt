@@ -31,6 +31,6 @@ include_directories(
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(vishnu_cam_node src/main_ros.cpp src/tracker-ar/TrackerAR.cpp src/tracker-ar/TrackerAR.h src/tracker-base/Tracker.cpp src/tracker-base/Tracker.h src/camera-calibration/CVCalibration.cpp src/camera-calibration/CVCalibration.h)
+add_executable(vishnu_cam_node src/main_ros.cpp src/tracker-arb/TrackerARB.cpp src/tracker-base/Tracker.cpp src/camera-calibration/CVCalibration.cpp)
 target_link_libraries(vishnu_cam_node ${catkin_LIBRARIES} ${OpenCV_LIBS})
 

@@ -2,10 +2,13 @@ follower
 /home/khorjiawei/catkin_ws/devel/.private/follower/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
 /home/khorjiawei/catkin_ws/devel/.private/follower/share/follower/cmake/followerConfig.cmake /home/khorjiawei/catkin_ws/devel/share/follower/cmake/followerConfig.cmake
 /home/khorjiawei/catkin_ws/devel/.private/follower/share/follower/cmake/followerConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/follower/cmake/followerConfig-version.cmake
+/home/khorjiawei/catkin_ws/devel/.private/follower/lib/libsensorfusion.so /home/khorjiawei/catkin_ws/devel/lib/libsensorfusion.so
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/set_gps_reference_node /home/khorjiawei/catkin_ws/devel/lib/follower/set_gps_reference_node
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/gps_wrtdrone_conversion_node /home/khorjiawei/catkin_ws/devel/lib/follower/gps_wrtdrone_conversion_node
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/cloud_follower_node /home/khorjiawei/catkin_ws/devel/lib/follower/cloud_follower_node
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/gps_conversion_node /home/khorjiawei/catkin_ws/devel/lib/follower/gps_conversion_node
+/home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/gps_kf_conversion_node /home/khorjiawei/catkin_ws/devel/lib/follower/gps_kf_conversion_node
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/follower_node /home/khorjiawei/catkin_ws/devel/lib/follower/follower_node
+/home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/kf_node /home/khorjiawei/catkin_ws/devel/lib/follower/kf_node
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/follower/cloud_echoer_node /home/khorjiawei/catkin_ws/devel/lib/follower/cloud_echoer_node
 /home/khorjiawei/catkin_ws/devel/.private/follower/lib/pkgconfig/follower.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/follower.pc

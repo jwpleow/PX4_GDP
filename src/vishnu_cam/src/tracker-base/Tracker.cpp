@@ -52,7 +52,7 @@ void Tracker::loopedTracking(VideoCapture vid) {
   int frameno = 0;
   
   cout << "FrameNo\t\tTimestamp\t\t\t\t\tRunningTime\t\tFPS\t\tDist1\t\tDist2\t\tDist3\n";
-  namedWindow("Camera Feed", WINDOW_AUTOSIZE);
+  // namedWindow("Camera Feed", WINDOW_AUTOSIZE);
   while (true) {
     if (!vid.read(frame)) {
       cerr << "Unable to read next frame. Ending tracking.\n";
@@ -75,13 +75,15 @@ void Tracker::loopedTracking(VideoCapture vid) {
            << translationVec[2] << "\t\t"
            << endl;
     }
-    imshow("Camera Feed", frame);
+    // imshow("Camera Feed", frame);
     if (waitKey(60) >= 0) break;
   }
 }
 
 bool Tracker::startStreamingTrack(int port) {
   VideoCapture vid(port);
+//  vid.set(CAP_PROP_FRAME_WIDTH,640);
+//  vid.set(CAP_PROP_FRAME_HEIGHT,480);
   if (!vid.isOpened()) {
     cerr << "Unable to read video stream. Is the camera mount path correct?\n";
     return false;

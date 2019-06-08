@@ -1,13 +1,12 @@
 #include <opencv2/core.hpp>
 
-#include "tracker-ar/TrackerAR.h"
+#include "tracker-arb/TrackerARB.h"
 
 ///< ROS headers
 #include "ros/ros.h"
 #include <geometry_msgs/TwistStamped.h>
 #include <geometry_msgs/Vector3.h>
 #include <std_msgs/Bool.h>
-
 
 std_msgs::Bool bool_msg;
 geometry_msgs::Twist data_msg;
@@ -23,14 +22,14 @@ int main(int argc, char **argv) {
   ros::Rate rate(10);
   
   // Publish to topic /vishnu_cam_data
-  ros::Publisher vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 10);
+  ros::Publisher vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 1);
   // Publish whether cam is detecting the ARtag
-  ros::Publisher vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 10);
+  ros::Publisher vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 1);
   
   
   const auto arucoSquareDimension = 0.0370f;
   CVCalibration cvl("CalibParams.txt");
-  TrackerAR tracker(cvl, arucoSquareDimension);
+  TrackerARB tracker(cvl, arucoSquareDimension);
   
   int port = 0;
   if (argc>1) port = stoi(argv[1]);
@@ -45,7 +44,7 @@ int main(int argc, char **argv) {
       cerr << "Unable to read video frame\n";
     }
     if (tracker.getPose(frame, tVec, rVec)) {
-      
+      ROS_INFO("tvec x: %f y: %f", tVec[0], tVec[1]);
       data_msg.linear.x = tVec[0];
       data_msg.linear.y = tVec[1];
       data_msg.linear.z = tVec[2];
@@ -66,7 +65,6 @@ int main(int argc, char **argv) {
     }
   }
   
-  tracker.startStreamingTrack(port);
   
   return 0;
 }

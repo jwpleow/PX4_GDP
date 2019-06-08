@@ -81,7 +81,10 @@ int TrackerARB::getPose(Mat &frame, Vec3d &tVec, Vec3d &rVec) {
    
     if (detectedBoard > 0) {
 //      aruco::drawAxis(frame, cameraMatrix, distCoeffs, rVec, tVec, 5);
+      Vec3d tVec0 = {0, 0, 0};
+      Vec3d rVec0 = {0, 0, 0};
       drawFrameAxes(frame, cameraMatrix, distCoeffs, rVec, tVec, 10);
+      drawFrameAxes(frame, cameraMatrix, distCoeffs, rVec0, tVec0, 5);
     }
     if (showRejected && !rejectedCorners.empty()) {
         aruco::drawDetectedMarkers(frame, rejectedCorners, noArray(), Scalar(100, 0, 255));

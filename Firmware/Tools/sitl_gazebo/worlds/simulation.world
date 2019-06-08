@@ -131,13 +131,11 @@
     <include>
       <name>Egg AR Tag</name>
       <uri>model://ARtag</uri>
-      <pose>-2 -2 0.02   0 0 0</pose>
+      <pose>0.4 0.4 0.01   0 0 0</pose>
     </include>
 
-
-    
  
-<!-- Ambulance actor - nearby chilling - vishnu test, gps published to /fix 03/06/19-->
+<!-- Ambulance actor - nearby chilling - vishnu test, gps published to /fix 06/06/19-->
     <actor name="ambulance">
       <plugin name="actor_collisions_plugin" filename="libActorCollisionsPlugin.so">
         <collision name="collision">
@@ -150,6 +148,23 @@
         </collision>
       </plugin>
       <link name="link">
+        <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <robotNamespace></robotNamespace>
+        <topicName>imu/data</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
         <collision name="collision">
           <geometry>
             <mesh>
@@ -168,29 +183,17 @@
         </visual>
       </link>
       <script>
-        <loop>true</loop>
+        <loop>false</loop>
         <delay_start>0.000000</delay_start>
         <auto_start>true</auto_start>
         <trajectory id="0" type="square">
           <waypoint>
             <time>0.0</time>
-            <pose>18.14 40.14 0 0 0 -3.14</pose>
+            <pose>-18.14 -40.14 0 0 0 -3.14</pose>
           </waypoint>
           <waypoint>
             <time>80.0</time>
-            <pose>18.14 40.14 0 0 0 -3.14</pose>
-          </waypoint>
-          <waypoint>
-            <time>160.0</time>
-            <pose>18.14 40.14 0 0 0 -3.14</pose>
-          </waypoint>
-          <waypoint>
-            <time>240.0</time>
-            <pose>18.14 40.14 0 0 0 -3.14</pose>
-          </waypoint>
-          <waypoint>
-            <time>320.0</time>
-            <pose>18.14 40.14 0 0 0 -3.14</pose>
+            <pose>-18.14 -40.14 0 0 0 -3.14</pose>
           </waypoint>
         </trajectory>
       </script>
@@ -199,7 +202,9 @@
         <bodyName>link</bodyName>
         <topicname>/android/fix</topicname>
         <velocitytopicname>/fix_velocity</velocitytopicname>
-        <updateRate>1.0</updateRate>
+        <updateRate>10.0</updateRate>
+        <drift>2 2 0</drift>
+        <gaussiannoise>1.5 1.5 0</gaussiannoise>
       </plugin>
       <include>
         <uri>model://ARtag</uri>
@@ -217,6 +222,7 @@
         </axis>
       </joint>
     </actor>
+    
 
     <!-- define physics -->
     <physics name='default_physics' default='0' type='ode'>

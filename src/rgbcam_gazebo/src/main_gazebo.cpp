@@ -14,7 +14,7 @@
 
 
     // Get Pose Estimate
-        const auto arucoSquareDimension = 0.037f;
+        const auto arucoSquareDimension = 3.7f;
 
 cv::Vec3d tVec, rVec;
 CVCalibration cvl("CalibParams.txt");
@@ -31,17 +31,15 @@ class ImageConverter
     ros::NodeHandle nh_;
     image_transport::ImageTransport it_;
     image_transport::Subscriber image_sub_;
-    image_transport::Publisher image_pub_;
 
 public:
     ImageConverter()
         : it_(nh_)
     {   
 
-        // Subscribe to input video feed and publish output video feed
+        // Subscribe to input video feed
         image_sub_ = it_.subscribe("/iris/usb_cam/image_raw", 1,
                                    &ImageConverter::imageCb, this);
-        image_pub_ = it_.advertise("/image_converter/output_video", 1);
 
         cv::namedWindow("OpRGCB CAM View");
     }
@@ -50,6 +48,8 @@ public:
     {
         cv::destroyWindow("OpRGCB CAM View");
     }
+
+
 
     void imageCb(const sensor_msgs::ImageConstPtr &msg)
     {
@@ -64,17 +64,6 @@ public:
             return;
         }
 
-        // Update GUI Window
-        cv::imshow("OpRGCB CAM View", cv_ptr->image);
-        cv::waitKey(3);
-
-    
-
-
-
-
-        // Output modified video stream
-        image_pub_.publish(cv_ptr->toImageMsg());
 
         if (tracker.getPose(cv_ptr->image, tVec, rVec))
         {
@@ -82,9 +71,9 @@ public:
             data_msg.linear.x = tVec[0] / 100;
             data_msg.linear.y = tVec[1] / 100;
             data_msg.linear.z = tVec[2] / 100;
-            data_msg.angular.x = tVec[0];
-            data_msg.angular.y = tVec[1];
-            data_msg.angular.z = tVec[2];
+            data_msg.angular.x = tVec[3];
+            data_msg.angular.y = tVec[4];
+            data_msg.angular.z = tVec[5];
 
             bool_msg.data = 1;
             vishnu_cam_detection_pub.publish(bool_msg);
@@ -95,17 +84,21 @@ public:
             bool_msg.data = 0;
             vishnu_cam_detection_pub.publish(bool_msg);
         }
+
+        // Update GUI Window
+        cv::imshow("OpRGCB CAM View", cv_ptr->image);
+        cv::waitKey(3);
     }
 };
 
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "vishnu_cam_node");
-    ImageConverter ic;
     ros::NodeHandle n;
-    ros::Rate rate(10);
+    ImageConverter ic;
 
-    // Publish to topic /vishnu_cam_data
+
+    // Publish to bodyframe pos of tag to topic /vishnu_cam_data
     vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 1);
     // Publish whether cam is detecting the ARtag
     vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 1);

@@ -33,7 +33,6 @@
 
     // Landing
     void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]); 
-    void velPosMapCam(float relPosLanding[3], float (&relVelLanding)[3]);
     float altitudeFix(float realAltitude, float altitude);
 
 
@@ -240,30 +239,6 @@ void velPosMap(float relPosLanding[3], float (&relVelLanding)[3])
     }
 } 
 
-void velPosMapCam(float relPosLanding[3], float (&relVelLanding)[3]) 
-{
-    float velMax = 1.0;
-    float posMax = 3.0;
-    float scaling;
-
-    camdistance = norm(relPosLanding);
-
-    for (int i = 0; i < 3; ++i) {
-        relVelLanding[i] = relPosLanding[i];
-    }
-
-    if (distance > posMax) {
-        for (int i = 0; i < 3; ++i) {
-            relVelLanding[i] /= ( gpsdistance / velMax );
-        }
-    }
-    else {
-        scaling = norm(relPosLanding) * velMax / posMax;
-        for (int i = 0; i < 3; ++i) {
-            relVelLanding[i] /= ( gpsdistance / scaling );
-        }
-    }
-} 
 
 float altitudeFix(float realAltitude, float setAltitude) {
     float k = 0.1;
