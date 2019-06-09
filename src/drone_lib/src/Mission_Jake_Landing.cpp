@@ -54,8 +54,8 @@ int main(int argc, char **argv)
         {
 
             // Update position using GPS
-            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< north offset
-            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< east offset
+            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< east offset
+            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< north offset
             relPosLanding[2] = 0.0;
 
             velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???

@@ -16,6 +16,8 @@ public:
   virtual int getPose(Mat& frame, Vec3d& tVec, Vec3d& rVec) = 0;
   bool startStreamingTrack(int port = 0);
   bool startVideoTrack(const string& fname);
+  
+  void correctedPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) const;
 };
 
 #endif //ARUCO_TRACKING_TRACKER_H

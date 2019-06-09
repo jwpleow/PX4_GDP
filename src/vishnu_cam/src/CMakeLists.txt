@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.13)
 project(tracker_mono)
 
 find_package(OpenCV 4 REQUIRED)
@@ -6,17 +6,22 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(aruco_tracker main.cpp tracker-ar/TrackerAR.cpp tracker-ar/TrackerAR.h tracker-base/Tracker.cpp tracker-base/Tracker.h camera-calibration/CVCalibration.cpp camera-calibration/CVCalibration.h)
-target_link_libraries(aruco_tracker ${OpenCV_LIBS})
+list(APPEND SRC_BASE tracker-base/Tracker.cpp camera-calibration/CVCalibration.cpp)
+list(APPEND SRC_V1 tracker-ar/TrackerAR.cpp ${SRC_BASE})
+list(APPEND SRC_V1_1 tracker-arb/TrackerARB.cpp ${SRC_BASE})
 
-add_executable(aruco_board_tracker main.2.cpp tracker-arb/TrackerARB.cpp tracker-arb/TrackerARB.h tracker-base/Tracker.cpp tracker-base/Tracker.h camera-calibration/CVCalibration.cpp camera-calibration/CVCalibration.h)
-target_link_libraries(aruco_board_tracker ${OpenCV_LIBS})
+# Tracker - v1.0
 
-add_executable(main_ros main_ros.cpp tracker-arb/TrackerARB.cpp tracker-base/Tracker.cpp camera-calibration/CVCalibration.cpp)
-target_link_libraries(main_ros ${OpenCV_LIBS})
+add_executable(tracker_v1 main.cpp ${SRC_V1})
+target_link_libraries(tracker_v1 ${OpenCV_LIBS})
 
-add_executable(main_gazebo main.2.cpp tracker-arb/TrackerARB.cpp tracker-arb/TrackerARB.h tracker-base/Tracker.cpp tracker-base/Tracker.h camera-calibration/CVCalibration.cpp camera-calibration/CVCalibration.h)
-target_link_libraries(aruco_board_tracker ${OpenCV_LIBS})
+# Tracker - v1.1
 
-add_executable(create_board tracker-arb/create_board.cpp)
-target_link_libraries(create_board  ${OpenCV_LIBS})
+add_executable(tracker_v2 main.2.cpp ${SRC_V1_1})
+target_link_libraries(tracker_v2 ${OpenCV_LIBS})
+
+add_executable(tracker_ros main.ros.cpp ${SRC_V1_1})
+target_link_libraries(tracker_ros ${OpenCV_LIBS})
+
+add_executable(tracker_gazebo main.gazebo.cpp ${SRC_V1_1})
+target_link_libraries(tracker_gazebo ${OpenCV_LIBS})

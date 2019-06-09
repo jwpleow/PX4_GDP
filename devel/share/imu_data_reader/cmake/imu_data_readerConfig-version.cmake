@@ -1,1 +1,0 @@
-/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/share/imu_data_reader/cmake/imu_data_readerConfig-version.cmake

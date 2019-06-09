@@ -1,6 +1,0 @@
-imu_data
-/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/share/imu_data_reader/cmake/imu_data_readerConfig.cmake /home/khorjiawei/catkin_ws/devel/share/imu_data_reader/cmake/imu_data_readerConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/share/imu_data_reader/cmake/imu_data_readerConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/imu_data_reader/cmake/imu_data_readerConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/lib/pkgconfig/imu_data_reader.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/imu_data_reader.pc
-/home/khorjiawei/catkin_ws/devel/.private/imu_data_reader/lib/imu_data_reader/imu_data_reader /home/khorjiawei/catkin_ws/devel/lib/imu_data_reader/imu_data_reader

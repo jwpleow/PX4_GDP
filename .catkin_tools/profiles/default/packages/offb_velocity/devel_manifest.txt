@@ -1,6 +1,0 @@
-offb_velocity
-/home/khorjiawei/catkin_ws/devel/.private/offb_velocity/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/offb_velocity/share/offb_velocity/cmake/offb_velocityConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/offb_velocity/cmake/offb_velocityConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/offb_velocity/share/offb_velocity/cmake/offb_velocityConfig.cmake /home/khorjiawei/catkin_ws/devel/share/offb_velocity/cmake/offb_velocityConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/offb_velocity/lib/offb_velocity/node /home/khorjiawei/catkin_ws/devel/lib/offb_velocity/node
-/home/khorjiawei/catkin_ws/devel/.private/offb_velocity/lib/pkgconfig/offb_velocity.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/offb_velocity.pc

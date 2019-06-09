@@ -1,8 +1,0 @@
-prefix=/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower
-
-Name: offb_gpsfollower
-Description: Description of offb_gpsfollower
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/lib 
-Requires: geometry_msgs roscpp std_msgs mavros_msgs sensor_msgs

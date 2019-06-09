@@ -1,6 +1,6 @@
 # How to launch gazebo with a px4 iris model (quadcopter) publishing to mavros
 
-Make sure gazebo9 and ros-melodic are installed!
+Make sure gazebo9 and ros-melodic are installed - [Here - 'Gazebo with ROS Melodic'](https://dev.px4.io/en/setup/dev_env_linux.html)!
 
 Clone this into the root directory
 ```
@@ -32,10 +32,10 @@ rosrun offb_velocity node
 
 To launch processing nodes (such as target gps conversion and depth camera transformation)
 ```
-roslaunch follower nodes.launch 
+roslaunch follower gazebonodes2.launch 
 ```
 
-To freshen up the catkin workspace so you can build things
+To freshen up the catkin workspace so you can build and source the workspace correctly
 ```
 catkin clean
 catkin build
@@ -57,6 +57,5 @@ rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
 ```
 
 
-XML macros/xacros can be added in catkin_ws/src/Firmware/Tools/sitl_gazebo/models/rotors_description/urdf/iris_base.xacro
 
 

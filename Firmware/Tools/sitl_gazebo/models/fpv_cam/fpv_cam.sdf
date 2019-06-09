@@ -48,7 +48,7 @@
             <near>0.1</near>
             <far>100</far>
           </clip>
-          <lens>
+  <!--         <lens>
             <intrinsics>
               <fx>698.934</fx>
               <fy>699.571</fy>
@@ -56,7 +56,7 @@
               <cy>249.775</cy>
               <s>0.0</s>
             </intrinsics>
-          </lens>
+          </lens> -->
 <!--           <distortion>
             <k1>-0.442373</k1>
             <k2>0.347708</k2>
@@ -80,8 +80,7 @@
           <CxPrime>275.679</CxPrime>
           <Cx>275.679</Cx>
           <Cy>249.775</Cy>
-          <focalLengthX>698.934</focalLengthX>
-          <focalLengthY>699.571</focalLengthY>
+          <focalLength>554.382713</focalLength>
           <hackBaseline>0</hackBaseline>
           <distortionK1>0</distortionK1>
           <distortionK2>0</distortionK2>

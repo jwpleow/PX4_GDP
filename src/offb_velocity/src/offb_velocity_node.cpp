@@ -171,6 +171,35 @@ void stepUp(Drone& aero)
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 40);
 
   ROS_INFO("NED: Yaw 90 deg");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 90.0f, 100);
+
+
+  // Wait for a bit
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 90.0f, 40);
+
+
+  ROS_INFO("NED: yaw 90");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 100);
+
+    // Wait for a bit
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 180.0f, 40);
+
+  ROS_INFO("NED: Yaw 90");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 100);
+
+    // Wait for a bit
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 40);
+
+  // Wait for a bit
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 40);
+
+   ROS_INFO("NED: move down");
+  aero.setOffboardVelocityNED(0.0f, 0.0f, -1.0f, 0.0f, 10);
+
+    // Wait for a bit
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 40);
+
+  ROS_INFO("NED: Yaw 90 deg");
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 90.0f, 200);
 
 
@@ -192,6 +221,7 @@ void stepUp(Drone& aero)
 
   // Wait for a bit
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 270.0f, 40);
+
 
 
 

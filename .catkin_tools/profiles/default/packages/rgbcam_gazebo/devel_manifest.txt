@@ -1,8 +1,0 @@
-rgbcam_gazebo
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/share/rgbcam_gazebo/cmake/rgbcam_gazeboConfig.cmake /home/khorjiawei/catkin_ws/devel/share/rgbcam_gazebo/cmake/rgbcam_gazeboConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/share/rgbcam_gazebo/cmake/rgbcam_gazeboConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/rgbcam_gazebo/cmake/rgbcam_gazeboConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/lib/librgbcam_gazebo.so /home/khorjiawei/catkin_ws/devel/lib/librgbcam_gazebo.so
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/lib/rgbcam_gazebo/vishnu_cam_node /home/khorjiawei/catkin_ws/devel/lib/rgbcam_gazebo/vishnu_cam_node
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/lib/rgbcam_gazebo/image_converter /home/khorjiawei/catkin_ws/devel/lib/rgbcam_gazebo/image_converter
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/lib/pkgconfig/rgbcam_gazebo.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/rgbcam_gazebo.pc

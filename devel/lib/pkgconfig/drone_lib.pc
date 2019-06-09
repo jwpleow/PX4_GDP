@@ -1,1 +1,0 @@
-/home/khorjiawei/catkin_ws/devel/.private/drone_lib/lib/pkgconfig/drone_lib.pc

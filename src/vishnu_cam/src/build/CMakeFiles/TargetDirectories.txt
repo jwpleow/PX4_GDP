@@ -1,7 +1,0 @@
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/rebuild_cache.dir
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/aruco_board_tracker.dir
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/aruco_tracker.dir
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/main_ros.dir
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/main_gazebo.dir
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/create_board.dir
-/home/khorjiawei/catkin_ws/src/vishnu_cam/src/build/CMakeFiles/edit_cache.dir

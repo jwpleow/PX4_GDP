@@ -1,6 +1,0 @@
-offb_gpsfollower
-/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
-/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/share/offb_gpsfollower/cmake/offb_gpsfollowerConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/offb_gpsfollower/cmake/offb_gpsfollowerConfig-version.cmake
-/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/share/offb_gpsfollower/cmake/offb_gpsfollowerConfig.cmake /home/khorjiawei/catkin_ws/devel/share/offb_gpsfollower/cmake/offb_gpsfollowerConfig.cmake
-/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/lib/pkgconfig/offb_gpsfollower.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/offb_gpsfollower.pc
-/home/khorjiawei/catkin_ws/devel/.private/offb_gpsfollower/lib/offb_gpsfollower/offb_gpsfollower_node /home/khorjiawei/catkin_ws/devel/lib/offb_gpsfollower/offb_gpsfollower_node

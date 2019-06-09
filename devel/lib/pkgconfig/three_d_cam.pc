@@ -1,1 +1,0 @@
-/home/khorjiawei/catkin_ws/devel/.private/three_d_cam/lib/pkgconfig/three_d_cam.pc

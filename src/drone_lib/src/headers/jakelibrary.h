@@ -18,6 +18,7 @@
     float accFix;
     float gpsdistance;
     float camdistance = 5.0f;
+    float velocitynorm;
 
     // declare functions
     void droneInitVel(float relPos[3], float (&droneVel)[3]); 
@@ -33,6 +34,7 @@
 
     // Landing
     void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]); 
+    void velCamPosMap(float relPosLanding[3], float (&relVelLanding)[3]);
     float altitudeFix(float realAltitude, float altitude);
 
 
@@ -212,8 +214,8 @@ void droneAccComp(float relPos[3], float relVel[3], float (&droneAcc)[3]) {
 // Linear mapping between velocity and position. Basically it takes the relative position, 
 // and gives the drone a relative velocity in the same direction but with two thirds the magnitude.
 // If the position exceeds three metres, the velocity is capped at 2.
-// INPUTS:  the relative position between the drone and the target, NED
-// OUTPUTS: the relative velocity between the drone and the target, NED
+// INPUTS:  the relative position between the drone and the target, ENU
+// OUTPUTS: the relative velocity between the drone and the target gps, ENU
 void velPosMap(float relPosLanding[3], float (&relVelLanding)[3]) 
 {
     float velMax = 2.0;
@@ -237,6 +239,34 @@ void velPosMap(float relPosLanding[3], float (&relVelLanding)[3])
             relVelLanding[i] /= ( gpsdistance / scaling );
         }
     }
+} 
+
+
+void velCamPosMap(float relPosLanding[3], float (&relVelLanding)[3]) 
+{
+    float velMax = 2.0;
+    float posMax = 3.0;
+    float scaling;
+
+    camdistance = norm(relPosLanding);
+   
+
+    for (int i = 0; i < 3; ++i) {
+        relVelLanding[i] = relPosLanding[i];
+    }
+
+    if (camdistance > posMax) {
+        for (int i = 0; i < 3; ++i) {
+            relVelLanding[i] /= ( camdistance / velMax );
+        }
+    }
+    else {
+        scaling = norm(relPosLanding) * velMax / posMax;
+        for (int i = 0; i < 3; ++i) {
+            relVelLanding[i] /= ( camdistance / scaling );
+        }
+    }
+     velocitynorm = norm(relVelLanding);
 } 
 
 

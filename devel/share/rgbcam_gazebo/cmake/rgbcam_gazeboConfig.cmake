@@ -1,1 +1,0 @@
-/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/share/rgbcam_gazebo/cmake/rgbcam_gazeboConfig.cmake
