@@ -132,15 +132,6 @@
       <name>Egg AR Tag</name>
       <uri>model://ARtag</uri>
       <pose>-0.4 -0.4 0.01   0 0 0</pose>
-      <plugin name="ambulance_gps" filename="libhector_gazebo_ros_gps.so">
-        <alwayson>true</alwayson>
-        <bodyName>link</bodyName>
-        <topicname>/android/fix</topicname>
-        <velocitytopicname>/fix_velocity</velocitytopicname>
-        <updateRate>10.0</updateRate>
-<!--         <drift>2 2 0</drift>
-        <gaussiannoise>1.5 1.5 0</gaussiannoise> -->
-      </plugin>
     </include>
 
  
@@ -206,7 +197,15 @@
           </waypoint>
         </trajectory>
       </script>
-      
+      <plugin name="ambulance_gps" filename="libhector_gazebo_ros_gps.so">
+        <alwayson>true</alwayson>
+        <bodyName>link</bodyName>
+        <topicname>/android/fix</topicname>
+        <velocitytopicname>/fix_velocity</velocitytopicname>
+        <updateRate>10.0</updateRate>
+        <drift>2 2 0</drift>
+        <gaussiannoise>1.5 1.5 0</gaussiannoise>
+      </plugin>
       <include>
         <uri>model://ARtag</uri>
         <pose>0.0 0.3 0.57 0 0 0</pose>
