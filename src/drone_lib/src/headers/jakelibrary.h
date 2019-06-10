@@ -260,8 +260,15 @@ void velCamPosMap(float relPosLanding[3], float (&relVelLanding)[3])
             relVelLanding[i] /= ( camdistance / velMax );
         }
     }
+    
+    // else if (camdistance < 0.05f){ /// if distance is tiny, scale velocity commands to 0.05
+    //     for (int i = 0; i < 3; ++i) {
+    //         relVelLanding[i] *= 0.05f / camdistance;
+    //     }
+    // }
+
     else {
-        scaling = norm(relPosLanding) * velMax / posMax;
+        scaling = camdistance * velMax / posMax;
         for (int i = 0; i < 3; ++i) {
             relVelLanding[i] /= ( camdistance / scaling );
         }

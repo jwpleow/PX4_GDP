@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     //Request takeoff at 5.77m altitude.
-    float takeoff_altitude = 0.4f;
+    float takeoff_altitude = 0.8f;
     float time_takeoff = 80;
     ROS_INFO("Setting altitiude to 0.4 m.");
     drone.Commands.request_Takeoff(takeoff_altitude, time_takeoff);
@@ -124,7 +124,7 @@ int main(int argc, char **argv)
                 ROS_INFO("Distance from target according to cam: %f, move forward: %f, move right: %f", camdistance, -drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x);
                 for(int count = 1; count < camdistance / velocitynorm * loop_rate ; count++)
                 {
-                    drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], -0.3f, 0.0f, "BODY_OFFSET");
+                    drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], -0.1f, 0.0f, "BODY_OFFSET");
                     ros::spinOnce();
                     rate.sleep();
                 }

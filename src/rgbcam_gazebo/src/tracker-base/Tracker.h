@@ -11,8 +11,12 @@ class Tracker {
   void loopedTracking(VideoCapture vid);
 protected:
   Mat cameraMatrix, distCoeffs;
+  int frameWidth, frameHeight;
+  const double pi = atan(1) * 4;
+  double fovx, fovy;
+  bool showFrame;
 public:
-  explicit Tracker(CVCalibration& cvl);
+  explicit Tracker(CVCalibration& cvl, bool showFrame=true);
   virtual int getPose(Mat& frame, Vec3d& tVec, Vec3d& rVec) = 0;
   bool startStreamingTrack(int port = 0);
   bool startVideoTrack(const string& fname);

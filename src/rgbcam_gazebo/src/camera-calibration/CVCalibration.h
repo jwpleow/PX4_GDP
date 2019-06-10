@@ -7,6 +7,11 @@
 using namespace cv;
 using namespace std;
 
+extern int DEFAULT_FRAME_WIDTH;
+extern int DEFAULT_FRAME_HEIGHT;
+extern double DEFAULT_DIST_COEFFS[5];
+extern double DEFAULT_CAMERA_MATRIX[9];
+
 class CVCalibration {
   Size chessboardDimensions;
   float chessboardTileSize;
@@ -22,9 +27,10 @@ class CVCalibration {
 public:
   explicit CVCalibration(string fname);
   CVCalibration(Size chessboardDimensions, float chessboardTileSize);
-  
-  Mat distCoeffs = Mat::zeros(1, 5, CV_64F);
-  Mat cameraMatrix = Mat::eye(3, 3, CV_64F);
+  Mat distCoeffs = Mat(1, 5, CV_64F, DEFAULT_DIST_COEFFS);
+  Mat cameraMatrix = Mat(3, 3, CV_64F, DEFAULT_CAMERA_MATRIX);
+  int frameWidth = DEFAULT_FRAME_WIDTH;
+  int frameHeight = DEFAULT_FRAME_HEIGHT;
   
   bool startStreamingCalibration(VideoCapture vid, string window);
   bool isCalibrated();

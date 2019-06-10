@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
   const float markerSeparation = 8.70;
   const int markersXY = 2;
   CVCalibration cvl("CalibParams.txt");
-  TrackerARB tracker(cvl, markerLength, markerSeparation, markersXY, true);
+  TrackerARB tracker(cvl, markerLength, markerSeparation, markersXY, markersXY, true);
   
   int port = argc > 1 ? stoi(argv[1]) : DEFAULT_PORT;
   

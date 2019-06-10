@@ -10,6 +10,11 @@
 using namespace cv;
 using namespace std;
 
+int DEFAULT_FRAME_WIDTH = 640;
+int DEFAULT_FRAME_HEIGHT = 480;
+double DEFAULT_DIST_COEFFS[5] = {-0.442373, 0.347708, 0.000532287, 0.0078344, -0.263354};
+double DEFAULT_CAMERA_MATRIX[9] = {698.934, 0, 275.679, 0, 699.571, 249.775, 0, 0, 1};
+
 CVCalibration::CVCalibration(Size _chessboardDimensions,
                              float _chessboardTileSize) {
   chessboardDimensions = _chessboardDimensions;
@@ -128,7 +133,14 @@ bool CVCalibration::saveCalibrationMatrices(string fname) {
 bool CVCalibration::loadCalibrationMatrices(string fname) {
   ifstream calibrationFile(fname);
   string line;
+  
   if (calibrationFile.is_open()) {
+    getline(calibrationFile, line);
+    frameWidth = stoi(line);
+  
+    getline(calibrationFile, line);
+    frameHeight = stoi(line);
+  
     for (int r = 0; r < cameraMatrix.rows; r++) {
       for (int c = 0; c < cameraMatrix.cols; c++) {
         getline(calibrationFile, line);
@@ -148,5 +160,8 @@ bool CVCalibration::loadCalibrationMatrices(string fname) {
 }
 
 CVCalibration::CVCalibration(string fname) {
-  loadCalibrationMatrices(fname);
+  if (!loadCalibrationMatrices(fname)) {
+    cerr << "Invalid calibration file, using default params for ELP_CAM (640x480)\n";
+    cerr.flush();
+  }
 }

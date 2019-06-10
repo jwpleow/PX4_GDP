@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10)
 project(vishnu_cam)
+
+set(CMAKE_CXX_STANDARD 14)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -29,7 +31,7 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-set(CMAKE_CXX_STANDARD 14)
+
 
 add_executable(vishnu_cam_node src/main.ros.cpp src/tracker-arb/TrackerARB.cpp src/tracker-base/Tracker.cpp src/camera-calibration/CVCalibration.cpp)
 target_link_libraries(vishnu_cam_node ${catkin_LIBRARIES} ${OpenCV_LIBS})

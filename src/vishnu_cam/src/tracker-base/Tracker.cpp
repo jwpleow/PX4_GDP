@@ -121,8 +121,17 @@ void Tracker::correctedPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) 
   Mat rMat = R_flip * R_tc;
   Vec3d euler = rotationMatrixToEulerAngles(rMat);
   Matx<double, 1, 3> tVect = tVec.t();
-  Mat tVecC = -1 * (R_tc * tVec).t();
-  
+  Mat tVecC = Mat::zeros(1,3,CV_64F);
+   // // Mat tVecC = -1 * (R_tc * tVec).t();
+  for(int i=0; i < 3; i++) {
+    tVecC.at<double>(0,i) = -1 * (R_tc.at<double>(i,0)*tVec[0] + R_tc.at<double>(i,1)*tVec[1] + R_tc.at<double>(i,2)*tVec[2]);
+  }
+  // Mat tVecC = R_tc * tVec;
+  // double temp1 = R_tc[0] * tVec[0];
+  //   double temp2 = R_tc[1] * tVec[1];
+  //     double temp3 = R_tc[2] * tVec[2];
+  //     Mat tVecC 
+
   ctVec[0] = -1 * (tVecC.at<double>(0, 0) - 7.9); // TODO: Abstract this into the board logic
   ctVec[1] = tVecC.at<double>(0, 1) - 7.9;
   ctVec[2] = tVecC.at<double>(0, 2);
