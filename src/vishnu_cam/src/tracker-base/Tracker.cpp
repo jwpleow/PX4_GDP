@@ -5,9 +5,13 @@
 
 #include <opencv2/aruco.hpp>
 #include <opencv2/calib3d.hpp>
+#include "SMA.hpp"
 
 using namespace std;
 using namespace cv;
+
+const int SMAL = 5;
+SMA ctSMA[3] {SMA(SMAL), SMA(SMAL), SMA(SMAL)};
 
 Tracker::Tracker(CVCalibration &cvl, bool _showFrame) {
   cameraMatrix = cvl.cameraMatrix;
@@ -76,7 +80,7 @@ Vec3d rotationMatrixToEulerAngles(Mat &R) {
 
 void Tracker::loopedTracking(VideoCapture vid) {
   Mat frame;
-  Vec3d rVec, tVec, ctVec;
+  Vec3d rVec, tVec, ctVec, sctVec;
   int frameno = 0;
   
   cout << "FrameNo\t\tTimestamp\t\t\tRunningTime\tFPS\t\tDist1\t\tDist2\t\tDist3\n";
@@ -90,18 +94,23 @@ void Tracker::loopedTracking(VideoCapture vid) {
     auto start = static_cast<clock_t>(CLOCK());
     if (getPose(frame, tVec, rVec) > 0) {
       correctedPose(rVec, tVec, ctVec);
+      smaPose(ctVec, sctVec);
       
       double dur = CLOCK() - start;
       auto t = time(nullptr);
       auto tm = *localtime(&t);
       frameno++;
+      
       cout << frameno << "\t"
-           << put_time(&tm, "%d/%m %H:%M:%S") << "\t\t\t"
+           << put_time(&tm, "%H:%M:%S") << "\t"
            << avgDur(dur) << "\t"
            << avgFPS() << "\t"
            << ctVec[0] << "\t"
            << ctVec[1] << "\t"
            << ctVec[2] << "\t"
+           << sctVec[0] << "\t"
+           << sctVec[1] << "\t"
+           << sctVec[2] << "\t"
            << endl;
     }
     if (showFrame) imshow("Camera Feed", frame);
@@ -121,20 +130,18 @@ void Tracker::correctedPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) 
   Mat rMat = R_flip * R_tc;
   Vec3d euler = rotationMatrixToEulerAngles(rMat);
   Matx<double, 1, 3> tVect = tVec.t();
-  Mat tVecC = Mat::zeros(1,3,CV_64F);
-   // // Mat tVecC = -1 * (R_tc * tVec).t();
-  for(int i=0; i < 3; i++) {
-    tVecC.at<double>(0,i) = -1 * (R_tc.at<double>(i,0)*tVec[0] + R_tc.at<double>(i,1)*tVec[1] + R_tc.at<double>(i,2)*tVec[2]);
-  }
-  // Mat tVecC = R_tc * tVec;
-  // double temp1 = R_tc[0] * tVec[0];
-  //   double temp2 = R_tc[1] * tVec[1];
-  //     double temp3 = R_tc[2] * tVec[2];
-  //     Mat tVecC 
-
-  ctVec[0] = -1 * (tVecC.at<double>(0, 0) - 7.9); // TODO: Abstract this into the board logic
-  ctVec[1] = tVecC.at<double>(0, 1) - 7.9;
+  Mat tVecC = -1 * (R_tc * tVec).t();
+  
+  ctVec[0] = -1 * (tVecC.at<double>(0, 0) - 0); // TODO: Abstract this into the board logic
+  ctVec[1] = tVecC.at<double>(0, 1) - 0;
   ctVec[2] = tVecC.at<double>(0, 2);
+}
+
+void Tracker::smaPose(const Vec3d &ctVec, Vec3d &sctVec) {
+  for(int i = 0; i < 3; ++i) {
+    ctSMA[i].add(ctVec[i]);
+    sctVec[i] = ctSMA[i].avg();
+  }
 }
 
 bool Tracker::startStreamingTrack(int port) {

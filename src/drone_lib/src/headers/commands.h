@@ -40,6 +40,7 @@ public:
     void move_Velocity_Local_Gerald(float _fixed_speed, float _yaw_angle_deg, std::string _frame);
     void move_Acceleration_Local(float _x, float _y, float _z, std::string _frame);
     void move_Acceleration_Local_Trick(float _x, float _y, float _z, std::string _frame, float rate);
+    void move_Acceleration_Local_PD(float _x, float _y, float _z, float yaw_rate, std::string _frame, float rate);
     void move_Position_Global(float _latitude, float _longitude, float _altitude, float _yaw_angle_deg, std::string _frame);
 
 

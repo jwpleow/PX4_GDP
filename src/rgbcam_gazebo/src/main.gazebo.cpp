@@ -14,12 +14,14 @@
 
 
 
-cv::Vec3d tVec, rVec, ctVec;
-const float markerLength = 3.70;
-const float markerSeparation = 8.70;
-const int markersXY = 2;
+cv::Vec3d tVec, rVec, ctVec, sctVec;
+
+const float markerLength = 2.59;
+const float markerSeparation = 1.90;
+const int markersX = 6;
+const int markersY = 8;
 CVCalibration cvl("CalibParams.txt");
-TrackerARB tracker(cvl, markerLength, markerSeparation, markersXY, markersXY, true);
+TrackerARB tracker(cvl, markerLength, markerSeparation, markersX, markersY, false);
 
 
 ros::Publisher vishnu_cam_data_pub;
@@ -42,7 +44,7 @@ public:
         // Subscribe to input video feed and publish output video feed
         image_sub_ = it_.subscribe("/iris/usb_cam/image_raw", 1,
                                    &ImageConverter::imageCb, this);
-    
+
 
         cv::namedWindow("oprgb");
     }
@@ -67,28 +69,28 @@ public:
 
 
 
-   if (tracker.getPose(cv_ptr->image, tVec, rVec) > 0)
+        if (tracker.getPose(frame, tVec, rVec) > 0)
         {
-
             tracker.correctedPose(rVec, tVec, ctVec);
-            data_msg.linear.x = ctVec[0] / 100;
-            data_msg.linear.y = ctVec[1] / 100;
-            data_msg.linear.z = ctVec[2] / 100;
-            data_msg.angular.x = rVec[0];
-            data_msg.angular.y = rVec[1];
-            data_msg.angular.z = rVec[2];
-
-            bool_msg.data = 1;
+            tracker.smaPose(ctVec, sctVec);
+            ROS_INFO("X: %f, Y: %f, Z: %f", sctVec[0], sctVec[1], sctVec[2]);
+            data_msg.linear.x   = (float) (sctVec[0] /  100);
+            data_msg.linear.y   = (float) (sctVec[1] / 100);
+            data_msg.linear.z   = (float) (sctVec[2] / 100);
+            data_msg.angular.x  = (float) rVec[0];
+            data_msg.angular.y  = (float) rVec[1];
+            data_msg.angular.z  = (float) rVec[2];
             vishnu_cam_data_pub.publish(data_msg);
+
         }
         else
         {
             bool_msg.data = 0;
         }
 
-            vishnu_cam_detection_pub.publish(bool_msg);
+        vishnu_cam_detection_pub.publish(bool_msg);
 
-         // Update GUI Window
+        // Update GUI Window
         cv::imshow("oprgb", cv_ptr->image);
         cv::waitKey(3);
     }

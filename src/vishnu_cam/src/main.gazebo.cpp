@@ -14,7 +14,7 @@ class ImageConverter {
   ros::NodeHandle nh_;
   image_transport::ImageTransport it_;
   image_transport::Subscriber image_sub_;
-  image_transport::Publisher image_pub_;
+
 
 public:
   ImageConverter()
@@ -22,7 +22,6 @@ public:
     // Subscribe to input video feed and publish output video feed
     image_sub_ = it_.subscribe("/iris/usb_cam/image_raw", 1,
                                &ImageConverter::imageCb, this);
-    image_pub_ = it_.advertise("/image_converter/output_video", 1);
     
     cv::namedWindow(OPENCV_WINDOW);
   }
@@ -46,12 +45,13 @@ public:
     cv::waitKey(3);
     
     // Get Pose Estimate
-    const float markerLength = 3.70;
-    const float markerSeparation = 8.70;
-    const int markersXY = 2;
+  const float markerLength = 2.59;
+  const float markerSeparation = 1.90;
+  const int markersX = 6;
+  const int markersY = 8;
     Vec3d tVec, rVec, ctVec;
     CVCalibration cvl("CalibParams.txt");
-    TrackerARB tracker(cvl, markerLength, markerSeparation, markersXY, true);
+   TrackerARB tracker(cvl, markerLength, markerSeparation, markersX, markersY, false);
     
     if (tracker.getPose(cv_ptr->image, tVec, rVec) {
       tracker.correctedPose(rVec, tVec, ctVec);

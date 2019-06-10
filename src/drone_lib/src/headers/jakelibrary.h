@@ -7,7 +7,7 @@
 #include <math.h>
 
     // Initialising
-    const float switchDist = 7.0; // In reality, camera should start working when it is 8m away. However, GPS is on car NOT THE PLATFORM so probably 6.5 m max
+    const float switchDist = 5.0; // In reality, camera should start working when it is 8m away. However, GPS is on car NOT THE PLATFORM so probably 6.5 m max
     float distance;
     float droneVel[3] = {0}; // Relative to earth
     float relVel[3] = {0};
@@ -234,7 +234,7 @@ void velPosMap(float relPosLanding[3], float (&relVelLanding)[3])
         }
     }
     else {
-        scaling = norm(relPosLanding) * velMax / posMax;
+        scaling = gpsdistance * velMax / posMax;
         for (int i = 0; i < 3; ++i) {
             relVelLanding[i] /= ( gpsdistance / scaling );
         }

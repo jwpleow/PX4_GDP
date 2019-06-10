@@ -132,7 +132,18 @@ add_executable(gerald_node src/Mission_Gerald.cpp src/GDPdrone.cpp src/Commands.
 
 add_executable(landing_indoor_node src/Mission_Landing_Indoor.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
 
+add_executable(landing_indoor_slow_node src/Mission_Landing_Indoor_Slow.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+
 add_executable(jake_gps_landing_node src/Mission_Jake_Landing_GPSbackup.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+
+add_executable(mission_full_novision_node src/Mission_Full_Novision.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+
+add_executable(mission_full_vision_withoutegg_node src/Mission_Full_Vision_withoutEgg.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+
+add_executable(mission_egg_vision_node src/Mission_Egg_Vision.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+
+add_executable(mission_egg_novision_node src/Mission_Egg_Novision.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp)
+
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(drone_node
@@ -156,6 +167,10 @@ target_link_libraries(landing_indoor_node
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(landing_indoor_slow_node
+  ${catkin_LIBRARIES}
+)
+
 
 target_link_libraries(move_node
   ${catkin_LIBRARIES}
@@ -173,4 +188,18 @@ target_link_libraries(jake_gps_landing_node
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(mission_full_novision_node
+  ${catkin_LIBRARIES}
+)
 
+target_link_libraries(mission_full_vision_withoutegg_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(mission_egg_vision_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(mission_egg_novision_node
+  ${catkin_LIBRARIES}
+)

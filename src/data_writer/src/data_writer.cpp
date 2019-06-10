@@ -14,9 +14,12 @@ void target_wrtdrone_cb(const geometry_msgs::PointStamped::ConstPtr &msg)
     outputtargetpos << msg->header.stamp << ' ' << msg->point.x << ' '
                     << msg->point.y << ' ' << msg->point.z << std::endl;
 
-connection = 1;
+    connection = 1;
 }
 
+
+
+void 
 
 
 int main(int argc, char **argv)

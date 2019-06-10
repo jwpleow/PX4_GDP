@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     gpsdistance = 5.0f;
 
     ///< while not detecting ARtag OR at too high of an altitude OR too far according to camera
-    while(camdistance > descentDistance || LandAlt < altitude || !drone.Data.vishnu_cam_detection.data) 
+    while(camdistance > descentDistance || LandAlt < altitude || !drone.Data.vishnu_cam_detection.data)
     {
 
         altitude = drone.Data.altitude.bottom_clearance;
@@ -70,65 +70,69 @@ int main(int argc, char **argv)
             ROS_INFO("Switching to vishnu's data to centre");
 
             //pause for a sec so that drone has 0 pitch
-             for(int count = 1; count < 11 ; count++)
+            for(int count = 1; count < 11 ; count++)
             {
-                drone.Commands.move_Velocity_Local(0, 0, 0, 0,"LOCAL_OFFSET");
+                drone.Commands.move_Velocity_Local(0, 0, 0, 0, "LOCAL_OFFSET");
                 ros::spinOnce();
                 rate.sleep();
             }
 
             ///<check if still seeing cam after righting
-            if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data){
-
-            ///<--------------------- vishnu test------------------->
-
-            // // Update position using Vishnu's cam - vishnu's cam gives body frame (xyz) = (right down up),
-
-            relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
-            relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
-            relPosLanding[2] = 0.0;
-            // velPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
-
-            // move velocity is (xyz) = (right forward up)
-            // drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "BODY_OFFSET");
-
-            camdistance = norm(relPosLanding);
-            ROS_INFO("Distance from target according to cam: %f, move forward: %f, move right: %f", camdistance, -drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x);
-            for(int count = 1; count < 31 ; count++)
+            if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data)
             {
-                drone.Commands.move_Position_Local(drone.Data.vishnu_cam_data.linear.x, -drone.Data.vishnu_cam_data.linear.y, 0, 0, "BODY_OFFSET", count);
-                ros::spinOnce();
-                rate.sleep();
+
+                ///<--------------------- vishnu test------------------->
+
+                // // Update position using Vishnu's cam - vishnu's cam gives body frame (xyz) = (right down up),
+
+                relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
+                relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
+                relPosLanding[2] = 0.0;
+                // velPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
+
+                // move velocity is (xyz) = (right forward up)
+                // drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "BODY_OFFSET");
+
+                camdistance = norm(relPosLanding);
+                ROS_INFO("Distance from target according to cam: %f, move forward: %f, move right: %f", camdistance, -drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x);
+                for(int count = 1; count < 31 ; count++)
+                {
+                    drone.Commands.move_Position_Local(drone.Data.vishnu_cam_data.linear.x, -drone.Data.vishnu_cam_data.linear.y, 0, 0, "BODY_OFFSET", count);
+                    ros::spinOnce();
+                    rate.sleep();
+                }
             }
-        }
 
         }
         else if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data) ///< very close - start descending
         {
             //pause for a sec so that drone has 0 pitch
-             for(int count = 1; count < 11 ; count++)
+            for(int count = 1; count < 11 ; count++)
             {
-                drone.Commands.move_Velocity_Local(0, 0, -0.05, 0,"LOCAL_OFFSET");
+                drone.Commands.move_Velocity_Local(0, 0, -0.05, 0, "LOCAL_OFFSET");
                 ros::spinOnce();
                 rate.sleep();
             }
-            if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data){
-
-            relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
-            relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
-            relPosLanding[2] = 0.0;
-            camdistance = norm(relPosLanding);
-            ROS_INFO("Very close, Start Descending. Distance from target according to cam: %f", camdistance);
-             for(int count = 1; count < 31 ; count++)
+            if (camdistance < descentDistance && drone.Data.vishnu_cam_detection.data)
             {
-                 drone.Commands.move_Position_Local(drone.Data.vishnu_cam_data.linear.x, -drone.Data.vishnu_cam_data.linear.y, -0.5, 0, "BODY_OFFSET", count);
-                ros::spinOnce();
-                rate.sleep();
+
+                relPosLanding[0] = drone.Data.vishnu_cam_data.linear.y;
+                relPosLanding[1] = drone.Data.vishnu_cam_data.linear.x;
+                relPosLanding[2] = 0.0;
+                camdistance = norm(relPosLanding);
+                ROS_INFO("Very close, Start Descending. Distance from target according to cam: %f", camdistance);
+                for(int count = 1; count < 31 ; count++)
+                {
+                    drone.Commands.move_Position_Local(drone.Data.vishnu_cam_data.linear.x, -drone.Data.vishnu_cam_data.linear.y, -0.5, 0, "BODY_OFFSET", count);
+                    ros::spinOnce();
+                    rate.sleep();
+                }
             }
-        }
 
         }
-        else { ///< else fallback to GPS
+        
+        else   ///< else fallback to GPS
+        {
             relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< north offset
             relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< east offset
             relPosLanding[2] = 0.0;

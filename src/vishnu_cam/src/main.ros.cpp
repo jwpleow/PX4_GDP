@@ -28,9 +28,10 @@ int main(int argc, char **argv) {
   // Publish whether cam is detecting the ARtag
   ros::Publisher vishnu_cam_detection_pub = n.advertise<std_msgs::Bool>("vishnu_cam_detection", 10);
   
-  const float markerLength = 3.70;
-  const float markerSeparation = 8.70;
-  const int markersXY = 2;
+  const float markerLength = 2.59;
+  const float markerSeparation = 1.90;
+  const int markersX = 6;
+  const int markersY = 8;
   CVCalibration cvl("CalibParams.txt");
   TrackerARB tracker(cvl, markerLength, markerSeparation, markersXY, markersXY, true);
   

@@ -22,6 +22,7 @@ public:
   bool startVideoTrack(const string& fname);
   
   void correctedPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) const;
+  void smaPose(const Vec3d &ctVec, Vec3d &sctVec);
 };
 
 #endif //ARUCO_TRACKING_TRACKER_H

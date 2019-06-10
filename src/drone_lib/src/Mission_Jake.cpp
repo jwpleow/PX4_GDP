@@ -65,9 +65,9 @@ int main(int argc, char **argv)
         relPos[1] = drone.Data.target_position_relative.point.x;
         relPos[2] = drone.Data.target_position_relative.point.z;
 
-        distance = norm(relPos);
+        gpsdistance = norm(relPos);
 
-        ROS_INFO("Distance to target: %f", distance);
+        ROS_INFO("Distance to target: %f", gpsdistance);
 
         velFromGPS(relPos, relPosOld, loop_rate, relVel);
 
@@ -75,9 +75,61 @@ int main(int argc, char **argv)
         ros::spinOnce();
         rate.sleep();
 
-        if (distance < switchDist) break;
 
-    } while(distance > switchDist);
+
+    } while(gpsdistance > switchDist); ///<switchDist in jakelibrary (5.0m)
+
+    ///<---------------------------------------- GPS WAYPOINT ------------------------------------------>
+
+    ROS_INFO("Switching to GPS waypoint nav");
+ 
+    float relVelLanding[3];
+    float relPosLanding[3];
+    float descentVelocity = -0.3;
+    float descentDistance = 0.15;
+
+    float LandAlt = 0.3;
+    altitude = drone.Data.altitude.bottom_clearance;
+
+    do{
+
+        altitude = drone.Data.altitude.bottom_clearance;
+        ROS_INFO("Altitude is: %f", altitude);
+
+        ///< If vishnu ARtag not detected - use GPS to move towards target
+        if (gpsdistance > descentDistance)
+        {
+
+            // Update position using GPS
+            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< east offset
+            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< north offset
+            relPosLanding[2] = 0.0;
+
+            velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
+            // Do I want to yaw to face the front?
+            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
+            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], 0.0, 0.0, "LOCAL_OFFSET");
+            ros::spinOnce();
+            rate.sleep();
+        }
+        else   ///< - close enough , descend
+        {
+            ROS_INFO("At descent distance - descending");
+
+
+            relPosLanding[0] = drone.Data.target_position_relative.point.x;
+            relPosLanding[1] = drone.Data.target_position_relative.point.y;
+            relPosLanding[2] = 0.0;
+            velPosMap(relPosLanding, relVelLanding);
+            // move velocity is (xyz) = (right forward up)
+            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "LOCAL_OFFSET");
+            ros::spinOnce();
+            rate.sleep();
+
+
+        }
+    }while(gpsdistance > descentDistance || LandAlt < altitude);
+
 
     // Land and disarm
     ROS_INFO("Landing and disarming");
