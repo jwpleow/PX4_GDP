@@ -19,9 +19,6 @@ void target_wrtdrone_cb(const geometry_msgs::PointStamped::ConstPtr &msg)
 
 
 
-void 
-
-
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "data_writer");
