@@ -32,30 +32,15 @@ int main(int argc, char **argv)
 
     float relVelLanding[3];
     float relPosLanding[3];
-    float descentVelocity = -0.2;
-    float descentDistance = 0.05;
-    float transitionDistance = 10.0;
+    float descentVelocity = -0.4;
+    float descentDistance = 0.15;
     float LandAlt = 0.1;
     double altitude = drone.Data.altitude.bottom_clearance;
 
 
   
 
-    while (distance > transitionDistance)
-    {   
-          // Update position using GPS
-        relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< east offset
-        relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< north offset
-        relPosLanding[2] = 0.0;
-        gpsdistance = norm(relPosLanding);
-
-        //Implement Jake PN here
-
-    }
-
-
-
-    ///< while not detecting ARtag or at too high of an altitude
+    ///< while not detecting far or at too high of an altitude
     while(gpsdistance > descentDistance || LandAlt < altitude)  //while(!drone.Data.vishnu_cam_detection.data || LandAlt < altitude)
     {
 

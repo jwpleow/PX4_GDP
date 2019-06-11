@@ -37,13 +37,13 @@ data::data(float _rate)
     target_abs_velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("/filtered_target_abs_velocity", 1, &data::target_abs_velocity_cb, this);
 
     ///< Subscribe to target GPS data
-    target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 1, &data::target_gps_cb, this);
+    target_gps_sub = nh.subscribe<sensor_msgs::NavSatFix>("/android/fix", 10, &data::target_gps_cb, this);
 
     ///< Subscribe to vishnu cam data                                                   ///< Get body coordinates (RIGHT,DOWN,UP) of ARtag using e.g. drone.Data.vishnu_cam_data.linear.x
-    vishnu_cam_data_sub = nh.subscribe<geometry_msgs::Twist>("/vishnu_cam_data", 1, &data::vishnu_cam_data_cb, this);
+    vishnu_cam_data_sub = nh.subscribe<geometry_msgs::Twist>("/vishnu_cam_data", 5, &data::vishnu_cam_data_cb, this);
 
     ///< Subscribe to vishnu cam detection                                              ///< Check if vishnu cam detects ARtag using drone.Data.vishnu_cam_detection.data == 1
-    vishnu_cam_detection_sub = nh.subscribe<std_msgs::Bool>("/vishnu_cam_detection", 1, &data::vishnu_cam_detection_cb, this);
+    vishnu_cam_detection_sub = nh.subscribe<std_msgs::Bool>("/vishnu_cam_detection", 5, &data::vishnu_cam_detection_cb, this);
   
 }
 

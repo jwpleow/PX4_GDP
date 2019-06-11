@@ -23,12 +23,11 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     //Request takeoff at 5.77m altitude.
-    float takeoff_altitude = 0.4f;
-    float time_takeoff = 80;
-    ROS_INFO("Setting altitiude to 0.4 m.");
+    float takeoff_altitude = 5.77f;
+    float time_takeoff = 100;
+    ROS_INFO("Setting altitiude to 5.77 m.");
     drone.Commands.request_Takeoff(takeoff_altitude, time_takeoff);
 
-    ROS_INFO("Stabilising over target...");
 
 
     float relVelLanding[3];

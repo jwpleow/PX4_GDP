@@ -74,50 +74,13 @@ int main(int argc, char **argv)
     int time_takeoff = 50;
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
-   
 
-    ///< land (just downwards)
-    for (int count = 1; count < 101; count++)
-    {
-        drone.Commands.move_Velocity_Local(0.0f, 0.0f, -0.3f, 225.0f, "LOCAL_OFFSET");
-        ros::spinOnce();
-        rate.sleep();
-    }
+   ///<---------------------------------------PHASE 1----------------------------------->
 
-
-    ///< wait for egg pickup
-    for(int count = 1; count < 201; count++)
-    {
-        drone.Commands.move_Velocity_Local(0.0f, 0.0f, 0.0f, 0.0f, "BODY_OFFSET");
-        ros::spinOnce();
-        rate.sleep();
-
-    }
-
-
-
-
-    ROS_INFO("Take off again");
-    // Initialise and Arm
-    drone.Commands.await_Connection();
-    drone.Commands.set_Offboard();
-    drone.Commands.set_Armed();
-
-    // MISSION STARTS HERE:
-    // Request takeoff at 1m altitude. At 25Hz = 10 seconds
-    altitude = 1.0f;
-    time_takeoff = 50;
-    drone.Commands.request_Takeoff(altitude, time_takeoff);
-
-    //turn to face right direction
-    ROS_INFO("Turn to face correct direction (East)");
-    for (int count = 1; count < 101; count++ )
-    {
-        drone.Commands.move_Position_Local(0.0f, 0.0f, 0.0f, 0.0f, "LOCAL_OFFSET", count);
-        ros::spinOnce();
-        rate.sleep();
-    }
-
+    // Record positions at beggining of mission
+    storePosition(POSITIONS.InitialCollection, drone.Data.local_pose.pose.position.x,
+                  drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
+                  drone.Data.compass_heading.data);
 
 
 
@@ -141,7 +104,7 @@ int main(int argc, char **argv)
 
     // Set MISSION CONDITIONS for Obstacle Avoidance Algorithm
 
-    while (drone.Data.local_pose.pose.position.x < POSITIONS.InitialObstacleAvoidance.x + 25)
+    while (drone.Data.local_pose.pose.position.x < POSITIONS.InitialObstacleAvoidance.x + 10)
     {
         // Assume there is no obstacle at the beggining of each iteration
         FlSalam = 0;
@@ -246,7 +209,13 @@ int main(int argc, char **argv)
                   drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
                   drone.Data.compass_heading.data);
 
-    ///<---------------------- STEP 3 ---- AMBULANCE PN TRACKING -----------------------_>
+
+
+
+    ///<-------------------------------------------- STEP 3 ---- AMBULANCE PN TRACKING ---------------------------------------_>
+
+
+
 
     // Record positions at beggining of mission
     storePosition(POSITIONS.InitialTracking, drone.Data.local_pose.pose.position.x,
@@ -340,34 +309,33 @@ int main(int argc, char **argv)
                   drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
                   drone.Data.compass_heading.data);
 
+
+
+
+
+
+
+
+
+
+////<----------------------------------------------------GPS Landing------------------------------------------------------>
     float relVelLanding[3];
     float relPosLanding[3];
-    float descentVelocity = -0.2;
+    float descentVelocity = -0.4;
     float descentDistance = 0.05;
     float transitionDistance = 10.0;
     float LandAlt = 0.1;
-    double altitudeNew = drone.Data.altitude.bottom_clearance;
+    altitude = drone.Data.altitude.bottom_clearance;
 
-    while (gpsdistance > transitionDistance)
-    {
-        // Update position using GPS
-        relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< east offset
-        relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< north offset
-        relPosLanding[2] = 0.0;
-        gpsdistance = norm(relPosLanding);
 
-        //Implement Jake PN here
-
-    }
-
-    ///< while not detecting ARtag or at too high of an altitude
-    while(gpsdistance > descentDistance || LandAlt < altitudeNew)  //while(!drone.Data.vishnu_cam_detection.data || LandAlt < altitude)
+    ///< while not detecting far or at too high of an altitude
+    while(gpsdistance > descentDistance || LandAlt < altitude)  
     {
 
-        altitudeNew = drone.Data.altitude.bottom_clearance;
-        ROS_INFO("Altitude is: %f", altitudeNew);
+        altitude = drone.Data.altitude.bottom_clearance;
+        ROS_INFO("Altitude is: %f", altitude);
 
-        ///< If vishnu ARtag not detected - use GPS to move towards target
+        ///< If too far - use GPS to move towards target
         if (gpsdistance > descentDistance)
         {
 
@@ -405,9 +373,24 @@ int main(int argc, char **argv)
     ROS_INFO("Landing Now");
     drone.Commands.request_LandingAuto();
 
+
     return 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+////<-------------------------------Function definitions----------------------->
 void storePosition(struct MissionPositions STEP, float x, float y, float z, float yaw)
 {
     STEP.x = x;

@@ -74,7 +74,9 @@ int main(int argc, char **argv)
     int time_takeoff = 50;
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
-    // STEP 1  ---- EGG COLLECTION ----
+
+   ///<---------------------------------------PHASE 1----------------------------------->
+    
 
     // Record positions at beggining of mission
     storePosition(POSITIONS.InitialCollection, drone.Data.local_pose.pose.position.x,
