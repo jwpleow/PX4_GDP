@@ -1,5 +1,4 @@
 #include <ros/ros.h>
-#include <opencv2/core.hpp>
 #include <image_transport/image_transport.h>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.h>
@@ -13,21 +12,13 @@
 #include <std_msgs/Bool.h>
 
 
-#define DEFAULT_PORT 0
-#define VID_CAPTURE_WIDTH 640
 
+    // Get Pose Estimate
+        const auto arucoSquareDimension = 3.7f;
 
-cv::Mat frame;
-cv::Vec3d tVec, rVec, ctVec, sctVec;
-
-const float markerLength = 3.62;
-const float markerSeparation = 2.63;
-const int markersX = 6;
-const int markersY = 8;
+cv::Vec3d tVec, rVec;
 CVCalibration cvl("CalibParams.txt");
-TrackerARB tracker(cvl, markerLength, markerSeparation, markersX, markersY, false);
-
-
+TrackerARB tracker(cvl, arucoSquareDimension);
 
 ros::Publisher vishnu_cam_data_pub;
 ros::Publisher vishnu_cam_detection_pub;
@@ -41,23 +32,24 @@ class ImageConverter
     image_transport::ImageTransport it_;
     image_transport::Subscriber image_sub_;
 
-
 public:
     ImageConverter()
         : it_(nh_)
-    {
-        // Subscribe to input video feed and publish output video feed
+    {   
+
+        // Subscribe to input video feed
         image_sub_ = it_.subscribe("/iris/usb_cam/image_raw", 1,
                                    &ImageConverter::imageCb, this);
 
-
-        cv::namedWindow("oprgb");
+        cv::namedWindow("OpRGCB CAM View");
     }
 
     ~ImageConverter()
     {
-        cv::destroyWindow("oprgb");
+        cv::destroyWindow("OpRGCB CAM View");
     }
+
+
 
     void imageCb(const sensor_msgs::ImageConstPtr &msg)
     {
@@ -73,36 +65,30 @@ public:
         }
 
 
-        if (tracker.detectLandingPad(cv_ptr->image))
+        if (tracker.getPose(cv_ptr->image, tVec, rVec))
         {
-            if (tracker.getPose(cv_ptr->image, tVec, rVec) > 0)
-            {
-                tracker.getOffsetPose(rVec, tVec, ctVec);
-                tracker.smaPose(ctVec, sctVec);
-                ROS_INFO("X: %f, Y: %f, Z: %f", sctVec[0], sctVec[1], sctVec[2]);
-                data_msg.linear.x   = (float) (sctVec[0] /  100);
-                data_msg.linear.y   = (float) (sctVec[1] / 100);
-                data_msg.linear.z   = (float) (sctVec[2] / 100);
-                data_msg.angular.x  = (float) rVec[0];
-                data_msg.angular.y  = (float) rVec[1];
-                data_msg.angular.z  = (float) rVec[2];
-                vishnu_cam_data_pub.publish(data_msg);
-                bool_msg.data = 1;
 
-            }
+            data_msg.linear.x = tVec[0] / 100;
+            data_msg.linear.y = tVec[1] / 100;
+            data_msg.linear.z = tVec[2] / 100;
+            data_msg.angular.x = tVec[3];
+            data_msg.angular.y = tVec[4];
+            data_msg.angular.z = tVec[5];
+
+            bool_msg.data = 1;
+            vishnu_cam_detection_pub.publish(bool_msg);
+            vishnu_cam_data_pub.publish(data_msg);
         }
         else
         {
             bool_msg.data = 0;
+            vishnu_cam_detection_pub.publish(bool_msg);
         }
 
-        vishnu_cam_detection_pub.publish(bool_msg);
-
         // Update GUI Window
-        cv::imshow("oprgb", cv_ptr->image);
+        cv::imshow("OpRGCB CAM View", cv_ptr->image);
         cv::waitKey(3);
     }
-
 };
 
 int main(int argc, char **argv)
@@ -110,6 +96,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "vishnu_cam_node");
     ros::NodeHandle n;
     ImageConverter ic;
+
 
     // Publish to bodyframe pos of tag to topic /vishnu_cam_data
     vishnu_cam_data_pub = n.advertise<geometry_msgs::Twist>("vishnu_cam_data", 1);

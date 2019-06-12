@@ -15,8 +15,8 @@ target_link_libraries(aruco_board_tracker ${OpenCV_LIBS})
 add_executable(main_ros main_ros.cpp tracker-ar/TrackerAR.cpp tracker-ar/TrackerAR.h tracker-base/Tracker.cpp tracker-base/Tracker.h camera-calibration/CVCalibration.cpp camera-calibration/CVCalibration.h)
 target_link_libraries(main_ros ${OpenCV_LIBS})
 
-add_executable(main.gazebo main.gazebo.cpp tracker-arb/TrackerARB.cpp tracker-arb/TrackerARB.h tracker-base/Tracker.cpp tracker-base/Tracker.h camera-calibration/CVCalibration.cpp camera-calibration/CVCalibration.h)
-target_link_libraries(main.gazebo ${OpenCV_LIBS})
+add_executable(main_gazebo main_gazebo.cpp tracker-arb/TrackerARB.cpp tracker-arb/TrackerARB.h tracker-base/Tracker.cpp tracker-base/Tracker.h camera-calibration/CVCalibration.cpp camera-calibration/CVCalibration.h)
+target_link_libraries(aruco_board_tracker ${OpenCV_LIBS})
 
 add_executable(create_board tracker-arb/create_board.cpp)
 target_link_libraries(create_board  ${OpenCV_LIBS})

@@ -23,9 +23,9 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     //Request takeoff at 5.77m altitude.
-    float takeoff_altitude = 5.77f;
+    float takeoff_altitude = 3.0f;
     float time_takeoff = 100;
-    ROS_INFO("Setting altitiude to 5.77 m.");
+    ROS_INFO("Setting altitiude to 3.0 m.");
     drone.Commands.request_Takeoff(takeoff_altitude, time_takeoff);
 
 
@@ -34,12 +34,20 @@ int main(int argc, char **argv)
     float relPosLanding[3];
     float descentVelocity = -0.15f;
     float closeDistance = 5.0f;
-    float descentDistance = 0.1f;
+    float descentDistance = 0.2f;
     float camdistance = 5.0f;
-    float LandAlt = 0.1;
+    float LandAlt = 0.3;
     double altitude = drone.Data.altitude.bottom_clearance;
 
     gpsdistance = 5.0f;
+
+    ROS_INFO("Heading to egg location");
+    for(int count = 1; count < 43; count++)
+    {
+        drone.Commands.move_Velocity_Local(-1, -1, 0, 0, "LOCAL_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
 
     ///< while not detecting ARtag OR at too high of an altitude OR too far according to camera
     while(camdistance > descentDistance || LandAlt < altitude)
@@ -63,7 +71,7 @@ int main(int argc, char **argv)
 
         if (camdistance > descentDistance && drone.Data.vishnu_cam_detection.data)   ///< - close enough and target seen, use vishnu cam data to centre over target
         {
-            ROS_INFO("tag seen - using vishnu data to centre over target");
+            ROS_INFO("tag seen - using cam data to centre over target");
 
 
             ///<--------------------- vishnu test------------------->
@@ -75,10 +83,6 @@ int main(int argc, char **argv)
             relPosLanding[2] = 0.0;
             velCamPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame
 
-
-            ROS_INFO("Distance from target according to cam: %f, move forward: %f, move right: %f", camdistance, -drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x);
-
-            ROS_INFO("velocity commands, right: %f, forward, %f", relVelLanding[0], -relVelLanding[1]);
             drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], 0.0f, 0.0f, "BODY_OFFSET");
             ros::spinOnce();
             rate.sleep();
@@ -95,28 +99,12 @@ int main(int argc, char **argv)
             relPosLanding[2] = 0.0;
             velCamPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame - calculates camdistance and velocitynorm too
 
-
-            ROS_INFO("Distance from target according to cam: %f, move forward: %f, move right: %f", camdistance, -drone.Data.vishnu_cam_data.linear.y, drone.Data.vishnu_cam_data.linear.x);
-
-            ROS_INFO("count: %f, velocity commands, right: %f, forward, %f", floor(camdistance / velocitynorm * loop_rate), relVelLanding[0], -relVelLanding[1]);
-            drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], -0.05f, 0.0f, "BODY_OFFSET");
+            ROS_INFO("Close to target, descending");
+            drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], -0.1f, 0.0f, "BODY_OFFSET");
             ros::spinOnce();
             rate.sleep();
 
 
-
-        }
-        else if (camdistance < 0.1)
-        {
-            ROS_INFO("Close Enough, Landing!");
-
-            for (int count = 0; count < 51; count++)
-            {
-                drone.Commands.move_Velocity_Local(0.0f, 0.0f, -0.3f, 0.0f, "LOCAL_OFFSET");
-                ros::spinOnce();
-                rate.sleep();
-            }
-            drone.Commands.request_LandingAuto();
 
         }
         else   ///< else, rotate around to try to find target (circle + slight descent)
