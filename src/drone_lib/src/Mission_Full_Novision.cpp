@@ -70,27 +70,12 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     // Request takeoff at 1m altitude. At 25Hz = 10 seconds
-    float altitude = 1.0;
+    float altitude = 0.5;
     int time_takeoff = 50;
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
 
-   ///<---------------------------------------PHASE 1----------------------------------->
-
-    // Record positions at beggining of mission
-    storePosition(POSITIONS.InitialCollection, drone.Data.local_pose.pose.position.x,
-                  drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
-                  drone.Data.compass_heading.data);
-
-
-
-    // Record positions at end of mission
-    storePosition(POSITIONS.FinalCollection, drone.Data.local_pose.pose.position.x,
-                  drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
-                  drone.Data.compass_heading.data);
-
-
-    ///<--------------------------------------- STEP 2  ---- OBSTACLE AVOIDANCE --------------------------------->
+    ///<--------------------------------------- STEP 2  ---- OBSTACLE AVOIDANCE ----------------------------------->
 
     // Record positions at beggining of mission
     storePosition(POSITIONS.InitialObstacleAvoidance, drone.Data.local_pose.pose.position.x,
@@ -135,14 +120,21 @@ int main(int argc, char **argv)
             while (drone.Data.local_pose.pose.position.x < (ObstacleDistance.xPosition[ObstacleDistance.xPosition.size() - 1] + ObstacleDistance.xPosition[ObstacleDistance.xPosition.size() - 2]) * 0.5)
             {
                 if (detectIfOverObstacle(drone.Data.altitude.bottom_clearance, drone.Data.local_pose.pose.position.z) == 0 && drone.Data.lidar.ranges[0] < 10)
+                {
                     // Not over obstacle, can go up in height
                     drone.Commands.move_Velocity_Local(0, 0.5, 0.25, 0, "BODY_OFFSET");
+                    ROS_INFO("Oblique climb");
+                }
                 else
+                {
                     // Over obstacle, do not go up in height
                     drone.Commands.move_Velocity_Local(0, 0.5, 0, 0, "BODY_OFFSET");
+                    ROS_INFO("Move Forward");
+                }
                 ros::spinOnce();
                 rate.sleep();
             }
+
         }
         // Else if there is no visible obstacle just go forwards at current height
         else
@@ -151,7 +143,7 @@ int main(int argc, char **argv)
 
             // Move forwards Command
             drone.Commands.move_Velocity_Local(0, 0.5, 0, 0, "BODY_OFFSET");
-
+			ROS_INFO("Move Forward 2");
             //Store the distances to the obstacle as distances
             ObstacleDistance.left.push_back(drone.Data.lidar.range_max);
             ObstacleDistance.centre.push_back(drone.Data.lidar.range_max);
@@ -181,21 +173,23 @@ int main(int argc, char **argv)
         {
             // Move up.
             drone.Commands.move_Velocity_Local(0, 0, 0.5, 0, "BODY_OFFSET");
+            ROS_INFO("Climb");
             ros::spinOnce();
             rate.sleep();
         }
 
-        while (drone.Data.local_pose.pose.position.x < ObstacleDistance.xPosition[ObstacleDistance.xPosition.size() - 1] + 0.25)
+        while (drone.Data.local_pose.pose.position.x < 0.25)
         {
             // Go forward command
             drone.Commands.move_Velocity_Local(0, 1.0, 0.1, 0, "BODY_OFFSET");
+            ROS_INFO("Slightly Oblique");
             ros::spinOnce();
             rate.sleep();
         }
 
         while (0.8 * drone.Data.local_pose.pose.position.z > drone.Data.altitude.bottom_clearance && FlSalam == 1)
         {
-            ROS_INFO("Merge inainte.");
+            ROS_INFO("Forward quickly.");
             drone.Commands.move_Velocity_Local(0, 1.0, 0, 0, "BODY_OFFSET");
             ros::spinOnce();
             rate.sleep();
@@ -217,10 +211,6 @@ int main(int argc, char **argv)
 
 
 
-    // Record positions at beggining of mission
-    storePosition(POSITIONS.InitialTracking, drone.Data.local_pose.pose.position.x,
-                  drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
-                  drone.Data.compass_heading.data);
     float setAltitude = 5.77f;
 
     // Start Mission; Initialize the relative velocities
@@ -235,7 +225,7 @@ int main(int argc, char **argv)
     float initial_yaw = atan2(droneVel[0], droneVel[1]) * 180.0 / M_PI;
     // turn drone to point in that direction
     ROS_INFO("Turning to direction of inital velocity: %f degrees", initial_yaw); // assume 10 degrees / second?
-    for (int count = 1; count < floor(initial_yaw / 10 * loop_rate); count++)
+    for (int count = 1; count < 60; count++)
     {
         drone.Commands.move_Position_Local(0.0f, 0.0f, 0.0f, initial_yaw, "LOCAL_OFFSET", count);
         ros::spinOnce();
@@ -264,19 +254,8 @@ int main(int argc, char **argv)
         yawAcceleration = atan2(droneAcc[1], droneAcc[0]) * 180 / M_PI;
         yawError.push_back(yawAcceleration);
         kp.push_back(propControl(yawError[0], yawError[1], drone.Data.compass_heading.data));
+        drone.Commands.move_Acceleration_Local_Trick(droneAcc[1], droneAcc[0], accFix, "LOCAL_OFFSET", loop_rate);
 
-        if (isfinite (kp[kp.size() - 1]) == 0)
-            kp[kp.size() - 1] = 0;
-
-        if (kp[kp.size() - 1] > 0.1)
-            kpCurrent = 0;
-        else
-            kpCurrent = kp[kp.size() - 1];
-
-        if (- drone.Data.compass_heading.data + yawAcceleration < 5)
-            drone.Commands.move_Acceleration_Local_PD(droneAcc[1], droneAcc[0], accFix, +kpCurrent, "LOCAL_OFFSET", loop_rate);
-        else
-            drone.Commands.move_Acceleration_Local_PD(droneAcc[1], droneAcc[0], accFix, 0.00, "LOCAL_OFFSET", loop_rate);
 
 
         for (int i = 0; i < 3; ++i)
@@ -286,7 +265,7 @@ int main(int argc, char **argv)
 
         relPos[0] = drone.Data.target_position_relative.point.y;
         relPos[1] = drone.Data.target_position_relative.point.x;
-        relPos[2] = drone.Data.target_position_relative.point.z;
+        relPos[2] = 0;
 
         gpsdistance = norm(relPos);
 
@@ -298,75 +277,27 @@ int main(int argc, char **argv)
         ros::spinOnce();
         rate.sleep();
 
-        if (gpsdistance < switchDist)
-            break;
+
 
     }
     while (gpsdistance > switchDist);
 
-    // Record positions at the end of the mission
-    storePosition(POSITIONS.FinalTracking, drone.Data.local_pose.pose.position.x,
-                  drone.Data.local_pose.pose.position.y, drone.Data.local_pose.pose.position.z,
-                  drone.Data.compass_heading.data);
 
 
 
 
 
 
-
-
-
-
-////<----------------------------------------------------GPS Landing------------------------------------------------------>
-    float relVelLanding[3];
-    float relPosLanding[3];
-    float descentVelocity = -0.4;
-    float descentDistance = 0.05;
-    float transitionDistance = 10.0;
-    float LandAlt = 0.1;
-    altitude = drone.Data.altitude.bottom_clearance;
-
-
-    ///< while not detecting far or at too high of an altitude
-    while(gpsdistance > descentDistance || LandAlt < altitude)  
+    ////<----------------------------------------------------GPS Landing------------------------------------------------------>
+    ROS_INFO("Track Ambulance");
+    for (int count = 1; count < 200; count++)
     {
-
-        altitude = drone.Data.altitude.bottom_clearance;
-        ROS_INFO("Altitude is: %f", altitude);
-
-        ///< If too far - use GPS to move towards target
-        if (gpsdistance > descentDistance)
-        {
-
-            // Update position using GPS
-            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< east offset
-            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< north offset
-            relPosLanding[2] = 0.0;
-
-            velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
-            // Do I want to yaw to face the front?
-            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], 0.0, 0.0, "LOCAL_OFFSET");
-            ros::spinOnce();
-            rate.sleep();
-        }
-        else   ///< - close enough , descend
-        {
-            ROS_INFO("At descent distance - descending");
-
-
-            relPosLanding[0] = drone.Data.target_position_relative.point.x;
-            relPosLanding[1] = drone.Data.target_position_relative.point.y;
-            relPosLanding[2] = 0.0;
-            velPosMap(relPosLanding, relVelLanding);
-            // move velocity is (xyz) = (right forward up)
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "LOCAL_OFFSET");
-            ros::spinOnce();
-            rate.sleep();
-
-
-        }
+        float yaw_angle = drone.Data.CalculateYawAngleToTarget();
+        std::cout << "Yaw angle is: " << yaw_angle << " deg" << std::endl;
+        // drone.Commands.move_Position_Global(drone.Data.gps_raw.latitude, drone.Data.gps_raw.longitude, drone.Data.gps_raw.altitude + 5.0f, yaw_angle, "BODY");
+        drone.Commands.move_Velocity_Local_Gerald(1.50, yaw_angle, "BODY");
+        ros::spinOnce();
+        rate.sleep();
     }
 
     // Land and disarm

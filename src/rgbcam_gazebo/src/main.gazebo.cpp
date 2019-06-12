@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <opencv2/core.hpp>
 #include <image_transport/image_transport.h>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.h>
@@ -12,16 +13,20 @@
 #include <std_msgs/Bool.h>
 
 
+#define DEFAULT_PORT 0
+#define VID_CAPTURE_WIDTH 640
+
 
 cv::Mat frame;
 cv::Vec3d tVec, rVec, ctVec, sctVec;
 
-const float markerLength = 2.59;
-const float markerSeparation = 1.90;
+const float markerLength = 3.62;
+const float markerSeparation = 2.63;
 const int markersX = 6;
 const int markersY = 8;
 CVCalibration cvl("CalibParams.txt");
 TrackerARB tracker(cvl, markerLength, markerSeparation, markersX, markersY, false);
+
 
 
 ros::Publisher vishnu_cam_data_pub;
@@ -68,19 +73,23 @@ public:
         }
 
 
-
-        if (tracker.getPose(frame, tVec, rVec) > 0)
+        if (tracker.detectLandingPad(cv_ptr->image))
         {
-            tracker.correctedPose(rVec, tVec, ctVec);
-            ROS_INFO("X: %f, Y: %f, Z: %f", sctVec[0], sctVec[1], sctVec[2]);
-            data_msg.linear.x   = (float) (sctVec[0] /  100);
-            data_msg.linear.y   = (float) (sctVec[1] / 100);
-            data_msg.linear.z   = (float) (sctVec[2] / 100);
-            data_msg.angular.x  = (float) rVec[0];
-            data_msg.angular.y  = (float) rVec[1];
-            data_msg.angular.z  = (float) rVec[2];
-            vishnu_cam_data_pub.publish(data_msg);
+            if (tracker.getPose(cv_ptr->image, tVec, rVec) > 0)
+            {
+                tracker.getOffsetPose(rVec, tVec, ctVec);
+                tracker.smaPose(ctVec, sctVec);
+                ROS_INFO("X: %f, Y: %f, Z: %f", sctVec[0], sctVec[1], sctVec[2]);
+                data_msg.linear.x   = (float) (sctVec[0] /  100);
+                data_msg.linear.y   = (float) (sctVec[1] / 100);
+                data_msg.linear.z   = (float) (sctVec[2] / 100);
+                data_msg.angular.x  = (float) rVec[0];
+                data_msg.angular.y  = (float) rVec[1];
+                data_msg.angular.z  = (float) rVec[2];
+                vishnu_cam_data_pub.publish(data_msg);
+                bool_msg.data = 1;
 
+            }
         }
         else
         {

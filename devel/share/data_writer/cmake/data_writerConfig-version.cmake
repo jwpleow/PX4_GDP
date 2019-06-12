@@ -1,0 +1,1 @@
+/home/khorjiawei/catkin_ws/devel/.private/data_writer/share/data_writer/cmake/data_writerConfig-version.cmake

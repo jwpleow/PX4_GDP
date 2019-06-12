@@ -5,9 +5,13 @@
 
 #include <opencv2/aruco.hpp>
 #include <opencv2/calib3d.hpp>
+#include "SMA.hpp"
 
 using namespace std;
 using namespace cv;
+
+const int SMAL = 5;
+SMA ctSMA[3] {SMA(SMAL), SMA(SMAL), SMA(SMAL)};
 
 Tracker::Tracker(CVCalibration &cvl, bool _showFrame) {
   cameraMatrix = cvl.cameraMatrix;
@@ -76,7 +80,7 @@ Vec3d rotationMatrixToEulerAngles(Mat &R) {
 
 void Tracker::loopedTracking(VideoCapture vid) {
   Mat frame;
-  Vec3d rVec, tVec, ctVec;
+  Vec3d rVec, tVec, ctVec, sctVec;
   int frameno = 0;
   
   cout << "FrameNo\t\tTimestamp\t\t\tRunningTime\tFPS\t\tDist1\t\tDist2\t\tDist3\n";
@@ -86,30 +90,54 @@ void Tracker::loopedTracking(VideoCapture vid) {
       cerr << "Unable to read next frame. Ending tracking.\n";
       break;
     };
-    
+  
     auto start = static_cast<clock_t>(CLOCK());
-    if (getPose(frame, tVec, rVec) > 0) {
-      correctedPose(rVec, tVec, ctVec);
+    if (detectLandingPad(frame)) {
+      if (getPose(frame, tVec, rVec) > 0) {
+        getOffsetPose(rVec, tVec, ctVec);
+        smaPose(ctVec, sctVec);
       
-      double dur = CLOCK() - start;
-      auto t = time(nullptr);
-      auto tm = *localtime(&t);
-      frameno++;
-      cout << frameno << "\t"
-           << put_time(&tm, "%d/%m %H:%M:%S") << "\t\t\t"
-           << avgDur(dur) << "\t"
-           << avgFPS() << "\t"
-           << ctVec[0] << "\t"
-           << ctVec[1] << "\t"
-           << ctVec[2] << "\t"
-           << endl;
+        double dur = CLOCK() - start;
+        auto t = time(nullptr);
+        auto tm = *localtime(&t);
+        frameno++;
+      
+        cout << frameno << "\t"
+             << put_time(&tm, "%H:%M:%S") << "\t"
+             << avgDur(dur) << "\t"
+             << avgFPS() << "\t"
+             << ctVec[0] << "\t"
+             << ctVec[1] << "\t"
+             << ctVec[2] << "\t"
+             << sctVec[0] << "\t"
+             << sctVec[1] << "\t"
+             << sctVec[2] << "\t"
+             << endl;
+      }
     }
     if (showFrame) imshow("Camera Feed", frame);
     if (waitKey(60) >= 0) break;
   }
 }
 
-void Tracker::correctedPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) const {
+void Tracker::getOffsetPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &otVec) {
+  // Mat temp;
+  Mat R_ct = Mat::eye(3, 3, CV_64F);
+  Rodrigues(rVec, R_ct);
+  Vec3d landingOffset = {14.78, 19.17, 0}; // TODO: Abstract this stuff into board logic
+  // temp = R_ct * landingOffset;
+  Mat temp = Mat::zeros(3,1,CV_64F);
+  for(int i=0; i < 3; i++) {
+    temp.at<double>(i,0) = (R_ct.at<double>(i,0)*landingOffset[0] + R_ct.at<double>(i,1)*landingOffset[1] + R_ct.at<double>(i,2)*landingOffset[2]);
+  }
+
+  temp = temp + tVec;
+  otVec[0] = temp.at<double>(0, 0);
+  otVec[1] = temp.at<double>(1, 0);
+  otVec[2] = temp.at<double>(2, 0);
+}
+
+void Tracker::getGlobalPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) const {
   Mat R_flip = Mat::zeros(3, 3, CV_64F);
   R_flip.at<double>(0, 0) = 1.0;
   R_flip.at<double>(1, 1) = -1.0;
@@ -121,17 +149,24 @@ void Tracker::correctedPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &ctVec) 
   Mat rMat = R_flip * R_tc;
   Vec3d euler = rotationMatrixToEulerAngles(rMat);
   Matx<double, 1, 3> tVect = tVec.t();
+  // Mat tVecC = -1 * (R_tc * tVec).t();
 
-  // // Mat tVecC = -1 * (R_tc * tVec).t();
-  Mat tVecC = Mat::zeros(1,3,CV_64F);
+    Mat tVecC = Mat::zeros(1,3,CV_64F);
   for(int i=0; i < 3; i++) {
     tVecC.at<double>(0,i) = -1 * (R_tc.at<double>(i,0)*tVec[0] + R_tc.at<double>(i,1)*tVec[1] + R_tc.at<double>(i,2)*tVec[2]);
   }
 
-
-  ctVec[0] = -1 * (tVecC.at<double>(0, 0) - 0.0); // TODO: Abstract this into the board logic
-  ctVec[1] = tVecC.at<double>(0, 1) - 0.0;
+  
+  ctVec[0] = -1 * (tVecC.at<double>(0, 0)); // TODO: Abstract this into the board logic
+  ctVec[1] = tVecC.at<double>(0, 1);
   ctVec[2] = tVecC.at<double>(0, 2);
+}
+
+void Tracker::smaPose(const Vec3d &ctVec, Vec3d &sctVec) {
+  for(int i = 0; i < 3; ++i) {
+    ctSMA[i].add(ctVec[i]);
+    sctVec[i] = ctSMA[i].avg();
+  }
 }
 
 bool Tracker::startStreamingTrack(int port) {

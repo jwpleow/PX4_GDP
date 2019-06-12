@@ -45,7 +45,7 @@
     </model>
     <!-- Sphere -->
     <model name='sphere'>
-      <pose>2 -2 0 0 0 0</pose>
+      <pose>2 0 0 0 0 0</pose>
       <link name='link'>
         <pose>0 0 .5 0 0 0</pose>
         <collision name='collision'>
@@ -72,7 +72,7 @@
     </model>
     <!-- Box pose = E N U R P Y-->
     <model name='box'>
-      <pose>12 -2 0 0 0 0</pose>
+      <pose>12 0 0 0 0 0</pose>
       <link name='link'>
         <pose>0 0 2.75 0 0 0</pose>
         <collision name='collision'>
@@ -99,7 +99,7 @@
     </model>
     <!-- Cylinder Space -->
     <model name='cylinder'>
-      <pose>6 -2 0 0 0 0</pose>
+      <pose>6 0 0 0 0 0</pose>
       <link name='link'>
         <pose>0 0 1.5 0 0 0</pose>
         <collision name='collision'>
@@ -131,7 +131,7 @@
     <include>
       <name>Egg AR Tag</name>
       <uri>model://ARtag</uri>
-      <pose>-0.4 -0.4 0.004   0 0 0</pose>
+      <pose>-5 -4.0 0.004   0 0 0</pose>
     </include>
 
  
@@ -141,7 +141,7 @@
         <collision name="collision">
           <geometry>
             <mesh>
-              <scale>0.005 0.005 0.005</scale>
+              <scale>0.0254 0.0254 0.0254</scale>
               <uri>model://ambulance/meshes/ambulance.obj</uri>
             </mesh>
           </geometry>
@@ -168,7 +168,7 @@
         <collision name="collision">
           <geometry>
             <mesh>
-              <scale>0.005 0.005 0.005</scale>
+              <scale>0.0254 0.0254 0.0254</scale>
               <uri>model://ambulance/meshes/ambulance.obj</uri>
             </mesh>
           </geometry>
@@ -176,24 +176,24 @@
           <visual name="visual">
            <geometry>
           <mesh>
-            <scale>0.005 0.005 0.005</scale>
+            <scale>0.0254 0.0254 0.0254</scale>
             <uri>model://ambulance/meshes/ambulance.obj</uri>
           </mesh>
           </geometry>
         </visual>
       </link>
-      <script>
+       <script>
         <loop>false</loop>
         <delay_start>0.000000</delay_start>
         <auto_start>true</auto_start>
         <trajectory id="0" type="square">
           <waypoint>
             <time>0.0</time>
-            <pose>-18.14 -40.14 0 0 0 -3.14</pose>
+            <pose>50 -50 0 0 0 3.14</pose>
           </waypoint>
           <waypoint>
-            <time>80.0</time>
-            <pose>-18.14 -40.14 0 0 0 -3.14</pose>
+            <time>200.0</time>
+            <pose>50 50 0 0 0 3.14</pose>
           </waypoint>
         </trajectory>
       </script>
@@ -208,7 +208,8 @@
       </plugin>
       <include>
         <uri>model://ARtag</uri>
-        <pose>0.0 0.3 0.57 0 0 0</pose>
+        <!-- <pose>0.0 0.3 0.57 0 0 0</pose> (for 0.005 model scale)-->
+        <pose>0.0 0.3 2.88 0 0 0</pose> 
       </include>
       <joint name='ARtag_joint' type='fixed'>
         <parent>ambulance::link</parent>

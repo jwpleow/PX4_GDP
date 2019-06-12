@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo
+
+Name: rgbcam_gazebo
+Description: Description of rgbcam_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/rgbcam_gazebo/lib 
+Requires: 

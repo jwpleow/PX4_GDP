@@ -164,8 +164,13 @@ bool offboardVelocityCtrlBody(Drone& aero)
 
 void stepUp(Drone& aero)
 {
+
+   ROS_INFO("NED: move");
+  aero.setOffboardVelocityNED(-1.0f, -1.0f, 0.0f, 0.0f, 80);
+
+
  ROS_INFO("NED: Hold position");
-  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 200);
+  aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 60);
 
     // Wait for a bit
   aero.setOffboardVelocityNED(0.0f, 0.0f, 0.0f, 0.0f, 40);

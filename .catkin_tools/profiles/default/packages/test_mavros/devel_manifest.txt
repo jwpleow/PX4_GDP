@@ -1,0 +1,7 @@
+mavros/test_mavros
+/home/khorjiawei/catkin_ws/devel/.private/test_mavros/cmake.lock /home/khorjiawei/catkin_ws/devel/./cmake.lock
+/home/khorjiawei/catkin_ws/devel/.private/test_mavros/share/test_mavros/cmake/test_mavrosConfig-version.cmake /home/khorjiawei/catkin_ws/devel/share/test_mavros/cmake/test_mavrosConfig-version.cmake
+/home/khorjiawei/catkin_ws/devel/.private/test_mavros/share/test_mavros/cmake/test_mavrosConfig.cmake /home/khorjiawei/catkin_ws/devel/share/test_mavros/cmake/test_mavrosConfig.cmake
+/home/khorjiawei/catkin_ws/devel/.private/test_mavros/lib/libmavros_sitl_test.so /home/khorjiawei/catkin_ws/devel/lib/libmavros_sitl_test.so
+/home/khorjiawei/catkin_ws/devel/.private/test_mavros/lib/pkgconfig/test_mavros.pc /home/khorjiawei/catkin_ws/devel/lib/pkgconfig/test_mavros.pc
+/home/khorjiawei/catkin_ws/devel/.private/test_mavros/lib/test_mavros/sitl_test_node /home/khorjiawei/catkin_ws/devel/lib/test_mavros/sitl_test_node

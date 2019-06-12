@@ -48,7 +48,7 @@
             <near>0.1</near>
             <far>100</far>
           </clip>
-  <!--         <lens>
+       <!--    <lens>
             <intrinsics>
               <fx>698.934</fx>
               <fy>699.571</fy>
@@ -56,8 +56,8 @@
               <cy>249.775</cy>
               <s>0.0</s>
             </intrinsics>
-          </lens> -->
-<!--           <distortion>
+          </lens>
+          <distortion>
             <k1>-0.442373</k1>
             <k2>0.347708</k2>
             <k3>0.000532287</k3>

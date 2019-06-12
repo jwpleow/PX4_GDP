@@ -26,7 +26,7 @@ class TrackerARB : public Tracker {
   Ptr<aruco::Board> board;
 public:
   TrackerARB(CVCalibration& cvl, float markerLength, float markerSeparation, int markersX, int markersY, bool showFrame=true);
-  
+  bool detectLandingPad(Mat& frame) override;
   int getPose(Mat& frame, Vec3d& translationVec, Vec3d& rotationVec) override;
 };
 

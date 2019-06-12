@@ -49,9 +49,6 @@ TrackerARB::TrackerARB(CVCalibration &cvl, float markerLength, float markerSepar
 
 int TrackerARB::getPose(Mat &frame, Vec3d &tVec, Vec3d &rVec) {
   int detectedBoard = 0;
-  vector<Vec3d> translationVec, rotationVec;
-  detectMarkers(frame, markerDict, markerCorners, markerIds, detectorParams, rejectedCorners);
-  
   if (!markerIds.empty()) {
     detectedBoard = estimatePoseBoard(markerCorners, markerIds, board, cameraMatrix, distCoeffs, rVec, tVec);
     if (showFrame) {
@@ -64,5 +61,10 @@ int TrackerARB::getPose(Mat &frame, Vec3d &tVec, Vec3d &rVec) {
   }
   
   return detectedBoard;
+}
+
+bool TrackerARB::detectLandingPad(Mat& frame) {
+  detectMarkers(frame, markerDict, markerCorners, markerIds, detectorParams, rejectedCorners);
+  return (!markerIds.empty());
 }
 

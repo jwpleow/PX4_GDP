@@ -6,5 +6,5 @@
   <node name="kf" pkg="follower" type="kf_node" />
   
   <!-- Launch Vishnu Cam Data Publisher -->
-  <node pkg="rgbcam_gazebo" type="vishnu_cam_node" name=""/>
+  <!-- <node pkg="rgbcam_gazebo" type="vishnu_cam_node" name=""/> -->
 </launch>

@@ -1,0 +1,8 @@
+prefix=/home/khorjiawei/catkin_ws/devel/.private/data_writer
+
+Name: data_writer
+Description: Description of data_writer
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/khorjiawei/catkin_ws/devel/.private/data_writer/lib 
+Requires: 

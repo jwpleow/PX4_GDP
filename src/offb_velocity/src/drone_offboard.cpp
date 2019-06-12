@@ -44,7 +44,7 @@ bool Drone::takeoff()
   }
 
   mavros_msgs::CommandTOL srv_takeoff{};
-  srv_takeoff.request.altitude = altitude_in_amsl_ + 2.0f;
+  srv_takeoff.request.altitude = altitude_in_amsl_ + 5.5f;
   srv_takeoff.request.latitude = home_.geo.latitude;
   srv_takeoff.request.longitude = home_.geo.longitude;
 
