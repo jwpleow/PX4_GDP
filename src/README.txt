@@ -12,7 +12,7 @@ lidar_converter converts the mavros/altitude.bottomclearance lidar data in gazeb
 
 drone_lib is the big drone control library
 
-vishnu_cam is the package with a node that publishes the processed data from the connected RGB cam (position of the ARtag wrt to the drone in body frame)
+vishnu_cam is the vision algorthm - pulls camera data from a camera connected via USB and publishes the processed data (position of the ARtag wrt to the drone in body frame) rosrun vishnu_cam vishnu_cam
 
 rgbcam_gazebo is the package that subscribes to gazebo's rgb cam data (over ROS) and converts it into OpenCV using cv_bridge for vishnu's code to work
 

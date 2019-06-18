@@ -1,5 +1,8 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10.2)
 project(rgbcam_gazebo)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -31,8 +34,8 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-set(CMAKE_CXX_STANDARD 14)
 
-add_executable(vishnu_cam_node src/main_gazebo.cpp src/tracker-arb/TrackerARB.cpp src/tracker-arb/TrackerARB.h src/tracker-base/Tracker.cpp src/tracker-base/Tracker.h src/camera-calibration/CVCalibration.cpp src/camera-calibration/CVCalibration.h)
+
+add_executable(vishnu_cam_node src/main.gazebo.cpp src/tracker-arb/TrackerARB.cpp src/tracker-hsv/TrackerHSV.cpp src/agent-xb/AgentXB.cpp src/tracker-base/Tracker.cpp src/camera-calibration/CVCalibration.cpp)
 target_link_libraries(vishnu_cam_node ${catkin_LIBRARIES} ${OpenCV_LIBS})
 

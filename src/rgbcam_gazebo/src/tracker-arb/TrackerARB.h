@@ -1,12 +1,12 @@
 //
-//  TrackerAR.hpp
-//  aruco_tracker
+//  TrackerARB.hpp
+//  tracker_arb
 //
 //  Created by Vishnu R Menon on 27/5/19.
 //
 
-#ifndef TrackerAR2_h
-#define TrackerAR2_h
+#ifndef TrackerARB_h
+#define TrackerARB_h
 
 #include <opencv2/core.hpp>
 #include <opencv2/aruco.hpp>
@@ -18,26 +18,25 @@ using namespace std;
 using namespace cv;
 
 class TrackerARB : public Tracker {
-  // TODO: Add these to the contructor
-  float markerLength;
-  float markerSeparation = 8.3f;
-  int markersX = 2;
-  int markersY = 2;
   bool showRejected = false;
-  Vec3d correction = {0,0,0};
-  int inputwidth = 1280;
-  int inputheight = 720;
-  const double pi = atan(1) * 4;
-  double fovx, fovy;
-  Ptr<aruco::Dictionary> markerDict = aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50);
+  double offsetX, offsetY;
+  Ptr<aruco::Dictionary> markerDict;
   vector<int> markerIds;
   vector<vector<Point2f>> markerCorners, rejectedCorners;
   Ptr<aruco::DetectorParameters> detectorParams = aruco::DetectorParameters::create();;
   Ptr<aruco::Board> board;
-public:
-  TrackerARB(CVCalibration& cvl, float markerLength);
   
-  int getPose(Mat& frame, Vec3d& translationVec, Vec3d& rotationVec) override;
+  void offsetPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &otVec);
+
+public:
+  TrackerARB(CVCalibration &cvl, float markerLength, float markerSeparation, int markersX, int markersY,
+             int markerDictId, bool showFrame = true);
+  
+  bool detectLandingPad(Mat &frame) override;
+  
+  int getRawPose(Mat &frame, Vec3d &translationVec, Vec3d &rotationVec);
+  
+  int getPose(Mat &frame, Vec3d &translationVec, Vec3d &rotationVec) override;
 };
 
-#endif /* TrackerAR2_h */
+#endif /* TrackerARB_h */

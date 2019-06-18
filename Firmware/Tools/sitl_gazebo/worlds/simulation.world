@@ -131,7 +131,7 @@
     <include>
       <name>Egg AR Tag</name>
       <uri>model://ARtag</uri>
-      <pose>-5 -4.0 0.004   0 0 0</pose>
+      <pose>-4 -4.0 0.004   0 0 0</pose>
     </include>
 
  
@@ -189,11 +189,11 @@
         <trajectory id="0" type="square">
           <waypoint>
             <time>0.0</time>
-            <pose>50 -50 0 0 0 3.14</pose>
+            <pose>20 20 0 0 0 3.14</pose>
           </waypoint>
           <waypoint>
             <time>200.0</time>
-            <pose>50 50 0 0 0 3.14</pose>
+            <pose>20 20 0 0 0 3.14</pose>
           </waypoint>
         </trajectory>
       </script>

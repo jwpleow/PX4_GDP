@@ -1,0 +1,17 @@
+%YAML:1.0
+size: 2
+trackers:
+  -
+    type: TrackerARB
+    markerLength: 3.62
+    markerSeparation: 2.63
+    markersX: 6
+    markersY: 8
+    markerDict: 0
+  -
+    type: TrackerARB
+    markerLength: 9.89
+    markerSeparation: 15.15
+    markersX: 2
+    markersY: 2
+    markerDict: 4

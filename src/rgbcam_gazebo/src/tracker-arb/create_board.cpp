@@ -1,5 +1,11 @@
+// 6x6 small markers -> -d=1 -h=6 -l=420 -s=300 -m=200 -si -w=6 testImageS.png
+// 6x8 small markers -> -d=1 -h=8 -l=420 -s=300 -m=0 -si -w=6 testImageM.png
+// 3x3 large markers -> -d=4 -h=3 -l=1140 -s=300 -m=0 -si -w=3 testImageL.png
+// 2x2 large markers -> -d=4 -h=2 -l=1140 -s=1740 -m=0 -si -w=2 testImageL.png
+
 #include <opencv2/highgui.hpp>
 #include <opencv2/aruco.hpp>
+#include <iostream>
 
 using namespace cv;
 
@@ -70,6 +76,6 @@ int main(int argc, char *argv[]) {
   }
   
   imwrite(out, boardImage);
-  
+  std::cout << "Done\n";
   return 0;
 }

@@ -137,7 +137,7 @@ add_executable(mission_full_novision_node src/Mission_Full_Novision.cpp src/GDPd
 add_executable(landing_indoor_slow_node src/Mission_Landing_Indoor_Slow.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/Grabber.cpp)
 
 
-add_executable(mission_full_vision_withoutegg_node src/Mission_Full_Vision_withoutEgg.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/Grabber.cpp)
+add_executable(mission_full_node src/Mission_Full_Vision_withoutEgg.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/Grabber.cpp)
 
 add_executable(mission_egg_vision_node src/Mission_Egg_Vision.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/Grabber.cpp)
 
@@ -191,7 +191,7 @@ target_link_libraries(mission_full_novision_node
   ${catkin_LIBRARIES}
 )
 
-target_link_libraries(mission_full_vision_withoutegg_node
+target_link_libraries(mission_full_node
   ${catkin_LIBRARIES}
 )
 

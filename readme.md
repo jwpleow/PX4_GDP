@@ -1,11 +1,17 @@
 # How to launch gazebo with a px4 iris model (quadcopter) publishing to mavros
 
-Make sure gazebo9 and ros-melodic are installed - [Here - 'Gazebo with ROS Melodic'](https://dev.px4.io/en/setup/dev_env_linux.html)!
+FOR UBUNTU 18.04 ONLY - Make sure Gazebo9 and ROS-melodic are installed - [Here - Gazebo with ROS Melodic](https://dev.px4.io/en/setup/dev_env_linux.html)
+Install OpenCV 4 [here](https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/) - for vision packages, rgbcam_gazebo and vishnu_cam - delete folders in catkin_ws/src if not wanted. (Warning, building OpenCV requires slightly over 10GB of free space! - but you can delete the built files after)
 
 Clone this into the root directory
 ```
 cd 
 git clone https://github.com/gdp-drone/catkin_ws.git
+```
+Build the ROS packages using:
+```
+cd ~/catkin_ws
+catkin build
 ```
 
 The gazebo simulation environment with the drone can then be launched using:
@@ -33,12 +39,6 @@ rosrun offb_velocity node
 To launch processing nodes (such as target gps conversion and depth camera transformation)
 ```
 roslaunch follower gazebonodes2.launch 
-```
-
-To freshen up the catkin workspace so you can build and source the workspace correctly
-```
-catkin clean
-catkin build
 ```
 
 

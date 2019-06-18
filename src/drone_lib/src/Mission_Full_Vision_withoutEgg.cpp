@@ -54,7 +54,7 @@ obstacledistance ObstacleDistance;
 int main(int argc, char **argv)
 {
     // Initialise node
-    ros::init(argc, argv, "mission_full_novision_node");
+    ros::init(argc, argv, "mission_full_node");
 
     // Create drone object, this sets everything up
     GDPdrone drone;
