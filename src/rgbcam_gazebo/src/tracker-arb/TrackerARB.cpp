@@ -60,18 +60,14 @@ void TrackerARB::offsetPose(const Vec3d &rVec, const Vec3d &tVec, Vec3d &otVec) 
 
 
 // temp = R_ct * landingOffset;
-  Mat temp = Mat::zeros(3,1,CV_64F);
+  Vec3d temp;
 for(int i=0; i < 3; i++) {  
-    temp.at<double>(i,0) = (R_ct.at<double>(i,0)*landingOffset[0] + R_ct.at<double>(i,1)*landingOffset[1] + R_ct.at<double>(i,2)*landingOffset[2]); 
+    temp[i] = (R_ct.at<double>(i,0)*landingOffset[0] + R_ct.at<double>(i,1)*landingOffset[1] + R_ct.at<double>(i,2)*landingOffset[2]); 
   }
-
-
-
-
   temp = temp + tVec;
-  otVec[0] = temp.at<double>(0, 0);
-  otVec[1] = temp.at<double>(1, 0);
-  otVec[2] = temp.at<double>(2, 0);
+  otVec[0] = temp[0];
+  otVec[1] = temp[1];
+  otVec[2] = temp[2];
 }
 
 int TrackerARB::getRawPose(Mat &frame, Vec3d &tVec, Vec3d &rVec) {

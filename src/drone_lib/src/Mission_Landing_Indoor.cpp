@@ -10,7 +10,7 @@ int main(int argc, char **argv)
     GDPdrone drone;
 
     // Save data to flight_data
-    drone.Data.start_rosbag();
+    // drone.Data.start_rosbag();
 
     //Set the rate. Default working frequency is 25Hz.
     float loop_rate = 10.0f;
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
             relPosLanding[1] = drone.Data.vishnu_cam_data.linear.y;
             relPosLanding[2] = 0.0;
             camdistance = norm(relPosLanding);
-            
+            altitude = drone.Data.vishnu_cam_data.linear.z;
             ROS_INFO("Altitude is: %f", altitude);
         }
 

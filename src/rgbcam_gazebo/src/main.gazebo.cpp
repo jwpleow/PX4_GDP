@@ -33,12 +33,13 @@ int markerDict = 0;
 // unique_ptr<Tracker> tracker_s(
 //   new TrackerARB(cvl, markerLength, markerSeparation, markersX, markersY, markerDict, true));
 TrackerARB tracker(cvl, markerLength, markerSeparation, markersX, markersY, markerDict, true);
-// // Instantiate tracker of larger markers
-// // markerLength = 9.89f;
-// // markerSeparation = 15.15f;
-// // markersX = 2;
-// // markersY = 2;
-// // markerDict = 4;
+// Instantiate tracker of larger markers
+// markerLength = 9.89f;
+// markerSeparation = 15.15f;
+// markersX = 2;
+// markersY = 2;
+// markerDict = 4;
+TrackerARB tracker2(cvl, 9.89f, 15.15f, 2, 2, 4, true);
 
 // unique_ptr<Tracker> tracker_l(
 //   new TrackerARB(cvl, 9.89f, 15.15f, 2, 2, 4, true));
@@ -103,7 +104,26 @@ public:
             if (tracker.getPose(cv_ptr->image, tVec, rVec) > 0)
             {
                 // tracker.smaPose(tVec, tVec);
-                ROS_INFO("X: %f, Y: %f, Z: %f, ID: %d", tVec[0], tVec[1], tVec[2]);
+                ROS_INFO("X: %f, Y: %f, Z: %f, tracker: 1: %d", tVec[0], tVec[1], tVec[2]);
+                data_msg.linear.x   = (float) (tVec[0] /  100);
+                data_msg.linear.y   = (float) (tVec[1] / 100);
+                data_msg.linear.z   = (float) (tVec[2] / 100);
+                data_msg.angular.x  = (float) rVec[0];
+                data_msg.angular.y  = (float) rVec[1];
+                data_msg.angular.z  = (float) rVec[2];
+                vishnu_cam_data_pub.publish(data_msg);
+                bool_msg.data = 1;
+
+
+            }
+        }
+
+        else if(tracker2.detectLandingPad(cv_ptr->image))
+        {
+            if (tracker2.getPose(cv_ptr->image, tVec, rVec) > 0)
+            {
+                // tracker.smaPose(tVec, tVec);
+                ROS_INFO("X: %f, Y: %f, Z: %f, tracker: 2", tVec[0], tVec[1], tVec[2]);
                 data_msg.linear.x   = (float) (tVec[0] /  100);
                 data_msg.linear.y   = (float) (tVec[1] / 100);
                 data_msg.linear.z   = (float) (tVec[2] / 100);
