@@ -43,8 +43,9 @@
         </visual>
       </link>
     </model>
+
     <!-- Sphere -->
-    <model name='sphere'>
+<!--     <model name='sphere'>
       <pose>2 0 0 0 0 0</pose>
       <link name='link'>
         <pose>0 0 .5 0 0 0</pose>
@@ -69,9 +70,9 @@
           </material>
         </visual>
       </link>
-    </model>
+    </model> -->
     <!-- Box pose = E N U R P Y-->
-    <model name='box'>
+<!--     <model name='box'>
       <pose>12 0 0 0 0 0</pose>
       <link name='link'>
         <pose>0 0 2.75 0 0 0</pose>
@@ -96,9 +97,9 @@
           </material>
         </visual>
       </link>
-    </model>
+    </model> -->
     <!-- Cylinder Space -->
-    <model name='cylinder'>
+<!--     <model name='cylinder'>
       <pose>6 0 0 0 0 0</pose>
       <link name='link'>
         <pose>0 0 1.5 0 0 0</pose>
@@ -126,13 +127,36 @@
         </visual>
       </link>
     </model>
-
+ -->
    <!-- Egg AR Tag = E N U R P Y-->
-    <include>
+<!--     <include>
       <name>Egg AR Tag</name>
       <uri>model://ARtag</uri>
-      <pose>-4 -4.0 0.004   0 0 0</pose>
+      <pose>5 0 0.004   0 0 0</pose>
+    </include> -->
+
+
+<!--     <include>
+      <name>Egg AR Tag 2</name>
+      <uri>model://ARtagNot</uri>
+      <pose>5 0.65 0.004   0 0 0</pose>
     </include>
+
+
+    <include>
+      <name>Egg AR Tag 3</name>
+      <uri>model://ARtagNot</uri>
+      <pose>5.5 0.65 0.004   0 0 0</pose>
+    </include>
+
+
+
+    <include>
+      <name>Egg AR Tag 4</name>
+      <uri>model://ARtagNot</uri>
+      <pose>5.5 0 0.004   0 0 0</pose>
+    </include> -->
+
 
  
 <!-- Ambulance actor - nearby chilling - vishnu test, gps published to /fix 06/06/19-->
@@ -189,11 +213,11 @@
         <trajectory id="0" type="square">
           <waypoint>
             <time>0.0</time>
-            <pose>20 20 0 0 0 3.14</pose>
+            <pose>60 -120 0 0 0 3.14</pose>
           </waypoint>
           <waypoint>
-            <time>200.0</time>
-            <pose>20 20 0 0 0 3.14</pose>
+            <time>60.0</time>
+            <pose>60 0 0 0 0 3.14</pose>
           </waypoint>
         </trajectory>
       </script>

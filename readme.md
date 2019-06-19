@@ -1,4 +1,4 @@
-# How to launch gazebo with a px4 iris model (quadcopter) publishing to mavros
+# How to launch Gazebo with a PX4 iris model (quadcopter) publishing to MAVROS
 
 FOR UBUNTU 18.04 ONLY - Make sure Gazebo9 and ROS-melodic are installed - [Here - Gazebo with ROS Melodic](https://dev.px4.io/en/setup/dev_env_linux.html)
 Install OpenCV 4 [here](https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/) - for vision packages, rgbcam_gazebo and vishnu_cam - delete folders in catkin_ws/src if not wanted. (Warning, building OpenCV requires slightly over 10GB of free space! - but you can delete the built files after)
@@ -57,5 +57,17 @@ rosrun tf static_transform_publisher 0.0 0.0 0.0 0.0 0.0 0.0 map my_frame 100
 ```
 
 
+
+
+
+
+
+To collect data from Gazebo:
+Click on the top right plot icon in Gazebo > Pull e.g. model pose data into the graphs > Run Sim > Export (Note Gazebo only seems to store the last 40 seconds.
+
+If more is needed try [logging](http://gazebosim.org/tutorials?tut=log_filtering) (top right LOG button in Gazebo) - replacing *** and iris below with the log folder name and the model's pose wanted:
+```
+gz log -e -f ~/.gazebo/log/***/gzserver/state.log --filter iris.pose/*.pose > ~/drone_ground_truth.log
+```
 
 

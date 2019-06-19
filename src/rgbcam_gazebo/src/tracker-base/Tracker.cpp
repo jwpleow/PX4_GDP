@@ -5,6 +5,7 @@
 
 #include <opencv2/aruco.hpp>
 #include <opencv2/calib3d.hpp>
+#include "SMA.h"
 
 using namespace std;
 using namespace cv;
@@ -182,4 +183,14 @@ bool Tracker::startVideoTrack(const string &fname, bool saveVideo, string filena
   }
   loopedTracking(vid, saveVideo, filename);
   return true;
+}
+
+const int SMAL = 5;
+SMA ctSMA[3]{SMA(SMAL), SMA(SMAL), SMA(SMAL)};
+
+void Tracker::smaPose(const Vec3d &ctVec, Vec3d &sctVec) {
+  for (int i = 0; i < 3; ++i) {
+    ctSMA[i].add(ctVec[i]);
+    sctVec[i] = ctSMA[i].avg();
+  }
 }

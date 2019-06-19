@@ -27,6 +27,11 @@ int main(int argc, char **argv)
     ROS_INFO("Setting altitude to 5.77 m");
     drone.Commands.request_Takeoff(altitude, time_takeoff);
 
+
+
+
+
+
     InitialiseJakeCode(drone.Data.target_position_relative.point.x, drone.Data.target_position_relative.point.y, drone.Data.target_position_relative.point.z);
 
     // Command 1, set drone velocity to the calculated initial velocity in 1 second.
@@ -35,25 +40,26 @@ int main(int argc, char **argv)
 
     drone.Commands.Initialise_Velocity_for_AccelCommands(droneVel[1], droneVel[0], -droneVel[2]);
 
-    float initial_yaw = atan2(droneVel[0], droneVel[1]) * 180.0 / 3.14159;
-    // turn drone to point in that direction
-    ROS_INFO("Turning to direction of inital velocity: %f degrees", initial_yaw); // assume 10 degrees / second?
-    for (int count = 1; count < floor(initial_yaw / 10 * loop_rate); count++)
-    {
-        drone.Commands.move_Position_Local(0.0f, 0.0f, 0.0f, initial_yaw, "LOCAL_OFFSET", count);
-        ros::spinOnce();
-        rate.sleep();
-    }
+    // float initial_yaw = atan2(droneVel[0], droneVel[1]) * 180.0 / 3.14159;
+    // // turn drone to point in that direction
+    // ROS_INFO("Turning to direction of inital velocity: %f degrees", initial_yaw); // assume 10 degrees / second?
+    // for (int count = 1; count < floor(initial_yaw / 15 * loop_rate); count++)
+    // {
+    //     drone.Commands.move_Position_Local(0.0f, 0.0f, 0.0f, initial_yaw, "LOCAL_OFFSET", count);
+    //     ros::spinOnce();
+    //     rate.sleep();
+    // }
 
 
+    InitialiseJakeCode(drone.Data.target_position_relative.point.x, drone.Data.target_position_relative.point.y, drone.Data.target_position_relative.point.z);
 
-
+    drone.Commands.Initialise_Velocity_for_AccelCommands(droneVel[1], droneVel[0], -droneVel[2]);
     // Actual proportional navigation algorithm
     ROS_INFO("Starting proportional navigation algorithm");
 
     do
     {
-        ROS_INFO("%f");
+
         droneAccComp(relPos, relVel, droneAcc);
         accFix = altitudeFix(drone.Data.target_position_relative.point.z, setAltitude);
         ROS_INFO("Accelerations needed: x: %f, y: %f, z: %f", droneAcc[1], droneAcc[0], droneAcc[2]);
@@ -66,9 +72,11 @@ int main(int argc, char **argv)
 
         relPos[0] = drone.Data.target_position_relative.point.y;
         relPos[1] = drone.Data.target_position_relative.point.x;
+        relPos[2] = 0;
+        gpsdistance = norm(relPos);
         relPos[2] = drone.Data.target_position_relative.point.z;
 
-        gpsdistance = norm(relPos);
+
 
         ROS_INFO("Distance to target: %f", gpsdistance);
 
@@ -81,7 +89,7 @@ int main(int argc, char **argv)
 
 
     }
-    while(gpsdistance > switchDist);   ///<switchDist in jakelibrary (5.0m)
+    while(gpsdistance > switchDist);   ///<switchDist in jakelibrary (10.0m)
 
     ///<---------------------------------------- GPS WAYPOINT ------------------------------------------>
 
@@ -95,48 +103,23 @@ int main(int argc, char **argv)
     float LandAlt = 0.3;
     altitude = drone.Data.altitude.bottom_clearance;
 
-    do
+    ROS_INFO("Track Ambulance");
+
+    while(gpsdistance > descentDistance)
     {
-
-        altitude = drone.Data.altitude.bottom_clearance;
-        ROS_INFO("Altitude is: %f", altitude);
-
-        ///< If vishnu ARtag not detected - use GPS to move towards target
-        if (gpsdistance > descentDistance)
-        {
-
-            // Update position using GPS
-            relPosLanding[0] = drone.Data.target_position_relative.point.x; ///< east offset
-            relPosLanding[1] = drone.Data.target_position_relative.point.y; ///< north offset
-            relPosLanding[2] = 0.0;
-
-            velPosMap(relPosLanding, relVelLanding); // Calculate velocity needed - output flips east/north???
-            // Do I want to yaw to face the front?
-            ROS_INFO("Moving towards target via GPS to target position, distance: %f, x: %f, y: %f", gpsdistance, relPosLanding[0], relPosLanding[1]);
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], 0.0, 0.0, "LOCAL_OFFSET");
-
-        }
-        else   ///< - close enough , descend
-        {
-            ROS_INFO("At descent distance - descending");
+        float yaw_angle = drone.Data.CalculateYawAngleToTarget();
 
 
-            relPosLanding[0] = drone.Data.target_position_relative.point.x;
-            relPosLanding[1] = drone.Data.target_position_relative.point.y;
-            relPosLanding[2] = 0.0;
-            velPosMap(relPosLanding, relVelLanding);
-            // move velocity is (xyz) = (right forward up)
-            drone.Commands.move_Velocity_Local(relVelLanding[0], relVelLanding[1], descentVelocity, 0.0, "LOCAL_OFFSET");
-
-
-        }
-
-
+        relPos[0] = drone.Data.target_position_relative.point.y;
+        relPos[1] = drone.Data.target_position_relative.point.x;
+        relPos[2] = 0;
+        gpsdistance = norm(relPos);
+        // drone.Commands.move_Position_Global(drone.Data.gps_raw.latitude, drone.Data.gps_raw.longitude, drone.Data.gps_raw.altitude + 5.0f, yaw_angle);
+        drone.Commands.move_Position_Local(drone.Data.target_position_relative.point.x, drone.Data.target_position_relative.point.y, drone.Data.target_position_relative.point.z + 5.0, yaw_angle, "LOCAL_OFFSET", 1);
+        ROS_INFO("Distances: E: %f, N: %f", drone.Data.target_position_relative.point.x, drone.Data.target_position_relative.point.y);
         ros::spinOnce();
         rate.sleep();
-
     }
-    while(gpsdistance > descentDistance || LandAlt < altitude);
 
 
     // Land and disarm

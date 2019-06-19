@@ -246,7 +246,7 @@ void commands::move_Acceleration_Local_PD(float _x, float _y, float _z, float ya
 }
 
 
-void commands::move_Position_Global(float _latitude, float _longitude, float _altitude, float _yaw_angle_deg, std::string _frame)
+void commands::move_Position_Global(float _latitude, float _longitude, float _altitude, float _yaw_angle_deg)
 {
     // This function uses GPS to reach a target GPS location
     mavros_msgs::GlobalPositionTarget pos;

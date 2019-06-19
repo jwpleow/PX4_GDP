@@ -36,6 +36,6 @@ include_directories(
 
 
 
-add_executable(vishnu_cam_node src/main.gazebo.cpp src/tracker-arb/TrackerARB.cpp src/tracker-hsv/TrackerHSV.cpp src/agent-xb/AgentXB.cpp src/tracker-base/Tracker.cpp src/camera-calibration/CVCalibration.cpp)
+add_executable(vishnu_cam_node src/main.gazebo.cpp src/tracker-arb/TrackerARB.cpp src/tracker-hsv/TrackerHSV.cpp src/tracker-base/Tracker.cpp src/camera-calibration/CVCalibration.cpp)
 target_link_libraries(vishnu_cam_node ${catkin_LIBRARIES} ${OpenCV_LIBS})
 

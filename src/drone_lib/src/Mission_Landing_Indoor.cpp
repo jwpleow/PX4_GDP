@@ -23,16 +23,16 @@ int main(int argc, char **argv)
 
     // MISSION STARTS HERE:
     //Request takeoff at 5.77m altitude.
-    float takeoff_altitude = 2.0f;
+    float takeoff_altitude = 5.0f;
     float time_takeoff = 100;
-    ROS_INFO("Setting altitiude to 3.0 m.");
+    ROS_INFO("Setting altitiude to 5.0 m.");
     drone.Commands.request_Takeoff(takeoff_altitude, time_takeoff);
 
 
 
     float relVelLanding[3];
     float relPosLanding[3];
-    float descentVelocity = -0.15f;
+    float descentVelocity = -0.3f;
     float closeDistance = 5.0f;
     float descentDistance = 0.2f;
     float camdistance = 5.0f;
@@ -41,10 +41,18 @@ int main(int argc, char **argv)
 
     gpsdistance = 5.0f;
 
-    ROS_INFO("Heading to egg location");
-    for(int count = 1; count < 43; count++)
+    ROS_INFO("Heading to pickup location");
+    for(int count = 1; count < 55; count++)
     {
-        drone.Commands.move_Velocity_Local(-1, -1, 0, 0, "LOCAL_OFFSET");
+        drone.Commands.move_Velocity_Local(1, 0.05, 0, 0, "LOCAL_OFFSET");
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    ROS_INFO("Pause");
+    for(int count = 1; count < 31; count++)
+    {
+        drone.Commands.move_Velocity_Local( 0, 0, 0, 0, "LOCAL_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
@@ -100,14 +108,13 @@ int main(int argc, char **argv)
             velCamPosMap(relPosLanding, relVelLanding); // Calculate velocities needed to get towards target in body frame - calculates camdistance and velocitynorm too
 
             ROS_INFO("Close to target, descending");
-            drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], -0.05f, 0.0f, "BODY_OFFSET");
+            drone.Commands.move_Velocity_Local(relVelLanding[0], -relVelLanding[1], descentVelocity, 0.0f, "BODY_OFFSET");
             ros::spinOnce();
             rate.sleep();
 
 
-
         }
-        else   ///< else, rotate around to try to find target (circle + slight descent)
+        else   ///< else, rotate around to try to find target (circle + slight descent?)
         {
             ROS_INFO("No target detected, holding location");
             drone.Commands.move_Velocity_Local(0.0f, 0.0f, 0.0f, 0.0f, "LOCAL_OFFSET");

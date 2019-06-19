@@ -99,12 +99,14 @@ public:
             return;
         }
 
+        bool_msg.data = 0;
+
         if(tracker.detectLandingPad(cv_ptr->image))
         {
             if (tracker.getPose(cv_ptr->image, tVec, rVec) > 0)
             {
-                // tracker.smaPose(tVec, tVec);
-                ROS_INFO("X: %f, Y: %f, Z: %f, tracker: 1: %d", tVec[0], tVec[1], tVec[2]);
+                tracker.smaPose(tVec, tVec);
+                ROS_INFO("X: %f, Y: %f, Z: %f, tracker: 1", tVec[0], tVec[1], tVec[2]);
                 data_msg.linear.x   = (float) (tVec[0] /  100);
                 data_msg.linear.y   = (float) (tVec[1] / 100);
                 data_msg.linear.z   = (float) (tVec[2] / 100);
@@ -117,12 +119,11 @@ public:
 
             }
         }
-
         else if(tracker2.detectLandingPad(cv_ptr->image))
         {
             if (tracker2.getPose(cv_ptr->image, tVec, rVec) > 0)
             {
-                // tracker.smaPose(tVec, tVec);
+                tracker.smaPose(tVec, tVec);
                 ROS_INFO("X: %f, Y: %f, Z: %f, tracker: 2", tVec[0], tVec[1], tVec[2]);
                 data_msg.linear.x   = (float) (tVec[0] /  100);
                 data_msg.linear.y   = (float) (tVec[1] / 100);
@@ -136,10 +137,6 @@ public:
             }
         }
 
-        else
-        {
-            bool_msg.data = 0;
-        }
 
         vishnu_cam_detection_pub.publish(bool_msg);
 
