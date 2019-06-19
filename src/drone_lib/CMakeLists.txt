@@ -143,6 +143,9 @@ add_executable(mission_egg_vision_node src/Mission_Egg_Vision.cpp src/GDPdrone.c
 
 add_executable(mission_egg_novision_node src/Mission_Egg_Novision.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/Grabber.cpp)
 
+add_executable(B00lake_node src/Mission_Lucian.cpp src/Dstar.cpp src/GDPdrone.cpp src/Commands.cpp src/Functions.cpp src/Data.cpp src/Grabber.cpp)
+
+
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(drone_node
@@ -200,5 +203,9 @@ target_link_libraries(mission_egg_vision_node
 )
 
 target_link_libraries(mission_egg_novision_node
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(B00lake_node
   ${catkin_LIBRARIES}
 )
