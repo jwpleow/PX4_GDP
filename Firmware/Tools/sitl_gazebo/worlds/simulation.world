@@ -2,9 +2,9 @@
 <sdf version="1.5">
   <world name="default">
     <!-- A global light source -->
-    <include>
+ <!--    <include>
       <uri>model://sun</uri>
-    </include>
+    </include> -->
     <!-- Floor -->
     <model name="ground_plane">
       <static>true</static>
@@ -129,24 +129,24 @@
     </model>
  -->
    <!-- Egg AR Tag = E N U R P Y-->
-<!--     <include>
+    <include>
       <name>Egg AR Tag</name>
       <uri>model://ARtag</uri>
-      <pose>5 0 0.004   0 0 0</pose>
-    </include> -->
+      <pose>5 -1 0.004   0 0 0</pose>
+    </include>
 
 
-<!--     <include>
+    <include>
       <name>Egg AR Tag 2</name>
       <uri>model://ARtagNot</uri>
-      <pose>5 0.65 0.004   0 0 0</pose>
+      <pose>5 1 0.004   0 0 0</pose>
     </include>
 
 
     <include>
       <name>Egg AR Tag 3</name>
       <uri>model://ARtagNot</uri>
-      <pose>5.5 0.65 0.004   0 0 0</pose>
+      <pose>6.5 1 0.004   0 0 0</pose>
     </include>
 
 
@@ -154,8 +154,8 @@
     <include>
       <name>Egg AR Tag 4</name>
       <uri>model://ARtagNot</uri>
-      <pose>5.5 0 0.004   0 0 0</pose>
-    </include> -->
+      <pose>6.5 -1 0.004   0 0 0</pose>
+    </include>
 
 
  
@@ -217,7 +217,7 @@
           </waypoint>
           <waypoint>
             <time>60.0</time>
-            <pose>60 0 0 0 0 3.14</pose>
+            <pose>60 -120 0 0 0 3.14</pose>
           </waypoint>
         </trajectory>
       </script>

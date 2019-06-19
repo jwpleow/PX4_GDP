@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
     float relVelLanding[3];
     float relPosLanding[3];
-    float descentVelocity = -0.3f;
+    float descentVelocity = -0.4f;
     float closeDistance = 5.0f;
     float descentDistance = 0.2f;
     float camdistance = 5.0f;
@@ -42,9 +42,9 @@ int main(int argc, char **argv)
     gpsdistance = 5.0f;
 
     ROS_INFO("Heading to pickup location");
-    for(int count = 1; count < 55; count++)
+    for(int count = 1; count < 61; count++)
     {
-        drone.Commands.move_Velocity_Local(1, 0.05, 0, 0, "LOCAL_OFFSET");
+        drone.Commands.move_Velocity_Local(1.2, 0, 0, 0, "LOCAL_OFFSET");
         ros::spinOnce();
         rate.sleep();
     }
