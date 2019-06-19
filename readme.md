@@ -1,7 +1,7 @@
 # How to launch Gazebo with a PX4 iris model (quadcopter) publishing to MAVROS
 
-FOR UBUNTU 18.04 ONLY - Make sure Gazebo9 and ROS-melodic are installed - [Here - Gazebo with ROS Melodic](https://dev.px4.io/en/setup/dev_env_linux.html)
-Install OpenCV 4 [here](https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/) - for vision packages, rgbcam_gazebo and vishnu_cam - delete folders in catkin_ws/src if not wanted. (Warning, building OpenCV requires slightly over 10GB of free space! - but you can delete the built files after)
+FOR UBUNTU 18.04 ONLY - Make sure Gazebo9 and ROS-melodic are installed - [Here - Gazebo with ROS Melodic](https://dev.px4.io/en/setup/dev_env_linux.html).
+Also install OpenCV 4 [here](https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/) for vision packages: rgbcam_gazebo and vishnu_cam - delete these folders in catkin_ws/src if not wanted. (Warning, building OpenCV requires slightly over 10GB of free space! - but you can delete the built files after)
 
 Clone this into the root directory
 ```
